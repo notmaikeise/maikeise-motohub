@@ -74,10 +74,15 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Termo | Definição simples |
 | --- | --- |
 | DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
+| Bounded Context | Limite dentro do qual um modelo e sua linguagem possuem significados consistentes. Será definido na `BKL-003`. |
+| Core | Classificação de um subdomínio estratégico que concentra diferenciação e complexidade central. |
 | Domínio | Área de negócio e conjunto de problemas que o software pretende compreender e resolver. |
+| Generic | Classificação de um subdomínio que resolve um problema comum a muitos sistemas. |
 | Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
 | MVP | Menor versão do produto que entrega valor e permite validar o fluxo principal. |
 | Single-tenant | Sistema que atende uma organização. |
 | Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |
 | Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Migração de banco | Alteração versionada da estrutura do banco de dados. |
+| Subdomínio | Parte coerente do problema de negócio, com responsabilidades e regras relacionadas. |
+| Supporting | Classificação de um subdomínio necessário ao Core, mas que não representa o principal diferencial do produto. |

@@ -24,7 +24,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
 | BKL-001 | Consolidar a linguagem ubíqua | Discovery | Must | Glossário revisado com termos do domínio |
-| BKL-002 | Identificar subdomínios | Discovery | Must | Subdomínios central, de apoio e genéricos |
+| BKL-002 | Identificar subdomínios | Discovery | Must | Subdomínios Core, Supporting e Generic |
 | BKL-003 | Definir Bounded Contexts | Discovery | Must | Limites e responsabilidades dos contextos |
 | BKL-004 | Criar o Context Map | Discovery | Must | Relações entre os contextos |
 | BKL-005 | Mapear eventos de domínio | Discovery | Must | Linha do tempo do fluxo comercial |

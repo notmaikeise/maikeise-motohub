@@ -2,7 +2,7 @@
 
 Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende clientes pessoa física e pessoa jurídica.
 
-> Status atual: ideação concluída e documentação inicial em construção. O código da aplicação ainda não foi iniciado.
+> Status atual: DDD estratégico em andamento, com linguagem ubíqua e subdomínios iniciais consolidados. O código da aplicação ainda não foi iniciado.
 
 ## Visão geral
 
@@ -56,6 +56,7 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 | [Decisões em aberto](docs/07-open-decisions.md) | Questões que ainda precisam de análise |
 | [Linguagem ubíqua](docs/glossary.md) | Vocabulário oficial do domínio |
 | [DDD](docs/ddd/README.md) | Estado e roteiro da modelagem de domínio |
+| [Subdomínios](docs/ddd/01-subdomains.md) | Capacidades Core, Supporting e Generic |
 | [GitHub Projects](docs/project-management/github-projects-setup.md) | Configuração recomendada para os cards |
 
 ## Tecnologias planejadas

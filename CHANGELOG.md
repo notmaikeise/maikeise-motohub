@@ -14,6 +14,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Requisitos funcionais e não funcionais.
 - Backlog inicial e guia do GitHub Projects.
 - Templates para issues.
+- Documento de identificação e classificação dos subdomínios.
 
 ### Changed
 
@@ -24,3 +25,4 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Distinção entre solicitação de proposta, proposta, aceite e reserva.
 - Definição de preço anunciado, desconto global da proposta e snapshot comercial.
 - Padronização de `venda` como registro do domínio e `compra` como perspectiva do cliente.
+- Classificação inicial das capacidades Core, Supporting e Generic do domínio.

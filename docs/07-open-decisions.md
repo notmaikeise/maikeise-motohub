@@ -34,3 +34,5 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-014 | Cliente, representante e funcionário são conceitos de negócio distintos de conta e papel de acesso. |
 | DEC-C-015 | No MVP, o desconto comercial é global e calculado sobre o valor bruto total da proposta. |
 | DEC-C-016 | `Venda` é o registro oficial do domínio; `compra` é a perspectiva apresentada ao cliente. |
+| DEC-C-017 | Negociação e Vendas e Disponibilidade e Reservas são os subdomínios Core iniciais. |
+| DEC-C-018 | Catálogo e Estoque, Gestão de Clientes e Rastreabilidade e Auditoria são Supporting; Identidade e Acesso é Generic. |

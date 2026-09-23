@@ -2,24 +2,25 @@
 
 ## Estado atual
 
-A linguagem ubíqua inicial foi consolidada na `BKL-001`. A modelagem DDD ainda não está concluída e continuará com a identificação dos subdomínios.
+A linguagem ubíqua inicial foi consolidada na `BKL-001` e os subdomínios foram identificados na `BKL-002`. A modelagem DDD ainda não está concluída e continuará com a definição dos Bounded Contexts.
 
 O projeto não adotará limites de microsserviços antes de identificar os limites reais do negócio.
 
 | Atividade | Situação |
 | --- | --- |
 | BKL-001 - Consolidar a linguagem ubíqua | Concluída |
-| BKL-002 - Identificar subdomínios | Próxima |
-| BKL-003 a BKL-006 | Backlog |
+| BKL-002 - Identificar subdomínios | Concluída |
+| BKL-003 - Definir Bounded Contexts | Próxima |
+| BKL-004 a BKL-006 | Backlog |
 
-## Próxima fase: DDD estratégico
+## DDD estratégico
 
 O DDD estratégico analisa o domínio em uma visão ampla.
 
 ### Entregáveis planejados
 
 1. [Linguagem ubíqua revisada](../glossary.md).
-2. Subdomínios central, de apoio e genéricos.
+2. [Subdomínios Core, Supporting e Generic](01-subdomains.md).
 3. Bounded Contexts.
 4. Context Map.
 5. Eventos de domínio e Event Storming textual.
@@ -39,9 +40,15 @@ O DDD tático modela os elementos internos de cada contexto.
 7. Serviços de aplicação.
 8. Diagramas do modelo.
 
-## Hipótese inicial, ainda não aprovada
+## Subdomínios identificados
 
-Os documentos atuais sugerem áreas como Clientes, Catálogo/Estoque e Comercial. Esses nomes ainda não representam Bounded Contexts confirmados.
+O levantamento atual identificou:
+
+- **Core:** Negociação e Vendas; Disponibilidade e Reservas.
+- **Supporting:** Catálogo e Estoque; Gestão de Clientes; Rastreabilidade e Auditoria.
+- **Generic:** Identidade e Acesso.
+
+Esses subdomínios representam o espaço do problema. Eles ainda não definem Bounded Contexts ou microsserviços.
 
 ## Critério para concluir esta fase
 
