@@ -23,6 +23,8 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Modelo tático inicial com Aggregate Roots, entidades, Value Objects, invariantes, repositórios e fronteiras transacionais.
 - Visão arquitetural inicial com módulos, persistência, integrações, segurança, testes e execução local.
 - ADR-001 formalizando o monólito modular com Arquitetura Hexagonal.
+- Catálogo estruturado com 90 cards do planejamento, cobrindo o MVP até a release local.
+- Script idempotente para criar issues, labels e preencher os campos do GitHub Project em lote.
 
 ### Changed
 
@@ -58,3 +60,4 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Definição do Event Publication Registry para eventos confiáveis e de lock pessimista para reservas concorrentes.
 - Escolha de REST e Thymeleaf/HTMX como adaptadores de entrada, com autenticação por sessão.
 - Registro da baseline Java 21, Spring Boot 4.1, testes com Testcontainers, Docker Compose e CI gratuita.
+- Expansão do backlog com interface web, API, segurança, observabilidade, empacotamento e apresentação de portfólio.

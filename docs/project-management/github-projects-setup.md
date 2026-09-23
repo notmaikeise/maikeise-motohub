@@ -106,15 +106,66 @@ Criar somente quando existirem datas ou iterações confiáveis. Evite inventar 
 - Use **Draft issue** para ideias rápidas que ainda precisam de refinamento.
 - Transforme um rascunho em issue antes de iniciar a implementação.
 
-## Ordem para criar os primeiros cards
+## Catálogo oficial
 
-1. BKL-001 - Consolidar a linguagem ubíqua.
-2. BKL-002 - Identificar subdomínios.
-3. BKL-003 - Definir Bounded Contexts.
-4. BKL-004 - Criar o Context Map.
-5. BKL-005 - Mapear eventos de domínio.
-6. BKL-006 - Modelar agregados e invariantes.
-7. BKL-007 - Registrar decisão arquitetural inicial.
+O [backlog](../06-backlog.md) possui **90 cards** conhecidos:
+
+- `BKL-001` a `BKL-007`: descoberta, DDD e arquitetura já concluídos;
+- `BKL-010`: próximo card, marcado como `Ready`;
+- demais cards: desenvolvimento do MVP, inicialmente em `Backlog`;
+- `BKL-097`: estacionamento pós-MVP, com prioridade `Won't`.
+
+O arquivo [backlog-cards.csv](backlog-cards.csv) é a fonte estruturada usada para preencher `Status`, `Priority`, `Category` e `Area` sem digitação repetitiva.
+
+## Criação em lote com GitHub CLI
+
+> [!IMPORTANT]
+> Execute primeiro no modo de simulação. O script identifica cards existentes pelo prefixo `BKL-000`, portanto os sete primeiros não são duplicados.
+
+### 1. Instalar e autenticar
+
+No PowerShell, dentro do repositório:
+
+```powershell
+winget install --id GitHub.cli
+gh auth login
+gh auth refresh -s project
+```
+
+O último comando concede ao GitHub CLI o escopo necessário para editar Projects. Nenhum token deve ser copiado para o repositório.
+
+### 2. Simular
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\scripts\project\create-github-backlog.ps1
+```
+
+A simulação consulta o repositório e o Project, valida todos os campos e informa o que seria criado sem fazer alterações.
+
+### 3. Criar e sincronizar
+
+```powershell
+.\scripts\project\create-github-backlog.ps1 -Apply
+```
+
+O script:
+
+1. reaproveita issues cujo título começa com o mesmo ID;
+2. cria somente as issues ausentes;
+3. atribui as issues à própria conta;
+4. adiciona as labels de tipo e área ausentes;
+5. adiciona cada issue ao Project;
+6. preenche os quatro campos personalizados;
+7. mantém somente `BKL-010` em `Ready` e os demais trabalhos futuros em `Backlog`.
+
+Depois de confirmar que `BKL-001` a `BKL-007` estão publicados no repositório, é possível também fechá-los:
+
+```powershell
+.\scripts\project\create-github-backlog.ps1 -Apply -CloseCompleted
+```
+
+O script é idempotente: uma nova execução sincroniza os itens existentes em vez de criar outra issue com o mesmo ID.
 
 ## Labels recomendadas no repositório
 
@@ -122,14 +173,18 @@ Use labels para categorias estáveis e campos do Project para planejamento.
 
 ```text
 area: ddd
+area: product
+area: architecture
 area: identity
 area: customer
 area: catalog
 area: inventory
 area: commercial
 area: audit
+area: platform
 type: discovery
 type: documentation
+type: architecture
 type: feature
 type: technical
 type: bug
@@ -153,5 +208,7 @@ Outras automações devem ser adicionadas apenas quando o fluxo estiver estável
 - [Sobre o GitHub Projects](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 - [Personalizar visualizações](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project)
 - [Adicionar itens ao projeto](https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-project/adding-items-to-your-project)
+- [GitHub CLI para Projects](https://cli.github.com/manual/gh_project)
+- [Criar issues com GitHub CLI](https://cli.github.com/manual/gh_issue_create)
 
 [Voltar ao Hub da documentação](../README.md).

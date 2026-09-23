@@ -39,6 +39,8 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | 5 | Proteger reservas e concorrência. |
 | 6 | Concluir e consultar vendas. |
 | 7 | Reforçar auditoria, qualidade e experiência. |
+| 8 | Construir a interface web e publicar os contratos REST. |
+| 9 | Empacotar, validar e apresentar a versão local. |
 
 <details>
 <summary><strong>Épico 0 — Descoberta e DDD</strong></summary>
@@ -69,7 +71,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-013 | Configurar migrações com Flyway | Technical | Must | Estrutura do banco versionada |
 | BKL-014 | Definir padrão de respostas de erro | Architecture | Must | Contrato de erros documentado |
 | BKL-015 | Configurar testes e Testcontainers | Technical | Must | Base de testes unitários e de integração |
-| BKL-016 | Configurar integração contínua | Technical | Should | Build e testes executados em cada mudança |
+| BKL-016 | Configurar integração contínua | Technical | Must | Build e testes executados em cada mudança |
+| BKL-017 | Estruturar módulos Spring Modulith | Architecture | Must | Seis módulos detectados e sem ciclos |
+| BKL-018 | Configurar qualidade automática do código | Technical | Should | Formatação, análise estática e cobertura integradas ao Maven |
+| BKL-019 | Configurar perfis, propriedades e segredos locais | Technical | Must | Configuração reproduzível sem credenciais versionadas |
 
 </details>
 
@@ -85,6 +90,9 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-024 | Gerenciar contas de funcionários | Feature | Must | Administrador convida funcionários e controla acessos internos |
 | BKL-025 | Recuperar senha | Feature | Should | Titular recupera acesso à conta |
 | BKL-026 | Confirmar e alterar e-mail de acesso | Feature | Must | Operações comerciais usam uma conta com e-mail verificado |
+| BKL-027 | Consultar e editar o próprio cadastro | Feature | Must | Cliente atualiza dados permitidos sem alterar documentos protegidos |
+| BKL-028 | Pesquisar e controlar clientes | Feature | Must | Funcionário pesquisa, inativa, bloqueia e corrige cadastros conforme sua permissão |
+| BKL-029 | Gerenciar representantes de cliente PJ | Feature | Must | Vínculos possuem autorização, histórico e proteção do último representante |
 
 </details>
 
@@ -100,6 +108,9 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-034 | Pesquisar e filtrar catálogo | Feature | Should | Busca por atributos comerciais |
 | BKL-035 | Gerenciar fotos da unidade | Feature | Should | Detalhes visuais no catálogo |
 | BKL-036 | Gerenciar anúncios | Feature | Must | Rascunho, publicação, preço e arquivamento controlados |
+| BKL-037 | Sincronizar disponibilidade pública | Technical | Must | Catálogo reage a mudanças do estoque sem decidir a disponibilidade real |
+| BKL-038 | Proteger identificadores únicos da unidade | Technical | Must | Chassi, motor e placa permanecem únicos sob concorrência |
+| BKL-039 | Pesquisar estoque para funcionários | Feature | Should | Equipe consulta unidades e situações operacionais |
 
 </details>
 
@@ -115,6 +126,9 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-044 | Aprovar desconto especial | Feature | Must | Gerente decide descontos acima de 10% |
 | BKL-045 | Aceitar ou recusar proposta | Feature | Must | Cliente registra sua decisão |
 | BKL-046 | Gerar proposta em PDF | Feature | Should | Documento comercial para download |
+| BKL-047 | Enviar proposta e aviso de vencimento | Feature | Must | Cliente recebe a versão enviada e o aviso previsto |
+| BKL-048 | Acompanhar solicitações de proposta | Feature | Must | Cliente e vendedor visualizam situação e responsável pelo atendimento |
+| BKL-049 | Consultar histórico da negociação | Feature | Must | Atores autorizados veem versões e decisões sem alteração retroativa |
 
 </details>
 
@@ -129,6 +143,8 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-053 | Cancelar reserva | Feature | Must | Cliente ou funcionário libera unidades |
 | BKL-054 | Prorrogar reserva uma vez | Feature | Must | Gerente acrescenta 24 horas com justificativa |
 | BKL-055 | Avisar vencimento da reserva | Feature | Must | Cliente recebe e-mail 24 horas antes do prazo |
+| BKL-056 | Consultar situação e prazo da reserva | Feature | Must | Cliente e equipe visualizam estado, unidades e vencimento |
+| BKL-057 | Tornar a tentativa de reserva idempotente | Technical | Must | Repetições não criam reservas nem bloqueios duplicados |
 
 </details>
 
@@ -143,6 +159,8 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-063 | Consultar histórico de compras | Feature | Must | Cliente visualiza suas vendas concluídas sob a perspectiva de compra |
 | BKL-064 | Pesquisar vendas | Feature | Must | Funcionário consulta operações concluídas |
 | BKL-065 | Cancelar venda e revisar unidades | Feature | Must | Gerente compensa a venda sem apagar o histórico |
+| BKL-066 | Recuperar falhas na conclusão da venda | Technical | Must | Repetições e eventos confiáveis concluem o fluxo sem duplicar a venda |
+| BKL-067 | Exibir resumo gerencial de vendas | Feature | Should | Gerente consulta indicadores comerciais básicos do período |
 
 </details>
 
@@ -157,11 +175,48 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-073 | Criar dados demonstrativos | Technical | Should | Avaliação rápida do portfólio |
 | BKL-074 | Documentar execução local | Documentation | Must | Projeto executável por outra pessoa |
 | BKL-075 | Enviar e repetir notificações | Technical | Must | E-mails assíncronos não comprometem a operação comercial |
+| BKL-076 | Configurar o Event Publication Registry | Technical | Must | Eventos obrigatórios permanecem recuperáveis após falha |
+| BKL-077 | Consultar trilha de auditoria | Feature | Must | Contas autorizadas pesquisam registros seguros e imutáveis |
+| BKL-078 | Implementar processos temporais controláveis | Technical | Must | Expirações e repetições usam scheduler, `Clock` e idempotência |
+| BKL-079 | Proteger logs e dados auditáveis | Technical | Must | Logs técnicos e auditoria não expõem segredos nem dados desnecessários |
 
 </details>
 
 <details>
-<summary><strong>Épico futuro — Fora do MVP</strong></summary>
+<summary><strong>Épico 8 — Interface web e API</strong></summary>
+
+| ID | Item | Tipo | Prioridade | Resultado esperado |
+| --- | --- | --- | --- | --- |
+| BKL-080 | Criar layout e design system da interface | Technical | Must | Thymeleaf e HTMX compartilham componentes visuais consistentes |
+| BKL-081 | Criar páginas públicas do catálogo | Feature | Must | Visitante navega, filtra e consulta unidades específicas |
+| BKL-082 | Criar telas de autenticação e cadastro | Feature | Must | Clientes e funcionários concluem seus fluxos de acesso |
+| BKL-083 | Criar área do cliente | Feature | Must | Cliente gerencia cadastro, propostas, reservas e compras |
+| BKL-084 | Criar área administrativa | Feature | Must | Funcionários acessam somente operações permitidas ao seu papel |
+| BKL-085 | Criar telas do fluxo comercial | Feature | Must | Solicitação, proposta, reserva e venda podem ser conduzidas pela web |
+| BKL-086 | Publicar API REST versionada | Technical | Must | Casos de uso selecionados possuem contratos em `/api/v1` |
+| BKL-087 | Publicar documentação OpenAPI | Documentation | Must | Contratos REST podem ser explorados e testados localmente |
+| BKL-088 | Validar responsividade e acessibilidade | Technical | Must | Fluxos principais funcionam por teclado e em diferentes telas |
+
+</details>
+
+<details>
+<summary><strong>Épico 9 — Empacotamento, portfólio e release</strong></summary>
+
+| ID | Item | Tipo | Prioridade | Resultado esperado |
+| --- | --- | --- | --- | --- |
+| BKL-090 | Criar Dockerfile em múltiplos estágios | Technical | Must | Aplicação gera uma imagem reproduzível e enxuta |
+| BKL-091 | Integrar aplicação ao Docker Compose | Technical | Must | Aplicação, PostgreSQL e Mailpit sobem com healthchecks |
+| BKL-092 | Configurar variáveis e exemplo de ambiente | Technical | Must | Outra pessoa configura o projeto sem acessar segredos reais |
+| BKL-093 | Validar instalação a partir de clone limpo | Technical | Must | Instruções são comprovadas em ambiente sem artefatos anteriores |
+| BKL-094 | Preparar apresentação técnica do portfólio | Documentation | Should | README apresenta arquitetura, execução e evidências visuais |
+| BKL-095 | Definir licença e governança do repositório | Documentation | Must | Uso do código, contribuições e segurança possuem orientação explícita |
+| BKL-096 | Publicar a release local `v0.1.0` | Documentation | Must | Versão demonstrável possui checklist, tag e notas de release |
+| BKL-097 | Manter estacionamento de evoluções pós-MVP | Documentation | Won't | Ideias futuras ficam registradas sem ampliar o compromisso atual |
+
+</details>
+
+<details>
+<summary><strong>Conteúdo do estacionamento pós-MVP</strong></summary>
 
 - Pagamento online.
 - Multi-tenancy.
@@ -170,6 +225,11 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 - Seguros e garantias.
 - Integrações fiscais e bancárias reais.
 - OBD-II e telemetria.
+- Aplicativo móvel nativo.
+- Exportação CSV e relatórios avançados.
+- Integração simulada ou real com a FIPE.
+- Favoritos e comparação entre modelos.
+- Extração de microsserviços quando houver evidência operacional.
 
 </details>
 
