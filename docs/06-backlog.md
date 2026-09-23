@@ -51,8 +51,9 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-021 | Cadastrar cliente PJ | Feature | Must | Cliente PJ, representante e conta de acesso criados |
 | BKL-022 | Autenticar conta de acesso | Feature | Must | Entrada e saída seguras |
 | BKL-023 | Autorizar ações por papel | Feature | Must | Permissões aplicadas no servidor |
-| BKL-024 | Gerenciar contas de funcionários | Feature | Must | Administrador controla acessos internos |
+| BKL-024 | Gerenciar contas de funcionários | Feature | Must | Administrador convida funcionários e controla acessos internos |
 | BKL-025 | Recuperar senha | Feature | Should | Titular recupera acesso à conta |
+| BKL-026 | Confirmar e alterar e-mail de acesso | Feature | Must | Operações comerciais usam uma conta com e-mail verificado |
 
 ## Épico 3 - Catálogo e estoque
 
@@ -64,6 +65,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-033 | Consultar catálogo público | Feature | Must | Visitante encontra unidades específicas e seus preços anunciados |
 | BKL-034 | Pesquisar e filtrar catálogo | Feature | Should | Busca por atributos comerciais |
 | BKL-035 | Gerenciar fotos da unidade | Feature | Should | Detalhes visuais no catálogo |
+| BKL-036 | Gerenciar anúncios | Feature | Must | Rascunho, publicação, preço e arquivamento controlados |
 
 ## Épico 4 - Propostas e descontos
 
@@ -83,9 +85,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | --- | --- | --- | --- | --- |
 | BKL-050 | Criar reserva de proposta aceita | Feature | Must | Unidades reservadas para o cliente |
 | BKL-051 | Impedir reserva simultânea | Technical | Must | Apenas uma reserva ativa por unidade |
-| BKL-052 | Expirar reserva em 72 horas | Feature | Must | Estoque liberado automaticamente |
+| BKL-052 | Expirar reserva em 48 horas | Feature | Must | Estoque liberado automaticamente |
 | BKL-053 | Cancelar reserva | Feature | Must | Cliente ou funcionário libera unidades |
-| BKL-054 | Prorrogar reserva | Feature | Should | Gerente estende o prazo com justificativa |
+| BKL-054 | Prorrogar reserva uma vez | Feature | Must | Gerente acrescenta 24 horas com justificativa |
+| BKL-055 | Avisar vencimento da reserva | Feature | Must | Cliente recebe e-mail 24 horas antes do prazo |
 
 ## Épico 6 - Vendas
 
@@ -96,6 +99,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-062 | Preservar snapshot comercial | Technical | Must | Valores históricos não mudam |
 | BKL-063 | Consultar histórico de compras | Feature | Must | Cliente visualiza suas vendas concluídas sob a perspectiva de compra |
 | BKL-064 | Pesquisar vendas | Feature | Must | Funcionário consulta operações concluídas |
+| BKL-065 | Cancelar venda e revisar unidades | Feature | Must | Gerente compensa a venda sem apagar o histórico |
 
 ## Épico 7 - Auditoria, qualidade e experiência
 
@@ -106,6 +110,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-072 | Garantir navegação por teclado | Technical | Must | Fluxos principais acessíveis |
 | BKL-073 | Criar dados demonstrativos | Technical | Should | Avaliação rápida do portfólio |
 | BKL-074 | Documentar execução local | Documentation | Must | Projeto executável por outra pessoa |
+| BKL-075 | Enviar e repetir notificações | Technical | Must | E-mails assíncronos não comprometem a operação comercial |
 
 ## Épico futuro - Fora do MVP
 

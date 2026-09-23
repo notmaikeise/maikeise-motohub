@@ -8,9 +8,12 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Aceite da proposta | Confirmação registrada de que o cliente concorda com uma proposta enviada e válida. O aceite não bloqueia automaticamente as unidades. |
 | Alçada de desconto | Percentual máximo que um funcionário pode conceder sem aprovação superior. No MVP, a alçada do vendedor é de 10% sobre o valor bruto total da proposta. |
 | Análise de desconto | Decisão registrada do gerente sobre um desconto que ultrapassa a alçada do vendedor. |
+| Anúncio | Representação pública de uma unidade de estoque no catálogo, com descrição, fotos, preço anunciado e situação de disponibilidade. |
 | Auditoria | Registro de uma ação com responsável, data e horário. |
+| Bloqueio comercial | Restrição aplicada ao cliente que impede novas negociações sem apagar seu cadastro ou histórico. Operações abertas são encaminhadas para análise. |
 | Cancelamento da reserva | Encerramento intencional de uma reserva por um cliente ou funcionário autorizado. |
-| Catálogo | Apresentação das unidades de estoque disponíveis para consulta. Unidades do mesmo modelo aparecem separadamente quando possuem registros físicos distintos. |
+| Cancelamento da venda | Ação compensatória autorizada pelo gerente que preserva a venda original, registra um motivo e coloca suas unidades em revisão. |
+| Catálogo | Apresentação pública dos anúncios de unidades de estoque. Unidades do mesmo modelo aparecem separadamente, e uma unidade reservada pode continuar visível sem permitir nova seleção. |
 | Cliente | Pessoa física ou jurídica cadastrada que participa de propostas, reservas e vendas. É o termo oficial do domínio para quem negocia a aquisição de motocicletas. |
 | Cliente ativo | Cliente autorizado a iniciar novas propostas e reservas. |
 | Compra | Perspectiva pela qual o cliente visualiza uma venda concluída. Não representa um registro comercial diferente da venda. |
@@ -19,6 +22,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Conclusão da venda | Operação que valida a proposta aceita, a reserva ativa e a confirmação de pagamento antes de criar a venda definitiva. |
 | Conta de acesso | Credenciais e estado de acesso utilizados por uma pessoa para entrar no sistema. Não representa, por si só, um cliente ou funcionário. |
 | Desconto comercial | Redução aplicada ao valor bruto total de uma proposta. |
+| E-mail confirmado | Endereço eletrônico cuja posse foi validada por meio do fluxo de confirmação da conta. |
 | Expiração da reserva | Encerramento automático de uma reserva quando seu prazo termina sem a conclusão da venda. |
 | Funcionário | Pessoa interna da concessionária que utiliza uma conta de acesso para realizar atividades autorizadas. |
 | Funcionário autorizado | Funcionário cuja conta possui permissão para executar determinada ação. |
@@ -34,14 +38,16 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Proposta | Oferta comercial preparada pelo vendedor em resposta a uma solicitação, contendo unidades, valores, descontos, condições e validade. Somente uma proposta enviada e válida pode ser aceita ou recusada pelo cliente. |
 | Prorrogação da reserva | Extensão do prazo de uma reserva ativa, autorizada pelo gerente antes da expiração e acompanhada de justificativa. |
 | Representante | Pessoa física vinculada a um cliente pessoa jurídica que utiliza uma conta de acesso para agir em nome da empresa. |
-| Reserva | Bloqueio temporário confirmado de uma ou mais unidades para o cliente de uma proposta aceita. Possui prazo inicial de 72 horas. |
+| Reserva | Bloqueio temporário confirmado de uma ou mais unidades para o cliente de uma proposta aceita. Possui prazo inicial de 48 horas e admite uma única prorrogação gerencial de 24 horas. |
 | Reserva ativa | Reserva confirmada que ainda não expirou, não foi cancelada e não foi utilizada para concluir uma venda. |
 | Responsável pelo estoque | Funcionário que gerencia modelos, unidades e disponibilidade. |
 | Snapshot comercial | Cópia imutável das unidades, preços, desconto e condições da proposta aceita, preservada na venda. |
 | Solicitação de proposta | Pedido inicial enviado por um cliente ativo após a escolha de uma ou mais unidades. Demonstra interesse comercial, mas ainda não constitui uma oferta e não reserva as unidades. |
-| Solicitação de reserva | Pedido feito após o aceite de uma proposta válida para que o sistema verifique novamente a disponibilidade e tente bloquear suas unidades. |
+| Solicitação de reserva | Comando interno disparado automaticamente após o aceite de uma proposta válida para verificar novamente a disponibilidade e tentar bloquear suas unidades. |
 | Unidade de estoque | Motocicleta física específica, identificada principalmente pelo chassi e com informações próprias, como cor, ano, preço e situação no estoque. É a unidade escolhida pelo cliente, incluída na proposta, reservada e vendida. |
 | Unidade disponível | Unidade de estoque apta a aparecer no catálogo e participar de uma nova negociação. |
+| Unidade em revisão | Unidade temporariamente impedida de voltar ao catálogo até uma conferência explícita, inclusive depois do cancelamento de uma venda. |
+| Unidade fora de venda | Unidade retirada da comercialização sem apagar seu cadastro ou histórico. |
 | Usuário autenticado | Pessoa que entrou no sistema por meio de uma conta de acesso válida. É uma condição de acesso, não um sinônimo de cliente. |
 | Valor bruto da proposta | Soma dos preços das unidades incluídas em uma versão da proposta antes do desconto comercial. |
 | Valor final da proposta | Valor bruto da proposta menos o desconto comercial concedido. |
@@ -59,6 +65,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 - O cliente escolhe uma **unidade de estoque específica** no catálogo; o sistema não escolhe automaticamente uma unidade apenas com base no modelo.
 - **Solicitação de proposta** é o pedido inicial do cliente; **proposta** é a oferta comercial produzida pelo vendedor.
 - O envio de uma solicitação ou proposta não reserva unidades. A reserva somente pode ser solicitada depois do aceite de uma proposta válida.
+- No MVP, o aceite dispara automaticamente a tentativa de criar a reserva, mas o aceite e a reserva continuam sendo fatos distintos.
 - **Conta de acesso** pertence à identidade e à segurança; **cliente** pertence ao negócio comercial.
 - Clientes, representantes e funcionários descrevem quem participa do negócio. Papéis de acesso descrevem o que uma conta está autorizada a fazer.
 - **Aceite da proposta** registra concordância comercial; **reserva** registra o bloqueio temporário efetivo das unidades.
@@ -73,6 +80,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 
 | Termo | Definição simples |
 | --- | --- |
+| Ação compensatória | Nova operação que corrige ou neutraliza os efeitos de algo já concluído sem apagar o fato original. |
 | Adaptador | Componente que conecta uma porta da aplicação a uma tecnologia ou interface externa, como REST, banco de dados ou mensageria. |
 | Anti-Corruption Layer (ACL) | Camada que traduz contratos externos para o modelo interno, impedindo que um contexto seja contaminado pelo modelo de outro. |
 | Arquitetura Hexagonal | Organização que mantém as regras de negócio no centro e isola tecnologias externas por meio de portas e adaptadores. |
@@ -90,6 +98,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Invariante | Regra que deve permanecer verdadeira durante toda mudança válida do modelo, como impedir duas reservas ativas para a mesma unidade. |
 | Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
+| Máquina de estados | Modelo que define os estados válidos de um objeto e quais transições podem ocorrer entre eles. |
 | Migração de banco | Alteração versionada da estrutura do banco de dados. |
 | Monólito modular | Aplicação implantada como uma unidade, mas dividida internamente em módulos com limites e dependências controlados. |
 | Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |
@@ -97,7 +106,9 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Open Host Service | Serviço com contrato estável oferecido por um contexto para uso de vários consumidores. |
 | Partnership | Relação em que dois contextos coordenam sua evolução porque o sucesso de um fluxo depende de ambos. |
 | Porta | Contrato pelo qual o núcleo da aplicação recebe uma ação ou solicita uma capacidade externa sem depender da tecnologia concreta. |
+| Política | Regra que reage a um acontecimento e pode iniciar uma nova ação. |
 | Published Language | Formato de comunicação explicitamente definido e compreendido pelos contextos envolvidos. |
+| RBAC | Controle de acesso baseado em papéis, no qual permissões são agrupadas em perfis atribuídos às contas. |
 | Shared Kernel | Parte de modelo ou código deliberadamente compartilhada por contextos e alterada mediante coordenação. Não será adotada entre os contextos de negócio do MotoHub. |
 | Single-tenant | Sistema que atende uma organização. |
 | Síncrono | Modo de comunicação em que quem solicita aguarda uma resposta para continuar. |

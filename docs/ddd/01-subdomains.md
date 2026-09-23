@@ -59,6 +59,7 @@ Conduzir a relação comercial com o cliente, preservando condições, decisões
 - Registrar aceite ou recusa do cliente.
 - Registrar a confirmação de pagamento externo.
 - Concluir a venda e preservar o snapshot comercial.
+- Cancelar a venda por ação compensatória sem apagar o histórico.
 
 #### Justificativa da classificação
 
@@ -76,7 +77,7 @@ Controlar o direito temporário de um cliente concluir a aquisição de unidades
 - Criar uma reserva somente para unidades disponíveis.
 - Impedir duas reservas ativas para a mesma unidade.
 - Bloquear todas as unidades confirmadas para o cliente correto.
-- Controlar o prazo inicial de 72 horas.
+- Controlar o prazo inicial de 48 horas e uma única prorrogação gerencial de 24 horas.
 - Expirar, cancelar e prorrogar reservas.
 - Liberar unidades quando a reserva terminar sem venda.
 - Permitir que unidades reservadas sejam utilizadas na conclusão da venda.
@@ -98,9 +99,9 @@ Manter as informações dos produtos e das unidades físicas comercializadas pel
 - Cadastrar modelos de motocicleta.
 - Cadastrar unidades identificadas por chassi.
 - Controlar motor e placa quando informados.
-- Registrar preparação, disponibilidade, reserva, venda e inativação.
+- Registrar preparação, disponibilidade, reserva, venda, revisão e retirada de venda.
 - Manter o preço anunciado.
-- Exibir separadamente cada unidade disponível no catálogo.
+- Exibir separadamente cada unidade anunciada e sua situação pública.
 - Preservar o histórico de unidades que participaram de negociações.
 
 #### Justificativa da classificação
@@ -156,6 +157,8 @@ Identificar quem está acessando o sistema e limitar cada ação às permissões
 #### Responsabilidades
 
 - Manter contas de acesso individuais.
+- Confirmar o e-mail das contas de clientes.
+- Convidar funcionários para criação de contas internas.
 - Autenticar credenciais.
 - Encerrar sessões com segurança.
 - Ativar e desativar contas.
@@ -193,4 +196,4 @@ Não existe obrigação de mapear cada subdomínio diretamente para um Bounded C
 
 ## Continuidade da modelagem
 
-A `BKL-003` definiu os Bounded Contexts, incluindo responsabilidades, termos controlados, propriedade dos dados e informações que não pertencem a cada limite. A `BKL-004` continuará o trabalho com o Context Map.
+A `BKL-003` definiu os Bounded Contexts, a `BKL-004` registrou suas relações e a `BKL-005` mapeou os eventos do fluxo comercial. A continuidade está na modelagem tática da `BKL-006`.

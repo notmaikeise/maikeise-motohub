@@ -4,19 +4,16 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 
 | ID | Pergunta | Momento recomendado |
 | --- | --- | --- |
-| DEC-001 | Qual será o prazo máximo de prorrogação de uma reserva? | Modelagem de Reservas |
 | DEC-002 | Existe um desconto máximo que nem o gerente poderá aprovar? | Modelagem de Propostas |
-| DEC-003 | A reserva de várias unidades será confirmada integralmente ou poderá ser parcial? | Modelagem de Reservas |
 | DEC-004 | Uma empresa poderá possuir vários representantes com contas próprias no MVP? | Modelagem de Clientes |
-| DEC-005 | Como funcionará o cancelamento ou estorno de uma venda concluída? | Evolução pós-MVP |
 | DEC-006 | A primeira concessionária terá uma ou várias filiais? | DDD estratégico |
-| DEC-007 | Quais ações exigirão auditoria detalhada? | Arquitetura e segurança |
 | DEC-009 | Qual licença será aplicada ao repositório público? | Antes da primeira versão pública de código |
 | DEC-010 | Qual estratégia de interface será usada: Thymeleaf ou frontend separado? | ADR de arquitetura |
 | DEC-011 | Quais regras de dependência, organização e testes formalizarão o monólito modular com Arquitetura Hexagonal? | ADR da BKL-007 |
 | DEC-012 | Como coordenar a criação da conta e do cadastro de cliente sem uma transação entre contextos? | Eventos e ADR de arquitetura |
 | DEC-013 | Como tratar falhas, repetição e compensação entre a conclusão da venda e a utilização da reserva? | Eventos e ADR de arquitetura |
 | DEC-014 | Qual mecanismo garantirá a entrega de eventos obrigatórios e de auditoria? | ADR da BKL-007 |
+| DEC-015 | Qual mecanismo executará expirações e novas tentativas de notificação? | ADR da BKL-007 |
 
 ## Decisões já tomadas
 
@@ -28,7 +25,7 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-004 | O MVP atende uma concessionária; multi-tenancy é uma evolução. |
 | DEC-C-005 | A proposta vale sete dias. |
 | DEC-C-006 | A reserva acontece depois do aceite da proposta. |
-| DEC-C-007 | A reserva vale 72 horas. |
+| DEC-C-007 | A reserva vale inicialmente 48 horas e admite uma única prorrogação gerencial de 24 horas, antes do vencimento e com justificativa. |
 | DEC-C-008 | O vendedor concede até 10% de desconto sem aprovação. |
 | DEC-C-009 | Pagamento online não integra o MVP. |
 | DEC-C-010 | `Cliente` é o termo oficial do domínio; `comprador` permanece apenas como expressão informal. |
@@ -50,3 +47,18 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-026 | Identity and Access fornece um Open Host Service mínimo de autenticação e autorização; as regras de negócio permanecem nos contextos correspondentes. |
 | DEC-C-027 | Audit é downstream assíncrono dos demais contextos e não substitui suas fontes oficiais de estado. |
 | DEC-C-028 | Os contextos não compartilham entidades, repositórios, associações JPA, tabelas ou Shared Kernel; a integração usa identificadores, contratos, snapshots e eventos. |
+| DEC-C-029 | O aceite de uma proposta dispara automaticamente a tentativa de reserva, mas aceite e reserva permanecem fatos distintos. |
+| DEC-C-030 | A reserva de várias unidades é integral: todas são reservadas ou nenhuma delas é bloqueada. |
+| DEC-C-031 | Toda venda do MVP nasce de proposta aceita, reserva ativa e confirmação de pagamento externo. |
+| DEC-C-032 | A confirmação de pagamento registra forma, data, funcionário e referência externa opcional, sem dados bancários ou cartão. |
+| DEC-C-033 | Uma venda somente pode ser cancelada pelo gerente, com justificativa; o registro original é preservado e suas unidades seguem para revisão. |
+| DEC-C-034 | O cliente confirma o e-mail e completa os dados mínimos antes de realizar operações comerciais. |
+| DEC-C-035 | Funcionários entram apenas por convite do administrador e recebem permissões por papéis de acesso. |
+| DEC-C-036 | Cliente PF precisa ter pelo menos 18 anos; cliente PJ precisa possuir ao menos um representante vinculado. |
+| DEC-C-037 | CPF e CNPJ não são alterados diretamente pelo cliente; a correção é gerencial, justificada e auditada. |
+| DEC-C-038 | O bloqueio comercial impede novas negociações e encaminha operações abertas para análise sem cancelá-las automaticamente. |
+| DEC-C-039 | Uma unidade reservada permanece visível no catálogo como indisponível para seleção; uma unidade vendida tem o anúncio arquivado. |
+| DEC-C-040 | O ciclo da unidade utiliza `EM_PREPARACAO`, `DISPONIVEL`, `RESERVADA`, `VENDIDA`, `EM_REVISAO` e `FORA_DE_VENDA`. |
+| DEC-C-041 | O MVP envia notificações somente por e-mail e avisa 24 horas antes do vencimento de propostas e reservas. |
+| DEC-C-042 | Falha de e-mail não desfaz a operação de negócio; o envio falho é registrado para nova tentativa. |
+| DEC-C-043 | As ações obrigatoriamente auditadas estão enumeradas no Event Storming textual da `BKL-005`. |

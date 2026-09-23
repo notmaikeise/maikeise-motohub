@@ -2,7 +2,7 @@
 
 Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende clientes pessoa física e pessoa jurídica.
 
-> Status atual: DDD estratégico em andamento, com linguagem ubíqua, subdomínios, Bounded Contexts e Context Map consolidados. O mapeamento dos eventos de domínio será a próxima atividade. O código da aplicação ainda não foi iniciado.
+> Status atual: DDD estratégico em andamento, com linguagem ubíqua, subdomínios, Bounded Contexts, Context Map e eventos de domínio consolidados. A modelagem de agregados e invariantes será a próxima atividade. O código da aplicação ainda não foi iniciado.
 
 ## Visão geral
 
@@ -37,7 +37,7 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 - Catálogo de unidades de estoque com preço anunciado.
 - Solicitação, preparação, versionamento e aceite de propostas.
 - Aprovação gerencial de descontos superiores a 10%.
-- Reservas com duração de 72 horas.
+- Reservas com duração inicial de 48 horas e uma possível prorrogação gerencial de 24 horas.
 - Registro de pagamento realizado fora da plataforma.
 - Conclusão e histórico de vendas.
 - Auditoria das operações mais importantes.
@@ -59,6 +59,7 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 | [Subdomínios](docs/ddd/01-subdomains.md) | Capacidades Core, Supporting e Generic |
 | [Bounded Contexts](docs/ddd/02-bounded-contexts.md) | Limites, responsabilidades e propriedade dos dados |
 | [Context Map](docs/ddd/03-context-map.md) | Relações, padrões e consistência entre os contextos |
+| [Eventos de domínio](docs/ddd/04-domain-events.md) | Event Storming textual, comandos, eventos e políticas |
 | [GitHub Projects](docs/project-management/github-projects-setup.md) | Configuração recomendada para os cards |
 
 ## Tecnologias planejadas

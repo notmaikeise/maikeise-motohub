@@ -8,10 +8,12 @@ O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
 
 - Consultar unidades disponíveis e seus preços anunciados sem autenticação.
 - Criar uma conta como pessoa física ou jurídica.
+- Confirmar o e-mail e completar os dados mínimos antes de negociar.
 - Editar o próprio cadastro.
 - Solicitar e acompanhar propostas.
 - Aceitar ou recusar propostas.
-- Solicitar e cancelar reservas.
+- Receber automaticamente a tentativa de reserva depois do aceite.
+- Cancelar a própria reserva ativa.
 - Acompanhar o prazo de uma reserva.
 - Consultar o histórico de compras.
 
@@ -19,6 +21,7 @@ O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
 
 - Gerenciar modelos e unidades de motocicletas.
 - Controlar a disponibilidade do estoque.
+- Preparar, publicar e arquivar anúncios.
 - Consultar clientes.
 - Analisar solicitações e preparar propostas.
 - Controlar versões e validade das propostas.
@@ -26,6 +29,7 @@ O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
 - Gerenciar reservas.
 - Registrar confirmações de pagamentos externos.
 - Concluir e consultar vendas.
+- Cancelar vendas com justificativa gerencial e revisar suas unidades.
 - Gerenciar contas de funcionários.
 - Consultar registros básicos de auditoria.
 
@@ -69,7 +73,7 @@ Funcionário que acompanha a operação, aprova descontos especiais e autoriza e
 
 ### Administrador
 
-Funcionário responsável por contas, papéis de acesso e permissões dos demais funcionários.
+Funcionário responsável por convidar funcionários e gerenciar contas, papéis de acesso e permissões internas. Também pode publicar anúncios e alterar preços oficiais no MVP.
 
 ## Matriz inicial de responsabilidades
 
@@ -78,11 +82,14 @@ Funcionário responsável por contas, papéis de acesso e permissões dos demais
 | Consultar catálogo | Sim | Sim | Sim | Sim | Sim | Sim |
 | Alterar o próprio cadastro | Não | Sim | Sim | Sim | Sim | Sim |
 | Gerenciar modelos e unidades | Não | Não | Sim | Consulta | Consulta | Não |
+| Preparar anúncio em rascunho | Não | Não | Consulta | Sim | Sim | Não |
+| Publicar anúncio ou alterar preço | Não | Não | Não | Não | Sim | Sim |
 | Solicitar proposta | Não | Sim | Não | Não | Não | Não |
 | Preparar proposta | Não | Não | Não | Sim | Sim | Não |
 | Aprovar desconto acima de 10% | Não | Não | Não | Não | Sim | Não |
-| Solicitar reserva | Não | Sim | Não | Não | Não | Não |
+| Cancelar a própria reserva | Não | Sim | Não | Não | Não | Não |
 | Concluir venda | Não | Não | Não | Sim | Sim | Não |
+| Cancelar venda concluída | Não | Não | Não | Não | Sim | Não |
 | Gerenciar funcionários | Não | Não | Não | Não | Não | Sim |
 
 Na matriz, **Cliente** representa o cliente PF ou o representante que age por um cliente PJ. Esta matriz é inicial e será revisada durante o DDD e a modelagem de autorização.

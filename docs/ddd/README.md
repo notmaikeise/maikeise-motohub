@@ -2,7 +2,7 @@
 
 ## Estado atual
 
-A linguagem ubíqua foi consolidada na `BKL-001`, os subdomínios foram identificados na `BKL-002`, os Bounded Contexts foram definidos na `BKL-003` e suas relações foram registradas no Context Map da `BKL-004`. A modelagem continuará com os eventos de domínio.
+A linguagem ubíqua foi consolidada na `BKL-001`, os subdomínios foram identificados na `BKL-002`, os Bounded Contexts foram definidos na `BKL-003`, suas relações foram registradas no Context Map da `BKL-004` e os eventos de domínio foram mapeados na `BKL-005`. A modelagem continuará com agregados e invariantes.
 
 O projeto não adotará limites de microsserviços antes de identificar os limites reais do negócio.
 
@@ -12,8 +12,9 @@ O projeto não adotará limites de microsserviços antes de identificar os limit
 | BKL-002 - Identificar subdomínios | Concluída |
 | BKL-003 - Definir Bounded Contexts | Concluída |
 | BKL-004 - Criar o Context Map | Concluída |
-| BKL-005 - Mapear eventos de domínio | Próxima |
-| BKL-006 - Modelar agregados e invariantes | Backlog |
+| BKL-005 - Mapear eventos de domínio | Concluída |
+| BKL-006 - Modelar agregados e invariantes | Próxima |
+| BKL-007 - Registrar decisão arquitetural inicial | Backlog |
 
 ## DDD estratégico
 
@@ -25,7 +26,7 @@ O DDD estratégico analisa o domínio em uma visão ampla.
 2. [Subdomínios Core, Supporting e Generic](01-subdomains.md).
 3. [Bounded Contexts](02-bounded-contexts.md).
 4. [Context Map](03-context-map.md).
-5. Eventos de domínio e Event Storming textual.
+5. [Eventos de domínio e Event Storming textual](04-domain-events.md).
 
 ## Fase seguinte: DDD tático
 
@@ -81,9 +82,17 @@ Consultas necessárias à decisão atual são inicialmente síncronas. Disponibi
 
 O mapa completo está em [Context Map do Maikeise MotoHub](03-context-map.md).
 
+## Eventos de domínio
+
+A linha do tempo principal foi detalhada desde a habilitação do cliente até a conclusão ou o cancelamento da venda. O mapeamento separa comandos, fatos ocorridos, políticas automáticas e modelos de leitura.
+
+As principais decisões incluem reserva integral de múltiplas unidades, prazo inicial de 48 horas, uma única prorrogação de 24 horas, tentativa automática de reserva após o aceite e cancelamento de venda por ação compensatória.
+
+O resultado completo está em [Eventos de domínio e Event Storming textual](04-domain-events.md).
+
 ## Próximo passo
 
-A `BKL-005` mapeará eventos, comandos, decisões e reações ao longo do fluxo comercial.
+A `BKL-006` modelará entidades, Value Objects, agregados, Aggregate Roots e invariantes a partir dos eventos descobertos.
 
 ## Critério para concluir esta fase
 

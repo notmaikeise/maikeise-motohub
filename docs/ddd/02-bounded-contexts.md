@@ -116,6 +116,8 @@ Identificar quem acessa o sistema e determinar quais ações sua conta está aut
 - Autenticar credenciais.
 - Encerrar sessões com segurança.
 - Ativar, bloquear e desativar contas.
+- Confirmar o e-mail das contas de clientes.
+- Convidar funcionários para criar as próprias credenciais.
 - Atribuir papéis e permissões.
 - Impedir elevação indevida de privilégios.
 - Identificar a conta responsável por uma ação.
@@ -153,6 +155,7 @@ Representar quem negocia com a concessionária e quem pode agir em nome de um cl
 - Cadastrar e validar clientes PF e PJ.
 - Manter dados comerciais e de contato.
 - Ativar e inativar clientes sem apagar o histórico.
+- Bloquear comercialmente clientes e solicitar análise das operações abertas.
 - Manter representantes e seus vínculos.
 - Informar se um cliente está apto a iniciar uma negociação.
 
@@ -225,10 +228,11 @@ Controlar as unidades físicas e garantir que uma unidade somente possa estar vi
 
 - Cadastrar e preparar unidades.
 - Controlar as transições operacionais.
+- Colocar unidades em revisão e retirá-las de venda.
 - Informar disponibilidade.
 - Criar uma reserva para unidades específicas.
 - Impedir reservas ativas simultâneas para a mesma unidade.
-- Controlar as 72 horas da reserva.
+- Controlar as 48 horas iniciais da reserva e uma única prorrogação gerencial de 24 horas.
 - Liberar unidades após cancelamento ou expiração.
 - Confirmar o uso da reserva e marcar unidades como vendidas.
 
@@ -276,10 +280,11 @@ Conduzir a negociação com o cliente e preservar as condições utilizadas para
 - Aplicar a alçada de desconto.
 - Registrar decisões gerenciais.
 - Registrar aceite ou recusa do cliente.
-- Solicitar reserva das unidades aceitas.
+- Disparar a tentativa de reserva das unidades depois do aceite.
 - Registrar confirmação de pagamento externo.
 - Solicitar a confirmação do uso de uma reserva.
 - Concluir a venda e preservar seu snapshot.
+- Cancelar a venda como ação compensatória e solicitar a revisão das unidades.
 
 ### Fora do limite
 
@@ -360,4 +365,4 @@ As relações, direções e formas iniciais de integração foram definidas no [
 
 ## Próximo passo
 
-A `BKL-005` mapeará os eventos de domínio e a linha do tempo do fluxo comercial.
+Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md). A `BKL-006` utilizará esse resultado para modelar agregados e invariantes dentro de cada contexto.

@@ -1,6 +1,6 @@
 # Context Map do Maikeise MotoHub
 
-Este documento registra as relações iniciais entre os Bounded Contexts do Maikeise MotoHub, consolidadas na `BKL-004`. Os nomes finais dos eventos serão refinados na `BKL-005` e os mecanismos técnicos de integração serão formalizados na `BKL-007`.
+Este documento registra as relações iniciais entre os Bounded Contexts do Maikeise MotoHub, consolidadas na `BKL-004`. Os eventos foram refinados na `BKL-005` e os mecanismos técnicos de integração serão formalizados na `BKL-007`.
 
 ## Objetivo
 
@@ -35,38 +35,23 @@ Upstream e downstream descrevem a direção da dependência sobre um contrato. E
 ## Visão operacional
 
 ```mermaid
----
-config:
-  flowchart:
-    nodeSpacing: 90
-    rankSpacing: 110
-    curve: basis
----
-flowchart TB
+flowchart TD
     IDENTITY["Identity and Access"]
-
-    subgraph SUPPORTING["Contextos Supporting"]
-        direction LR
-        CUSTOMER["Customer Management"]
-        CATALOG["Catalog"]
-    end
-
-    subgraph CORE["Contextos Core"]
-        direction LR
-        COMMERCIAL["Commercial"]
-        INVENTORY["Inventory and Reservation"]
-    end
+    CUSTOMER["Customer Management"]
+    CATALOG["Catalog"]
+    COMMERCIAL["Commercial"]
+    INVENTORY["Inventory and Reservation"]
 
     IDENTITY -->|"conta e permissões"| CUSTOMER
     IDENTITY -->|"ator autorizado"| CATALOG
-    IDENTITY -->|"ator autorizado"| COMMERCIAL
     IDENTITY -->|"ator autorizado"| INVENTORY
-
+    IDENTITY -->|"ator autorizado"| COMMERCIAL
     CUSTOMER -->|"cliente apto e dados mínimos"| COMMERCIAL
     CATALOG -->|"anúncio e preço"| COMMERCIAL
-
-    CATALOG <-->|"modelo e disponibilidade"| INVENTORY
-    COMMERCIAL <-->|"reserva e confirmação"| INVENTORY
+    CATALOG -->|"modelo válido"| INVENTORY
+    INVENTORY -. "mudanças de disponibilidade" .-> CATALOG
+    COMMERCIAL -->|"solicita reserva e uso"| INVENTORY
+    INVENTORY -->|"confirma ou recusa"| COMMERCIAL
 ```
 
 As setas contínuas representam necessidades inicialmente síncronas. A seta tracejada representa uma atualização assíncrona.
@@ -161,7 +146,7 @@ Não haverá uma transação de banco distribuída entre os contextos. Falhas, r
 
 Os contextos publicam eventos sobre ações selecionadas. `Audit` consome esses contratos e cria seu próprio `AuditEntry`, contendo apenas dados necessários, como contexto de origem, objeto afetado, `actorAccountId`, data, resultado e justificativa segura.
 
-Exemplos provisórios incluem conta bloqueada, cliente inativado, preço alterado, reserva prorrogada, desconto aprovado, pagamento externo confirmado e venda concluída.
+Entre os eventos auditáveis estão conta bloqueada, cliente bloqueado comercialmente, preço alterado, reserva prorrogada, desconto aprovado, pagamento externo confirmado, venda concluída e venda cancelada. A lista completa está na `BKL-005`.
 
 A indisponibilidade temporária da auditoria não deve transformar seu banco na autoridade sobre a operação original. Entretanto, eventos obrigatórios não podem ser perdidos. A `BKL-007` avaliará entrega confiável e o padrão Transactional Outbox.
 
@@ -203,9 +188,9 @@ A indisponibilidade temporária da auditoria não deve transformar seu banco na 
 - Coordenação entre criação de conta e cadastro de cliente sem transação distribuída.
 - Tratamento de falhas, repetição e compensação entre venda e utilização da reserva.
 - Mecanismo de entrega confiável dos eventos, incluindo a avaliação de Transactional Outbox.
-- Contratos, campos e nomes finais dos eventos.
 - Forma técnica de validar identidade e permissão dentro do monólito modular.
+- Mecanismo para expiração de prazos e repetição de notificações.
 
-## Próximo passo
+## Continuidade
 
-A `BKL-005` mapeará os eventos de domínio e a linha do tempo do fluxo comercial. Ela transformará as relações deste mapa em acontecimentos, comandos, decisões e reações explícitas.
+Os acontecimentos, comandos, decisões e reações destas relações estão detalhados em [Eventos de domínio e Event Storming textual](04-domain-events.md). A `BKL-006` modelará agregados e invariantes; a `BKL-007` formalizará os mecanismos técnicos de integração.

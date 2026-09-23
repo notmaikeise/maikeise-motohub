@@ -17,6 +17,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Documento de identificação e classificação dos subdomínios.
 - Documento de definição dos Bounded Contexts e da propriedade dos dados.
 - Context Map com relações, padrões e modos de integração entre os contextos.
+- Event Storming textual com comandos, eventos, políticas, processos temporais e caminhos alternativos.
 
 ### Changed
 
@@ -35,3 +36,9 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Definição de Customer/Supplier, Open Host Service, Published Language e Anti-Corruption Layer nas demais relações.
 - Separação entre operações síncronas e atualizações assíncronas com consistência eventual.
 - Proibição de Shared Kernel, entidades, repositórios, associações JPA e consultas de tabelas entre contextos.
+- Redução do prazo inicial da reserva de 72 para 48 horas, com uma única prorrogação gerencial de 24 horas.
+- Definição da reserva integral de múltiplas unidades: todas são bloqueadas ou nenhuma delas é.
+- Definição do convite de funcionários, confirmação de e-mail de clientes e habilitação comercial.
+- Definição dos estados `EM_REVISAO` e `FORA_DE_VENDA` para o ciclo das unidades.
+- Definição do cancelamento da venda como ação compensatória, com revisão obrigatória das unidades.
+- Definição de avisos por e-mail 24 horas antes do vencimento de propostas e reservas.
