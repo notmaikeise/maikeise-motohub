@@ -36,6 +36,7 @@ As regras seguem o padrão `RN-ÁREA-NÚMERO`.
 | RN-CLI-014 | A correção de CPF ou CNPJ exige gerente, motivo obrigatório e preservação do valor anterior para auditoria. |
 | RN-CLI-015 | O bloqueio comercial impede novas propostas e reservas, mas não apaga nem cancela automaticamente operações existentes. |
 | RN-CLI-016 | Propostas e reservas abertas de um cliente bloqueado são encaminhadas para análise gerencial. |
+| RN-CLI-017 | Um cliente PJ pode possuir vários representantes, mas o último vínculo ativo não pode ser encerrado enquanto o cliente permanecer ativo. |
 
 ## Motocicletas e estoque
 

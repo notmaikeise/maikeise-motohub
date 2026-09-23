@@ -196,4 +196,4 @@ Não existe obrigação de mapear cada subdomínio diretamente para um Bounded C
 
 ## Continuidade da modelagem
 
-A `BKL-003` definiu os Bounded Contexts, a `BKL-004` registrou suas relações e a `BKL-005` mapeou os eventos do fluxo comercial. A continuidade está na modelagem tática da `BKL-006`.
+A `BKL-003` definiu os Bounded Contexts, a `BKL-004` registrou suas relações, a `BKL-005` mapeou os eventos e a `BKL-006` consolidou o modelo tático inicial. A continuidade está na decisão arquitetural da `BKL-007`.

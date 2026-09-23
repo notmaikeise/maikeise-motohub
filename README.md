@@ -2,7 +2,7 @@
 
 Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende clientes pessoa física e pessoa jurídica.
 
-> Status atual: DDD estratégico em andamento, com linguagem ubíqua, subdomínios, Bounded Contexts, Context Map e eventos de domínio consolidados. A modelagem de agregados e invariantes será a próxima atividade. O código da aplicação ainda não foi iniciado.
+> Status atual: DDD estratégico e modelo tático inicial consolidados, com linguagem ubíqua, subdomínios, Bounded Contexts, eventos, agregados e invariantes documentados. A decisão arquitetural inicial será a próxima atividade. O código da aplicação ainda não foi iniciado.
 
 ## Visão geral
 
@@ -60,6 +60,7 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 | [Bounded Contexts](docs/ddd/02-bounded-contexts.md) | Limites, responsabilidades e propriedade dos dados |
 | [Context Map](docs/ddd/03-context-map.md) | Relações, padrões e consistência entre os contextos |
 | [Eventos de domínio](docs/ddd/04-domain-events.md) | Event Storming textual, comandos, eventos e políticas |
+| [Agregados e invariantes](docs/ddd/05-aggregates-and-invariants.md) | Modelo tático, Aggregate Roots, Value Objects e repositórios |
 | [GitHub Projects](docs/project-management/github-projects-setup.md) | Configuração recomendada para os cards |
 
 ## Tecnologias planejadas

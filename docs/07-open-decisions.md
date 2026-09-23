@@ -5,7 +5,6 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | ID | Pergunta | Momento recomendado |
 | --- | --- | --- |
 | DEC-002 | Existe um desconto máximo que nem o gerente poderá aprovar? | Modelagem de Propostas |
-| DEC-004 | Uma empresa poderá possuir vários representantes com contas próprias no MVP? | Modelagem de Clientes |
 | DEC-006 | A primeira concessionária terá uma ou várias filiais? | DDD estratégico |
 | DEC-009 | Qual licença será aplicada ao repositório público? | Antes da primeira versão pública de código |
 | DEC-010 | Qual estratégia de interface será usada: Thymeleaf ou frontend separado? | ADR de arquitetura |
@@ -14,6 +13,7 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-013 | Como tratar falhas, repetição e compensação entre a conclusão da venda e a utilização da reserva? | Eventos e ADR de arquitetura |
 | DEC-014 | Qual mecanismo garantirá a entrega de eventos obrigatórios e de auditoria? | ADR da BKL-007 |
 | DEC-015 | Qual mecanismo executará expirações e novas tentativas de notificação? | ADR da BKL-007 |
+| DEC-016 | Quem poderá vincular ou encerrar representantes de um cliente PJ? | Autorização e casos de uso antes da implementação |
 
 ## Decisões já tomadas
 
@@ -29,9 +29,9 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-008 | O vendedor concede até 10% de desconto sem aprovação. |
 | DEC-C-009 | Pagamento online não integra o MVP. |
 | DEC-C-010 | `Cliente` é o termo oficial do domínio; `comprador` permanece apenas como expressão informal. |
-| DEC-C-011 | O catálogo apresenta separadamente cada unidade física disponível, mesmo quando várias pertencem ao mesmo modelo. |
+| DEC-C-011 | O catálogo apresenta separadamente cada unidade física anunciada, mesmo quando várias pertencem ao mesmo modelo; unidades reservadas podem continuar visíveis sem seleção. |
 | DEC-C-012 | O catálogo exibe o preço anunciado, sujeito às condições comerciais da proposta. |
-| DEC-C-013 | Solicitação de proposta e proposta são conceitos distintos; nenhuma delas reserva unidades. |
+| DEC-C-013 | Solicitação e proposta são conceitos distintos; o envio não reserva unidades, enquanto o aceite dispara uma tentativa separada de reserva. |
 | DEC-C-014 | Cliente, representante e funcionário são conceitos de negócio distintos de conta e papel de acesso. |
 | DEC-C-015 | No MVP, o desconto comercial é global e calculado sobre o valor bruto total da proposta. |
 | DEC-C-016 | `Venda` é o registro oficial do domínio; `compra` é a perspectiva apresentada ao cliente. |
@@ -62,3 +62,12 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-041 | O MVP envia notificações somente por e-mail e avisa 24 horas antes do vencimento de propostas e reservas. |
 | DEC-C-042 | Falha de e-mail não desfaz a operação de negócio; o envio falho é registrado para nova tentativa. |
 | DEC-C-043 | As ações obrigatoriamente auditadas estão enumeradas no Event Storming textual da `BKL-005`. |
+| DEC-C-044 | `UnidadeEstoque` e `Reserva` são Aggregate Roots separadas, coordenadas atomicamente em uma transação local de Inventory and Reservation. |
+| DEC-C-045 | `Reserva` guarda referências por IDs, usa os estados `ATIVA`, `CANCELADA`, `EXPIRADA` e `UTILIZADA`, e não possui `PRORROGADA` ou `RECUSADA` como estados. |
+| DEC-C-046 | Commercial possui `SolicitacaoProposta`, `Proposta` e `Venda` como raízes; `VersaoProposta` pertence internamente a `Proposta`. |
+| DEC-C-047 | `Cliente` é uma raiz com perfil PF ou PJ; cliente PJ pode possuir vários vínculos de representantes com contas próprias. |
+| DEC-C-048 | Catalog possui `ModeloMotocicleta` e `Anuncio` como raízes; situação editorial e disponibilidade pública do anúncio são dimensões separadas. |
+| DEC-C-049 | Identity and Access possui `ContaAcesso` e `ConviteFuncionario`; Audit possui `RegistroAuditoria` imutável. |
+| DEC-C-050 | Agregados usam IDs tipados e apenas Aggregate Roots possuem repositórios. |
+| DEC-C-051 | Unicidades globais usam consulta para erro amigável e restrição no banco para proteção concorrente. |
+| DEC-C-052 | Entrega e repetição de e-mail permanecem uma preocupação técnica e não formam um agregado de negócio nesta fase. |

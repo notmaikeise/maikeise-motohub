@@ -48,7 +48,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
 | BKL-020 | Cadastrar cliente PF | Feature | Must | Cliente e conta de acesso criados com validações |
-| BKL-021 | Cadastrar cliente PJ | Feature | Must | Cliente PJ, representante e conta de acesso criados |
+| BKL-021 | Cadastrar cliente PJ | Feature | Must | Cliente PJ e um ou mais representantes vinculados às próprias contas |
 | BKL-022 | Autenticar conta de acesso | Feature | Must | Entrada e saída seguras |
 | BKL-023 | Autorizar ações por papel | Feature | Must | Permissões aplicadas no servidor |
 | BKL-024 | Gerenciar contas de funcionários | Feature | Must | Administrador convida funcionários e controla acessos internos |

@@ -25,7 +25,7 @@
 | Código | Requisito |
 | --- | --- |
 | RF-CLI-001 | Cadastrar clientes pessoa física e vinculá-los a uma conta de acesso. |
-| RF-CLI-002 | Cadastrar clientes pessoa jurídica e seu representante com conta de acesso. |
+| RF-CLI-002 | Cadastrar clientes pessoa jurídica e seus representantes com contas de acesso individuais. |
 | RF-CLI-003 | Validar formato e dígitos de CPF e CNPJ. |
 | RF-CLI-004 | Permitir que o cliente PF consulte e edite os próprios dados. |
 | RF-CLI-005 | Permitir que o representante consulte e edite os dados do cliente PJ vinculado. |
@@ -36,6 +36,7 @@
 | RF-CLI-010 | Impedir que o cliente altere diretamente o próprio CPF ou CNPJ. |
 | RF-CLI-011 | Bloquear comercialmente um cliente sem apagar nem cancelar automaticamente suas operações existentes. |
 | RF-CLI-012 | Encaminhar propostas e reservas abertas de cliente bloqueado para análise gerencial. |
+| RF-CLI-013 | Permitir vários representantes por cliente PJ e impedir o encerramento do último vínculo enquanto a empresa estiver ativa. |
 
 ### Motocicletas e estoque
 

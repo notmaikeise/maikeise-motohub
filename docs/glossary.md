@@ -82,6 +82,8 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | --- | --- |
 | Ação compensatória | Nova operação que corrige ou neutraliza os efeitos de algo já concluído sem apagar o fato original. |
 | Adaptador | Componente que conecta uma porta da aplicação a uma tecnologia ou interface externa, como REST, banco de dados ou mensageria. |
+| Aggregate Root (Raiz do Agregado) | Entidade que funciona como única porta autorizada para alterar os objetos de um agregado e proteger suas invariantes. |
+| Agregado | Conjunto de entidades e Value Objects tratado como uma unidade de consistência. |
 | Anti-Corruption Layer (ACL) | Camada que traduz contratos externos para o modelo interno, impedindo que um contexto seja contaminado pelo modelo de outro. |
 | Arquitetura Hexagonal | Organização que mantém as regras de negócio no centro e isola tecnologias externas por meio de portas e adaptadores. |
 | Assíncrono | Modo de comunicação em que o publicador não espera que todos os consumidores concluam o processamento. |
@@ -93,8 +95,10 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
 | Domínio | Área de negócio e conjunto de problemas que o software pretende compreender e resolver. |
 | Downstream | Contexto que consome uma informação, capacidade ou contrato fornecido por outro contexto. |
+| Entidade | Objeto de domínio reconhecido por uma identidade que permanece ao longo das mudanças. |
 | Evento de domínio | Representação de algo relevante que já aconteceu no negócio, normalmente nomeada no passado. |
 | Generic | Classificação de um subdomínio que resolve um problema comum a muitos sistemas. |
+| ID tipado | Value Object que identifica um conceito específico, evitando trocar acidentalmente IDs de tipos diferentes. |
 | Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Invariante | Regra que deve permanecer verdadeira durante toda mudança válida do modelo, como impedir duas reservas ativas para a mesma unidade. |
 | Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
@@ -109,6 +113,9 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Política | Regra que reage a um acontecimento e pode iniciar uma nova ação. |
 | Published Language | Formato de comunicação explicitamente definido e compreendido pelos contextos envolvidos. |
 | RBAC | Controle de acesso baseado em papéis, no qual permissões são agrupadas em perfis atribuídos às contas. |
+| Repositório | Porta usada para recuperar e persistir Aggregate Roots sem expor a tecnologia de armazenamento ao domínio. |
+| Serviço de aplicação | Componente que coordena um caso de uso, transações, repositórios e portas externas sem substituir as regras das Aggregate Roots. |
+| Serviço de domínio | Componente que representa uma regra de negócio que não pertence naturalmente a uma única entidade ou Value Object. |
 | Shared Kernel | Parte de modelo ou código deliberadamente compartilhada por contextos e alterada mediante coordenação. Não será adotada entre os contextos de negócio do MotoHub. |
 | Single-tenant | Sistema que atende uma organização. |
 | Síncrono | Modo de comunicação em que quem solicita aguarda uma resposta para continuar. |
@@ -116,4 +123,6 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Subdomínio | Parte coerente do problema de negócio, com responsabilidades e regras relacionadas. |
 | Supporting | Classificação de um subdomínio necessário ao Core, mas que não representa o principal diferencial do produto. |
 | Transactional Outbox | Padrão que registra uma alteração e o evento correspondente de forma atômica para permitir entrega posterior confiável. Sua adoção ainda será avaliada. |
+| Transação local | Conjunto de alterações confirmado por inteiro ou totalmente desfeito dentro do mesmo banco e limite operacional. |
 | Upstream | Contexto que fornece uma informação, capacidade ou contrato para outro contexto. |
+| Value Object | Objeto imutável, sem identidade própria, definido e comparado pelos seus valores. |

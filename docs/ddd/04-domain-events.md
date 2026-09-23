@@ -10,7 +10,7 @@ O resultado é uma fotografia do conhecimento atual. Os nomes servem como lingua
 - Associar cada acontecimento ao Bounded Context responsável.
 - Explicitar reações automáticas e integrações entre contextos.
 - Registrar prazos, caminhos alternativos e ações compensatórias.
-- Produzir entradas para a modelagem de agregados e invariantes da `BKL-006`.
+- Produzir entradas para a modelagem de agregados e invariantes posteriormente consolidada na `BKL-006`.
 
 ## Como ler o mapa
 
@@ -338,18 +338,17 @@ Cada registro contém, quando aplicável, contexto de origem, tipo do acontecime
 14. Uma venda concluída é imutável; correções usam cancelamento compensatório.
 15. Uma unidade vendida somente pode voltar à disponibilidade após revisão explícita.
 
-Essas regras ainda não determinam os Aggregate Roots. Essa responsabilidade pertence à `BKL-006`.
+Essas regras orientaram os Aggregate Roots documentados em [Agregados e invariantes](05-aggregates-and-invariants.md).
 
 ## 12. Hot spots preservados
 
 - Qual é o maior desconto que nem mesmo o gerente pode aprovar?
-- Uma empresa poderá possuir vários representantes com contas próprias já no MVP?
 - Como coordenar conta e cadastro de cliente sem transação distribuída entre contextos?
 - Como recuperar uma falha entre a utilização da reserva e a conclusão da venda?
 - Como garantir entrega confiável de eventos de disponibilidade, auditoria e notificação?
 - Qual mecanismo executará prazos e repetições de notificações?
 
-Os três últimos pontos serão tratados principalmente na ADR da `BKL-007`; os limites do modelo serão aprofundados na `BKL-006`.
+Os três últimos pontos serão tratados principalmente na ADR da `BKL-007`; os limites internos do modelo foram aprofundados na `BKL-006`.
 
 ## 13. Resultado da BKL-005
 
@@ -362,7 +361,7 @@ A atividade é considerada concluída porque:
 - o cancelamento de venda foi modelado como ação compensatória;
 - as reações assíncronas de catálogo, auditoria e notificação foram separadas das decisões síncronas;
 - os hot spots técnicos não foram disfarçados como decisões de domínio;
-- as invariantes descobertas estão prontas para orientar a `BKL-006`.
+- as invariantes descobertas orientam o modelo tático da `BKL-006`.
 
 ## O que registrar no caderno
 
@@ -372,4 +371,4 @@ A atividade é considerada concluída porque:
 - Evento de domínio não implica obrigatoriamente Event Sourcing ou microsserviços.
 - A reserva integral protege o negócio contra uma compra parcial não autorizada.
 - Cancelar uma venda é uma **ação compensatória**, não a exclusão do histórico.
-- A `BKL-006` usará os eventos e invariantes para descobrir entidades, Value Objects, agregados e seus limites de consistência.
+- A `BKL-006` utilizou os eventos e invariantes para descobrir entidades, Value Objects, agregados e seus limites de consistência.

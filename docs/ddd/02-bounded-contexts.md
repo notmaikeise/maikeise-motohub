@@ -365,4 +365,4 @@ As relações, direções e formas iniciais de integração foram definidas no [
 
 ## Próximo passo
 
-Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md). A `BKL-006` utilizará esse resultado para modelar agregados e invariantes dentro de cada contexto.
+Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md), e as raízes, entidades internas e invariantes foram definidas na [BKL-006](05-aggregates-and-invariants.md). A `BKL-007` formalizará a arquitetura que preservará esses limites.

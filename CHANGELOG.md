@@ -18,6 +18,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Documento de definição dos Bounded Contexts e da propriedade dos dados.
 - Context Map com relações, padrões e modos de integração entre os contextos.
 - Event Storming textual com comandos, eventos, políticas, processos temporais e caminhos alternativos.
+- Modelo tático inicial com Aggregate Roots, entidades, Value Objects, invariantes, repositórios e fronteiras transacionais.
 
 ### Changed
 
@@ -42,3 +43,8 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Definição dos estados `EM_REVISAO` e `FORA_DE_VENDA` para o ciclo das unidades.
 - Definição do cancelamento da venda como ação compensatória, com revisão obrigatória das unidades.
 - Definição de avisos por e-mail 24 horas antes do vencimento de propostas e reservas.
+- Definição de onze Aggregate Roots distribuídas entre os seis Bounded Contexts.
+- Definição de `UnidadeEstoque` e `Reserva` como raízes separadas, coordenadas atomicamente no mesmo contexto.
+- Definição de `VersaoProposta` como entidade interna de `Proposta` e de `Venda` como raiz independente.
+- Definição de múltiplos vínculos de representantes dentro do agregado `Cliente` pessoa jurídica.
+- Definição de IDs tipados, repositório somente para Aggregate Roots e proteção de unicidade em camadas.

@@ -193,4 +193,4 @@ A indisponibilidade temporária da auditoria não deve transformar seu banco na 
 
 ## Continuidade
 
-Os acontecimentos, comandos, decisões e reações destas relações estão detalhados em [Eventos de domínio e Event Storming textual](04-domain-events.md). A `BKL-006` modelará agregados e invariantes; a `BKL-007` formalizará os mecanismos técnicos de integração.
+Os acontecimentos, comandos, decisões e reações destas relações estão detalhados em [Eventos de domínio e Event Storming textual](04-domain-events.md). As fronteiras internas estão em [Agregados e invariantes](05-aggregates-and-invariants.md), e a `BKL-007` formalizará os mecanismos técnicos de integração.
