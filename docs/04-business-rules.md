@@ -1,5 +1,23 @@
 # Regras de negócio
 
+Este catálogo reúne as condições que o sistema deve preservar independentemente da tela, API ou tecnologia utilizada.
+
+> [!TIP]
+> Use a visão rápida para entender o produto. Abra uma área somente quando precisar consultar a regra numerada ou preparar seus testes.
+
+## Visão rápida
+
+| Área | Regra central |
+| --- | --- |
+| Clientes | Somente clientes identificados, habilitados e corretamente representados podem negociar. |
+| Estoque | Cada unidade física possui identidade e ciclo operacional próprios. |
+| Catálogo | O anúncio apresenta a unidade, mas não decide sua disponibilidade real. |
+| Propostas | Versões preservam preço, desconto, aprovação e validade do momento. |
+| Reservas | Todas as unidades são bloqueadas juntas, por prazo limitado e sem conflito. |
+| Vendas | Proposta aceita, reserva ativa e pagamento confirmado são obrigatórios. |
+| Acesso | Permissões são verificadas no servidor e contas não elevam os próprios privilégios. |
+| Auditoria | Ações importantes preservam ator, instante, resultado e justificativa segura. |
+
 ## Convenção
 
 As regras seguem o padrão `RN-ÁREA-NÚMERO`.
@@ -16,7 +34,8 @@ As regras seguem o padrão `RN-ÁREA-NÚMERO`.
 | `NOT` | Notificações |
 | `AUD` | Auditoria |
 
-## Clientes
+<details>
+<summary><strong>Clientes</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -38,7 +57,10 @@ As regras seguem o padrão `RN-ÁREA-NÚMERO`.
 | RN-CLI-016 | Propostas e reservas abertas de um cliente bloqueado são encaminhadas para análise gerencial. |
 | RN-CLI-017 | Um cliente PJ pode possuir vários representantes, mas o último vínculo ativo não pode ser encerrado enquanto o cliente permanecer ativo. |
 
-## Motocicletas e estoque
+</details>
+
+<details>
+<summary><strong>Motocicletas e estoque</strong></summary>
 
 ### Modelo e unidade
 
@@ -97,7 +119,10 @@ stateDiagram-v2
 
 O cancelamento de uma venda é uma ação compensatória gerencial. A venda permanece no histórico e a unidade precisa passar por revisão antes de uma possível nova disponibilização.
 
-## Catálogo e anúncios
+</details>
+
+<details>
+<summary><strong>Catálogo e anúncios</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -110,7 +135,10 @@ O cancelamento de uma venda é uma ação compensatória gerencial. A venda perm
 | RN-CAT-007 | A venda arquiva o anúncio sem apagar seu histórico. |
 | RN-CAT-008 | Inventory and Reservation é a fonte oficial da situação operacional; o catálogo mantém somente sua representação pública. |
 
-## Solicitações e propostas
+</details>
+
+<details>
+<summary><strong>Solicitações e propostas</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -166,7 +194,10 @@ CONVERTIDA_EM_VENDA
 
 Os eventos que provocam as transições estão registrados no Event Storming textual da `BKL-005`.
 
-## Reservas
+</details>
+
+<details>
+<summary><strong>Reservas</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -187,7 +218,10 @@ Os eventos que provocam as transições estão registrados no Event Storming tex
 | RN-RES-015 | O cliente recebe um aviso 24 horas antes do vencimento da reserva. |
 | RN-RES-016 | Uma reserva utilizada, cancelada ou expirada não pode ser reaberta. |
 
-## Vendas
+</details>
+
+<details>
+<summary><strong>Vendas</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -211,7 +245,10 @@ Os eventos que provocam as transições estão registrados no Event Storming tex
 | RN-VEN-018 | O cancelamento preserva a venda original, registra o novo fato e envia as unidades para `EM_REVISAO`. |
 | RN-VEN-019 | Reembolso decorrente de cancelamento é realizado fora do MotoHub no MVP. |
 
-## Acesso
+</details>
+
+<details>
+<summary><strong>Acesso</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -231,7 +268,10 @@ Os eventos que provocam as transições estão registrados no Event Storming tex
 | RN-ACE-014 | O funcionário convidado define a própria senha ao aceitar um convite válido. |
 | RN-ACE-015 | A alteração do e-mail de acesso somente termina após a confirmação do novo endereço. |
 
-## Notificações
+</details>
+
+<details>
+<summary><strong>Notificações</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -241,7 +281,10 @@ Os eventos que provocam as transições estão registrados no Event Storming tex
 | RN-NOT-004 | Uma falha de envio é registrada e pode ser processada novamente. |
 | RN-NOT-005 | O estado consultado no sistema é a fonte oficial; a mensagem de e-mail não substitui o registro do negócio. |
 
-## Auditoria
+</details>
+
+<details>
+<summary><strong>Auditoria</strong></summary>
 
 | Código | Regra |
 | --- | --- |
@@ -250,3 +293,7 @@ Os eventos que provocam as transições estão registrados no Event Storming tex
 | RN-AUD-003 | Processos automáticos usam um ator de sistema identificável. |
 | RN-AUD-004 | Senhas, tokens, dados bancários e dados pessoais desnecessários não podem compor o evento de auditoria. |
 | RN-AUD-005 | A indisponibilidade temporária do consumidor de auditoria não transforma o Audit na fonte oficial do estado operacional. |
+
+</details>
+
+[Voltar ao Hub da documentação](README.md).

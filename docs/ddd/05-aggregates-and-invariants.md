@@ -4,6 +4,18 @@ Este documento consolida a `BKL-006` do Maikeise MotoHub. Ele transforma os even
 
 O modelo ainda é independente de JPA, banco de dados e interface web. Anotações, tabelas, relacionamentos de persistência e pacotes Java serão definidos depois da decisão arquitetural da `BKL-007`.
 
+> [!TIP]
+> A visão geral das raízes e o diagrama são suficientes para a primeira leitura. Os detalhes de cada contexto estão recolhidos e continuam disponíveis como referência para implementação e estudo.
+
+## Resumo executivo
+
+- O modelo possui 11 Aggregate Roots distribuídas entre seis Bounded Contexts.
+- `UnidadeEstoque` e `Reserva` são separadas, mas a criação integral ocorre em uma transação local.
+- `Proposta` controla suas versões; `Venda` nasce como um registro definitivo.
+- Agregados se referenciam por IDs tipados e somente raízes possuem repositórios.
+- Value Objects validam conceitos como CPF, CNPJ, dinheiro, desconto e chassi.
+- Unicidades globais recebem proteção no caso de uso e no banco.
+
 ## Objetivos
 
 - Definir quais objetos controlam cada mudança de estado.
@@ -69,7 +81,8 @@ flowchart TD
 
 As setas representam referências e coordenação, não composição de agregados. Cada raiz preserva seu próprio ciclo de vida.
 
-## Identity and Access
+<details>
+<summary><strong>Identity and Access</strong></summary>
 
 ### Aggregate Root `ContaAcesso`
 
@@ -129,7 +142,10 @@ A unicidade do e-mail depende de consulta ao repositório e restrição única n
 
 O convite existe antes da conta do funcionário e, por isso, possui ciclo de vida e repositório próprios.
 
-## Customer Management
+</details>
+
+<details>
+<summary><strong>Customer Management</strong></summary>
 
 ### Aggregate Root `Cliente`
 
@@ -186,7 +202,10 @@ Uma mesma conta pode possuir vínculos explícitos com clientes PJ diferentes. O
 
 A unicidade global de CPF e CNPJ é protegida por repositório e banco. O agregado protege formato, transições e vínculos internos.
 
-## Catalog
+</details>
+
+<details>
+<summary><strong>Catalog</strong></summary>
 
 ### Aggregate Root `ModeloMotocicleta`
 
@@ -241,7 +260,10 @@ Cada unidade possui no máximo um anúncio não arquivado. Essa unicidade é glo
 
 Situação editorial e disponibilidade são dimensões separadas. Um anúncio pode estar `PUBLICADO` e, ao mesmo tempo, representar uma unidade `RESERVADA`.
 
-## Inventory and Reservation
+</details>
+
+<details>
+<summary><strong>Inventory and Reservation</strong></summary>
 
 ### Aggregate Root `UnidadeEstoque`
 
@@ -343,7 +365,10 @@ A reserva não contém entidades completas de cliente, proposta ou unidade e nã
 
 Não será criado um agregado gigante `Estoque`. A operação atualiza várias raízes porque a regra atômica envolve várias unidades, mas todas permanecem no mesmo Bounded Context e na mesma transação local.
 
-## Commercial
+</details>
+
+<details>
+<summary><strong>Commercial</strong></summary>
 
 ### Aggregate Root `SolicitacaoProposta`
 
@@ -448,7 +473,10 @@ O snapshot contém unidades, descrições, valores, desconto, condições e conf
 
 Concluir a venda exige coordenação entre `Commercial` e `Inventory and Reservation`. O modelo define as pré-condições; idempotência, ordem de persistência, falha intermediária e compensação técnica pertencem à `BKL-007`.
 
-## Audit
+</details>
+
+<details>
+<summary><strong>Audit</strong></summary>
 
 ### Aggregate Root `RegistroAuditoria`
 
@@ -472,6 +500,11 @@ Concluir a venda exige coordenação entre `Commercial` e `Inventory and Reserva
 | INV-AUD-005 | Audit não altera nem decide o estado do contexto de origem. |
 
 Cada registro é uma raiz pequena e independente. Seu repositório oferece inclusão e consultas autorizadas, não uma operação comum de edição.
+
+</details>
+
+<details>
+<summary><strong>Repositórios, IDs, serviços e consistência</strong></summary>
 
 ## Catálogo de repositórios
 
@@ -548,6 +581,8 @@ A consulta prévia melhora a mensagem apresentada ao usuário, mas não substitu
 - Concluir uma venda toca raízes de dois contextos e não utilizará transação distribuída; a coordenação confiável será decidida na `BKL-007`.
 - Atualizar catálogo e auditoria a partir de eventos aceita consistência eventual.
 
+</details>
+
 ## Decisões evitadas deliberadamente
 
 - Um agregado `Estoque` contendo todas as unidades.
@@ -574,7 +609,8 @@ A consulta prévia melhora a mensagem apresentada ao usuário, mas não substitu
 
 O desconto máximo que nem o gerente pode aprovar continua sendo uma decisão de domínio aberta e não será inventado pela arquitetura.
 
-## Estratégia de testes derivada do modelo
+<details>
+<summary><strong>Estratégia de testes derivada do modelo</strong></summary>
 
 - Cada invariante recebe ao menos um teste unitário no objeto que a protege.
 - Cada transição válida e inválida de situação recebe teste.
@@ -583,6 +619,8 @@ O desconto máximo que nem o gerente pode aprovar continua sendo uma decisão de
 - Restrições únicas recebem testes de integração.
 - Coordenações entre contextos recebem testes de aplicação e de contrato.
 - Repetição da conclusão da venda recebe teste de idempotência.
+
+</details>
 
 ## Resultado da BKL-006
 
@@ -610,3 +648,5 @@ A atividade é considerada concluída porque:
 ## Próximo passo
 
 A `BKL-007` registrará a decisão arquitetural inicial: monólito modular, Arquitetura Hexagonal, regras de dependência, transações, eventos confiáveis e critérios para uma futura extração de microsserviços.
+
+[Voltar ao resumo do DDD](00-overview.md).

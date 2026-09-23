@@ -1,5 +1,8 @@
 # Origem e propósito do projeto
 
+> [!IMPORTANT]
+> O Maikeise MotoHub é uma evolução individual de estudo e portfólio, inspirada pelo domínio de um trabalho acadêmico coletivo, mas independente da entrega oficial da equipe.
+
 ## Contexto acadêmico
 
 O Maikeise MotoHub nasceu a partir de um projeto acadêmico coletivo desenvolvido em uma disciplina de modelagem de software.
@@ -62,3 +65,5 @@ O histórico de commits, issues, ADRs e versões documentará esse aprendizado.
 ## Natureza do projeto
 
 O Maikeise MotoHub é um projeto educacional e demonstrativo. Ele não representa atualmente uma concessionária real, um produto comercial em produção ou uma solução oficial da instituição de ensino.
+
+[Voltar ao Hub da documentação](README.md).

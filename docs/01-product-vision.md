@@ -1,5 +1,8 @@
 # Visão do produto
 
+> [!TIP]
+> Em uma frase: o Maikeise MotoHub organiza a negociação de unidades específicas de motocicletas, com histórico, regras de desconto e reservas sem conflito.
+
 ## Identidade
 
 - **Nome:** Maikeise MotoHub
@@ -68,3 +71,5 @@ Os indicadores serão definidos após a validação do domínio. Possíveis exem
 - Tempo médio de permanência de uma unidade no estoque.
 
 Esses indicadores ainda não fazem parte do compromisso do MVP.
+
+[Voltar ao Hub da documentação](README.md).

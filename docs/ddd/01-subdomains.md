@@ -2,6 +2,9 @@
 
 Este documento registra a identificação inicial dos subdomínios do Maikeise MotoHub, consolidada na `BKL-002`. A classificação representa o conhecimento atual e poderá ser refinada quando novos comportamentos do negócio forem descobertos.
 
+> [!TIP]
+> Leitura rápida: consulte a visão geral abaixo. As responsabilidades e justificativas detalhadas estão recolhidas para quem quiser acompanhar o raciocínio completo.
+
 ## Objetivo
 
 Dividir o domínio da concessionária em capacidades de negócio coerentes, deixando claro:
@@ -38,6 +41,9 @@ No conhecimento atual, esse diferencial é representado por dois subdomínios Co
 | Gestão de Clientes | Supporting | Manter clientes PF, clientes PJ e seus representantes. |
 | Rastreabilidade e Auditoria | Supporting | Preservar responsáveis, datas, decisões e justificativas relevantes. |
 | Identidade e Acesso | Generic | Autenticar contas e aplicar papéis e permissões. |
+
+<details>
+<summary><strong>Aprofundar responsabilidades e justificativas por subdomínio</strong></summary>
 
 ## Subdomínios Core
 
@@ -170,6 +176,8 @@ Identificar quem está acessando o sistema e limitar cada ação às permissões
 
 Autenticação e autorização são problemas críticos, mas comuns a diversos sistemas. O MotoHub poderá usar padrões e recursos consolidados, como Spring Security, sem transformar segurança em seu diferencial comercial.
 
+</details>
+
 ## Capacidades que não formam subdomínios no MVP
 
 ### Pagamentos
@@ -197,3 +205,5 @@ Não existe obrigação de mapear cada subdomínio diretamente para um Bounded C
 ## Continuidade da modelagem
 
 A `BKL-003` definiu os Bounded Contexts, a `BKL-004` registrou suas relações, a `BKL-005` mapeou os eventos e a `BKL-006` consolidou o modelo tático inicial. A continuidade está na decisão arquitetural da `BKL-007`.
+
+[Voltar ao resumo do DDD](00-overview.md).

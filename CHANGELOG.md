@@ -6,6 +6,8 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 
 ### Added
 
+- Hub central da documentação com trilhas de leitura para recrutadores, avaliação acadêmica e estudo técnico.
+- Resumo executivo do DDD com contextos, fluxo comercial, regras-chave, agregados e decisões em aberto.
 - Documento sobre a origem acadêmica, os limites de autoria e o propósito individual do projeto.
 - Visão inicial do produto.
 - Escopo e atores do MVP.
@@ -22,6 +24,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 
 ### Changed
 
+- Reorganização do README e dos documentos extensos com resumos, navegação, callouts e detalhamento progressivo.
 - Consolidação da linguagem ubíqua do domínio.
 - Padronização de `cliente` como termo oficial no lugar de `comprador`.
 - Distinção entre cliente, representante, funcionário, conta de acesso e papel de acesso.

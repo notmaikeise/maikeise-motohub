@@ -2,6 +2,9 @@
 
 Este documento registra as relações iniciais entre os Bounded Contexts do Maikeise MotoHub, consolidadas na `BKL-004`. Os eventos foram refinados na `BKL-005` e os mecanismos técnicos de integração serão formalizados na `BKL-007`.
 
+> [!TIP]
+> Para uma leitura rápida, observe os dois diagramas e a matriz de relacionamentos. A explicação de cada padrão está disponível na seção recolhível.
+
 ## Objetivo
 
 O Context Map torna explícito:
@@ -89,6 +92,9 @@ flowchart TD
 | Inventory and Reservation | Commercial | Confirmação ou recusa das operações solicitadas | Síncrono | Partnership |
 | Contextos operacionais | Audit | Acontecimentos relevantes e ator responsável | Assíncrono | Published Language por eventos |
 
+<details>
+<summary><strong>Aprofundar os padrões de relacionamento entre contextos</strong></summary>
+
 ## Identity and Access como Open Host Service
 
 `Identity and Access` oferece um contrato mínimo e estável para autenticação e autorização. Os consumidores recebem informações como `accountId`, estado da autenticação e permissões necessárias, sem acessar senha, hash, token interno, entidade ou repositório de contas.
@@ -150,6 +156,8 @@ Entre os eventos auditáveis estão conta bloqueada, cliente bloqueado comercial
 
 A indisponibilidade temporária da auditoria não deve transformar seu banco na autoridade sobre a operação original. Entretanto, eventos obrigatórios não podem ser perdidos. A `BKL-007` avaliará entrega confiável e o padrão Transactional Outbox.
 
+</details>
+
 ## Consistência esperada
 
 | Operação | Necessidade de consistência |
@@ -194,3 +202,5 @@ A indisponibilidade temporária da auditoria não deve transformar seu banco na 
 ## Continuidade
 
 Os acontecimentos, comandos, decisões e reações destas relações estão detalhados em [Eventos de domínio e Event Storming textual](04-domain-events.md). As fronteiras internas estão em [Agregados e invariantes](05-aggregates-and-invariants.md), e a `BKL-007` formalizará os mecanismos técnicos de integração.
+
+[Voltar ao resumo do DDD](00-overview.md).

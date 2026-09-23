@@ -2,6 +2,9 @@
 
 Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, consolidado na `BKL-001`. Ele é um documento vivo e será refinado quando novos conhecimentos surgirem durante a modelagem e a implementação.
 
+> [!TIP]
+> Use este arquivo como referência, não como leitura linear. Procure primeiro o termo do domínio; conceitos técnicos estão recolhidos ao final.
+
 | Termo | Definição oficial no Maikeise MotoHub |
 | --- | --- |
 | Administrador | Funcionário que gerencia contas, papéis de acesso e permissões internas. |
@@ -76,6 +79,9 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 - O desconto global é uma escolha de escopo do MVP, não uma regra universal do mercado.
 - O **preço anunciado** é copiado para a versão da proposta. Alterações posteriores no catálogo não mudam versões já criadas.
 
+<details>
+<summary><strong>Termos técnicos usados no planejamento</strong></summary>
+
 ## Termos técnicos usados no planejamento
 
 | Termo | Definição simples |
@@ -126,3 +132,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Transação local | Conjunto de alterações confirmado por inteiro ou totalmente desfeito dentro do mesmo banco e limite operacional. |
 | Upstream | Contexto que fornece uma informação, capacidade ou contrato para outro contexto. |
 | Value Object | Objeto imutável, sem identidade própria, definido e comparado pelos seus valores. |
+
+</details>
+
+[Voltar ao Hub da documentação](README.md).

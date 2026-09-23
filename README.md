@@ -1,114 +1,125 @@
 # Maikeise MotoHub
 
-Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende clientes pessoa física e pessoa jurídica.
+![Status](https://img.shields.io/badge/status-modelagem%20DDD%20conclu%C3%ADda-2ea44f)
+![Próxima etapa](https://img.shields.io/badge/pr%C3%B3xima%20etapa-arquitetura-8250df)
+![Código](https://img.shields.io/badge/c%C3%B3digo-ainda%20n%C3%A3o%20iniciado-6e7781)
 
-> Status atual: DDD estratégico e modelo tático inicial consolidados, com linguagem ubíqua, subdomínios, Bounded Contexts, eventos, agregados e invariantes documentados. A decisão arquitetural inicial será a próxima atividade. O código da aplicação ainda não foi iniciado.
+Plataforma web para organizar o fluxo comercial de uma concessionária de motocicletas, do catálogo à venda, atendendo clientes pessoa física e jurídica.
 
-## Visão geral
+> [!IMPORTANT]
+> Este repositório está propositalmente na fase de modelagem. O objetivo é mostrar como as decisões de negócio orientam o futuro código Java, em vez de começar pelo framework e adaptar o domínio depois.
 
-O Maikeise MotoHub centraliza catálogo, estoque, clientes, propostas, reservas e vendas. Clientes podem consultar unidades de estoque e acompanhar negociações. Funcionários controlam a operação comercial com regras de acesso, histórico e rastreabilidade.
+## O projeto em um minuto
 
-O MVP será desenvolvido para uma única concessionária. A possibilidade de atender várias concessionárias como uma plataforma multi-tenant ficará para uma evolução futura.
-
-## Origem e propósito
-
-O Maikeise MotoHub é um **projeto individual de estudo e portfólio**, desenvolvido como uma evolução técnica paralela a um projeto acadêmico coletivo da faculdade.
-
-O trabalho em grupo está concentrado na modelagem, ideação e planejamento de um sistema para o domínio de concessionárias de motocicletas. Esse contexto serviu como inspiração e referência inicial para este repositório. O Maikeise MotoHub, porém, possui identidade própria e será desenvolvido individualmente para aprofundar conhecimentos em DDD, Java, Spring Boot, arquitetura, microsserviços, testes, documentação e deploy local.
-
-Este repositório:
-
-- Não representa a entrega oficial da equipe da faculdade.
-- Não atribui a uma única pessoa a autoria exclusiva do conceito acadêmico coletivo.
-- Não reutiliza o nome ou a identidade visual do projeto acadêmico.
-- Não contém código produzido pela equipe; a implementação será construída separadamente.
-- Documenta decisões, adaptações e expansões realizadas no estudo individual.
-
-O contexto completo está registrado em [Origem e propósito do projeto](docs/00-project-context.md).
-
-## Problema
-
-Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter dados de veículos, clientes e negociações em ferramentas separadas. Essa fragmentação aumenta o risco de informações inconsistentes, reservas simultâneas e perda do histórico das operações.
-
-## Escopo do MVP
-
-- Cadastro de clientes PF e PJ, representantes e contas de acesso.
-- Controle de acesso por papéis para clientes e funcionários.
-- Catálogo de unidades de estoque com preço anunciado.
-- Solicitação, preparação, versionamento e aceite de propostas.
-- Aprovação gerencial de descontos superiores a 10%.
-- Reservas com duração inicial de 48 horas e uma possível prorrogação gerencial de 24 horas.
-- Registro de pagamento realizado fora da plataforma.
-- Conclusão e histórico de vendas.
-- Auditoria das operações mais importantes.
-
-## Documentação
-
-| Documento | Conteúdo |
+| Pergunta | Resposta |
 | --- | --- |
-| [Origem e propósito](docs/00-project-context.md) | Relação com o projeto acadêmico e objetivo do estudo individual |
-| [Visão do produto](docs/01-product-vision.md) | Problema, objetivos, proposta de valor e modelo de negócio |
-| [Escopo e atores](docs/02-scope-and-actors.md) | Limites do MVP, atores e responsabilidades |
-| [Jornada principal](docs/03-user-journey.md) | Fluxo do cliente e caminhos alternativos |
-| [Regras de negócio](docs/04-business-rules.md) | Regras de clientes, estoque, propostas, reservas e vendas |
-| [Requisitos](docs/05-requirements.md) | Requisitos funcionais, não funcionais e prioridades |
-| [Backlog inicial](docs/06-backlog.md) | Épicos e itens planejados |
-| [Decisões em aberto](docs/07-open-decisions.md) | Questões que ainda precisam de análise |
-| [Linguagem ubíqua](docs/glossary.md) | Vocabulário oficial do domínio |
-| [DDD](docs/ddd/README.md) | Estado e roteiro da modelagem de domínio |
-| [Subdomínios](docs/ddd/01-subdomains.md) | Capacidades Core, Supporting e Generic |
-| [Bounded Contexts](docs/ddd/02-bounded-contexts.md) | Limites, responsabilidades e propriedade dos dados |
-| [Context Map](docs/ddd/03-context-map.md) | Relações, padrões e consistência entre os contextos |
-| [Eventos de domínio](docs/ddd/04-domain-events.md) | Event Storming textual, comandos, eventos e políticas |
-| [Agregados e invariantes](docs/ddd/05-aggregates-and-invariants.md) | Modelo tático, Aggregate Roots, Value Objects e repositórios |
-| [GitHub Projects](docs/project-management/github-projects-setup.md) | Configuração recomendada para os cards |
+| Qual problema resolve? | Centraliza catálogo, clientes, propostas, reservas e vendas, reduzindo conflitos e perda de histórico. |
+| Quem utiliza? | Visitantes, clientes PF, representantes de empresas e funcionários da concessionária. |
+| Qual é o diferencial estudado? | Propostas versionadas, aprovação de descontos, reserva atômica de unidades e rastreabilidade das decisões. |
+| Qual é o escopo inicial? | Uma concessionária, pagamento externo e aplicação web responsiva. |
+| Qual é a abordagem? | DDD estratégico e tático, seguido de monólito modular com Arquitetura Hexagonal. |
+| Em que fase está? | Modelagem de domínio concluída; decisão arquitetural é o próximo passo. |
+
+## Fluxo principal
+
+```mermaid
+flowchart LR
+    CAT["Catálogo"] --> PRO["Proposta"]
+    PRO --> RES["Reserva atômica"]
+    RES --> VEN["Venda"]
+```
+
+O visitante consulta unidades físicas específicas. Depois de se cadastrar, solicita uma proposta. O vendedor prepara uma versão com preço e desconto; descontos acima de 10% exigem aprovação do gerente. O aceite dispara uma tentativa de reserva de todas as unidades e, após a confirmação do pagamento externo, a venda é concluída.
+
+### Regras que orientam o modelo
+
+| Tema | Decisão do MVP |
+| --- | --- |
+| Proposta | Vale sete dias e preserva todas as versões enviadas. |
+| Desconto | Vendedor concede até 10%; acima disso, a versão exata exige aprovação gerencial. |
+| Reserva | Todas as unidades são reservadas juntas ou nenhuma delas é. |
+| Prazo | 48 horas, com uma única prorrogação gerencial de 24 horas. |
+| Concorrência | Uma unidade nunca participa de duas reservas ativas. |
+| Pagamento | Acontece fora da plataforma e é confirmado por funcionário autorizado. |
+| Cancelamento de venda | Preserva o histórico e envia as unidades para revisão. |
+
+## Por que este projeto existe
+
+O Maikeise MotoHub é um estudo individual e uma peça de portfólio inspirada pelo domínio discutido em um trabalho acadêmico coletivo. Ele não representa a entrega oficial da equipe e não reutiliza código, nome ou identidade visual daquele projeto.
+
+Aqui, a proposta é continuar além da ideação acadêmica: documentar o raciocínio, implementar o sistema em Java e Spring Boot, testar as regras e chegar a uma execução local reproduzível.
+
+[Entenda a origem, a autoria e os limites entre os projetos](docs/00-project-context.md).
+
+## Decisões de engenharia já consolidadas
+
+- Seis Bounded Contexts com responsabilidades e dados próprios.
+- Onze Aggregate Roots e invariantes associadas aos objetos que as protegem.
+- Referências entre agregados por IDs tipados, sem grafos de entidades entre módulos.
+- Repositórios somente para Aggregate Roots.
+- Catálogo separado do estoque operacional.
+- Estoque e reservas no mesmo contexto para proteger a exclusividade das unidades.
+- Hipótese de monólito modular, com Arquitetura Hexagonal dentro de cada módulo.
+- Microsserviços somente quando houver uma necessidade demonstrável de implantação ou escala independente.
+
+> [!NOTE]
+> Evento de domínio não significa Event Sourcing, e Bounded Context não significa microsserviço. Essas separações são intencionais e estão explicadas na documentação.
+
+## Escolha uma trilha de leitura
+
+| Se você é... | Comece por... | Tempo aproximado |
+| --- | --- | ---: |
+| Recrutador(a) | Este README e o [resumo do DDD](docs/ddd/00-overview.md) | 8 min |
+| Professor(a) | [Contexto acadêmico](docs/00-project-context.md), [visão do produto](docs/01-product-vision.md) e [resumo do DDD](docs/ddd/00-overview.md) | 15 min |
+| Pessoa desenvolvedora | [Hub da documentação](docs/README.md), seguido dos documentos técnicos numerados | 30+ min |
+| Autora estudando o projeto | [Hub da documentação](docs/README.md) e as seções “O que registrar no caderno” | Conforme a etapa |
+
+Toda a navegação está organizada no [Hub da documentação](docs/README.md).
+
+## Progresso
+
+| Etapa | Situação |
+| --- | --- |
+| Linguagem ubíqua | ✅ Concluída |
+| Subdomínios | ✅ Concluída |
+| Bounded Contexts | ✅ Concluída |
+| Context Map | ✅ Concluída |
+| Eventos de domínio | ✅ Concluída |
+| Agregados e invariantes | ✅ Concluída |
+| Decisão arquitetural inicial | ⏭️ Próxima |
+| Implementação Spring Boot | ⬜ Planejada |
+| Interface e deploy local | ⬜ Planejados |
 
 ## Tecnologias planejadas
 
-As decisões técnicas serão registradas por ADRs depois da modelagem DDD. A direção inicial considera:
+<details>
+<summary><strong>Ver stack técnica</strong></summary>
 
-- Java e Spring Boot
-- Spring Security
-- Spring Data JPA
-- PostgreSQL
-- Flyway
-- JUnit, Mockito e Testcontainers
-- Docker e Docker Compose
-- OpenAPI
+- Java e Spring Boot.
+- Spring Security.
+- PostgreSQL e Flyway.
+- JUnit, Mockito e Testcontainers.
+- Docker e Docker Compose.
+- OpenAPI.
+- Interface web a ser decidida na ADR de frontend.
 
-A hipótese adotada para orientar o planejamento é iniciar com um monólito modular, mantendo um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo. A decisão e suas regras serão formalizadas por ADR antes do primeiro código Java. A extração de microsserviços somente será avaliada quando houver uma necessidade técnica ou de negócio demonstrável.
+</details>
 
-## Roadmap de aprendizado
+## Escopo futuro
 
-1. Consolidar a ideação e os requisitos.
-2. Elaborar o DDD estratégico.
-3. Elaborar o DDD tático.
-4. Registrar decisões arquiteturais.
-5. Criar a primeira aplicação Spring Boot.
-6. Implementar o fluxo principal com testes.
-7. Avaliar a extração gradual de microsserviços.
-8. Criar a interface e o deploy local.
+<details>
+<summary><strong>O que foi deixado conscientemente fora do MVP</strong></summary>
 
-## Estrutura atual
+- Pagamento online.
+- Multi-tenancy para várias concessionárias.
+- Emissão fiscal e financiamento bancário reais.
+- Oficina, trade-in, seguros e garantias.
+- Telemetria e aplicativo móvel nativo.
 
-```text
-maikeise-motohub/
-├── .github/
-│   └── ISSUE_TEMPLATE/
-├── docs/
-│   ├── ddd/
-│   └── project-management/
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
-├── CHANGELOG.md
-└── README.md
-```
+</details>
 
-## Autoria
+## Autoria e licença
 
-Esta evolução técnica individual é desenvolvida por [Not Maikeise](https://github.com/notmaikeise). A inspiração acadêmica inicial surgiu de um trabalho coletivo e não é apresentada como criação exclusiva da autora deste repositório.
+Esta evolução técnica individual é desenvolvida por [Not Maikeise](https://github.com/notmaikeise), preservando o reconhecimento da inspiração acadêmica coletiva.
 
-## Licença
-
-A licença ainda será definida antes da primeira versão pública do software.
+A licença será definida antes da primeira versão pública de código.

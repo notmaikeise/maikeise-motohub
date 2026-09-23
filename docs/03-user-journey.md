@@ -1,5 +1,8 @@
 # Jornada principal do cliente
 
+> [!TIP]
+> Leia primeiro o fluxo principal. Os caminhos de erro e exceção ficam recolhidos logo abaixo para não interromper a narrativa.
+
 ## Premissas
 
 - O catálogo pode ser consultado sem autenticação.
@@ -38,6 +41,9 @@ flowchart TD
     D --> E["Confirmar pagamento e concluir venda"]
 ```
 
+<details>
+<summary><strong>Fluxos alternativos e exceções</strong></summary>
+
 ## Fluxos alternativos
 
 ### Unidade indisponível
@@ -75,3 +81,7 @@ Um cliente bloqueado comercialmente não inicia novas negociações. Propostas e
 ### Venda cancelada
 
 O gerente pode cancelar uma venda com justificativa. A venda original permanece no histórico e suas unidades mudam para `EM_REVISAO`; elas somente voltam a `DISPONIVEL` depois de uma liberação explícita.
+
+</details>
+
+[Voltar ao Hub da documentação](README.md).

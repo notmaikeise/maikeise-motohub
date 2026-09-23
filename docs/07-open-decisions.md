@@ -2,6 +2,9 @@
 
 Este documento registra perguntas ainda não respondidas. Elas não devem ser tratadas como requisitos definitivos antes de uma decisão explícita.
 
+> [!NOTE]
+> Uma decisão em aberto não representa falha de planejamento. Ela mostra que o projeto reconhece a dúvida e sabe em qual etapa deverá resolvê-la.
+
 | ID | Pergunta | Momento recomendado |
 | --- | --- | --- |
 | DEC-002 | Existe um desconto máximo que nem o gerente poderá aprovar? | Modelagem de Propostas |
@@ -14,6 +17,9 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-014 | Qual mecanismo garantirá a entrega de eventos obrigatórios e de auditoria? | ADR da BKL-007 |
 | DEC-015 | Qual mecanismo executará expirações e novas tentativas de notificação? | ADR da BKL-007 |
 | DEC-016 | Quem poderá vincular ou encerrar representantes de um cliente PJ? | Autorização e casos de uso antes da implementação |
+
+<details>
+<summary><strong>Consultar o histórico de decisões já tomadas</strong></summary>
 
 ## Decisões já tomadas
 
@@ -71,3 +77,7 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-050 | Agregados usam IDs tipados e apenas Aggregate Roots possuem repositórios. |
 | DEC-C-051 | Unicidades globais usam consulta para erro amigável e restrição no banco para proteção concorrente. |
 | DEC-C-052 | Entrega e repetição de e-mail permanecem uma preocupação técnica e não formam um agregado de negócio nesta fase. |
+
+</details>
+
+[Voltar ao Hub da documentação](README.md).

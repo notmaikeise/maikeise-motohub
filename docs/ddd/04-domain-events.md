@@ -4,6 +4,19 @@ Este documento consolida a `BKL-005` do Maikeise MotoHub. Ele transforma o fluxo
 
 O resultado é uma fotografia do conhecimento atual. Os nomes servem como linguagem de modelagem e ainda não obrigam que cada evento se torne uma classe Java, uma mensagem externa ou uma tabela própria.
 
+> [!TIP]
+> Leia o resumo e a linha do tempo primeiro. Cada etapa do Event Storming está recolhida e pode ser aberta separadamente quando você quiser estudar comandos, eventos e políticas.
+
+## Resumo executivo
+
+- O cliente solicita uma proposta para unidades físicas específicas.
+- A proposta enviada vale sete dias e preserva a versão negociada.
+- O aceite dispara uma tentativa automática de reserva.
+- Todas as unidades são reservadas juntas ou nenhuma delas é.
+- A reserva vale 48 horas e admite uma única extensão de 24 horas.
+- A venda exige reserva ativa e pagamento externo confirmado.
+- Cancelamentos preservam o histórico; não apagam fatos já ocorridos.
+
 ## Objetivos
 
 - Mapear os acontecimentos relevantes do cadastro até a venda.
@@ -42,7 +55,8 @@ flowchart TD
 
 O aceite da proposta e a criação da reserva são fatos distintos. O aceite dispara automaticamente uma tentativa de reserva, mas a reserva somente existe depois que `Inventory and Reservation` confirma, de forma atômica, a disponibilidade de todas as unidades.
 
-## 1. Cadastro e habilitação do cliente
+<details>
+<summary><strong>1. Cadastro e habilitação do cliente</strong></summary>
 
 ### Fluxo principal
 
@@ -78,7 +92,10 @@ O endereço completo pode ser informado posteriormente, mas se torna obrigatóri
 
 O bloqueio comercial do cliente e o bloqueio da conta são fatos diferentes. `Customer Management` decide se o cliente pode negociar; `Identity and Access` decide se a conta pode entrar no sistema.
 
-## 2. Contas de funcionários e autorização
+</details>
+
+<details>
+<summary><strong>2. Contas de funcionários e autorização</strong></summary>
 
 Funcionários não usam cadastro público. A entrada ocorre por convite para impedir a criação livre de contas internas.
 
@@ -92,7 +109,10 @@ Funcionários não usam cadastro público. A entrada ocorre por convite para imp
 
 Nenhuma conta pode aumentar as próprias permissões. O controle será baseado em papéis, mas a regra de negócio continua no contexto que executa a operação. Por exemplo, `Identity and Access` informa que a conta possui a permissão; `Commercial` determina que descontos acima de 10% exigem essa permissão.
 
-## 3. Catálogo e preparação da unidade
+</details>
+
+<details>
+<summary><strong>3. Catálogo e preparação da unidade</strong></summary>
 
 ### Modelo, unidade e anúncio
 
@@ -123,7 +143,10 @@ Uma unidade nasce em `EM_PREPARACAO`. Ela somente pode ser publicada como dispon
 
 Mesmo que o catálogo esteja brevemente desatualizado, a tentativa de reserva sempre revalida a situação diretamente com `Inventory and Reservation`.
 
-## 4. Solicitação e elaboração da proposta
+</details>
+
+<details>
+<summary><strong>4. Solicitação e elaboração da proposta</strong></summary>
 
 Consultar e filtrar o catálogo são consultas e não geram eventos de domínio por si só.
 
@@ -149,7 +172,10 @@ Consultar e filtrar o catálogo são consultas e não geram eventos de domínio 
 - Uma versão aceita é imutável.
 - Se a reserva for recusada por indisponibilidade, o vendedor pode preparar uma nova versão, que exige novo envio e novo aceite.
 
-## 5. Criação e ciclo da reserva
+</details>
+
+<details>
+<summary><strong>5. Criação e ciclo da reserva</strong></summary>
 
 ### Política após o aceite
 
@@ -175,7 +201,10 @@ A reserva de várias unidades é atômica: todas são reservadas juntas ou nenhu
 
 O prazo máximo possível é de 72 horas: 48 horas iniciais mais uma única prorrogação de 24 horas.
 
-## 6. Ciclo da unidade de estoque
+</details>
+
+<details>
+<summary><strong>6. Ciclo da unidade de estoque</strong></summary>
 
 ```mermaid
 stateDiagram-v2
@@ -206,7 +235,10 @@ stateDiagram-v2
 
 Uma unidade não muda diretamente de `VENDIDA` para `DISPONIVEL`. O cancelamento da venda precisa passar por revisão.
 
-## 7. Pagamento externo e conclusão da venda
+</details>
+
+<details>
+<summary><strong>7. Pagamento externo e conclusão da venda</strong></summary>
 
 ### Confirmação do pagamento
 
@@ -254,7 +286,10 @@ Uma venda concluída não é apagada nem editada para fingir que nunca ocorreu.
 
 Um eventual reembolso é executado fora da plataforma no MVP.
 
-## 8. Processos temporais e notificações
+</details>
+
+<details>
+<summary><strong>8. Processos temporais e notificações</strong></summary>
 
 ### Prazos
 
@@ -284,7 +319,10 @@ O envio ocorre de forma assíncrona. `Notificação enviada` e `Envio de notific
 
 Não será criado um novo Bounded Context de notificações nesta fase. A forma técnica de envio e repetição será definida na arquitetura.
 
-## 9. Auditoria
+</details>
+
+<details>
+<summary><strong>9. Auditoria</strong></summary>
 
 `Audit` consome representações seguras de eventos relevantes e cria `Registro de auditoria criado`. O evento original continua pertencendo ao contexto de origem.
 
@@ -305,7 +343,10 @@ Não será criado um novo Bounded Context de notificações nesta fase. A forma 
 
 Cada registro contém, quando aplicável, contexto de origem, tipo do acontecimento, identificador do objeto, conta responsável ou ator `SYSTEM`, data e horário, resultado e justificativa segura. Senhas, tokens, dados bancários e informações pessoais desnecessárias não entram no evento de auditoria.
 
-## 10. Políticas entre contextos
+</details>
+
+<details>
+<summary><strong>10. Políticas entre contextos</strong></summary>
 
 | Quando ocorrer | Então | Origem | Destino |
 | --- | --- | --- | --- |
@@ -320,7 +361,10 @@ Cada registro contém, quando aplicável, contexto de origem, tipo do acontecime
 | `Venda cancelada` | Colocar as unidades em revisão | Commercial | Inventory and Reservation |
 | Evento auditável ocorrido | Criar registro adicional | Contexto de origem | Audit |
 
-## 11. Invariantes descobertas para a BKL-006
+</details>
+
+<details>
+<summary><strong>11. Invariantes descobertas para a BKL-006</strong></summary>
 
 1. CPF, CNPJ e e-mail de acesso são únicos dentro de seus respectivos contextos.
 2. Cliente PF precisa ter pelo menos 18 anos para operar comercialmente no MVP.
@@ -339,6 +383,8 @@ Cada registro contém, quando aplicável, contexto de origem, tipo do acontecime
 15. Uma unidade vendida somente pode voltar à disponibilidade após revisão explícita.
 
 Essas regras orientaram os Aggregate Roots documentados em [Agregados e invariantes](05-aggregates-and-invariants.md).
+
+</details>
 
 ## 12. Hot spots preservados
 
@@ -372,3 +418,5 @@ A atividade é considerada concluída porque:
 - A reserva integral protege o negócio contra uma compra parcial não autorizada.
 - Cancelar uma venda é uma **ação compensatória**, não a exclusão do histórico.
 - A `BKL-006` utilizou os eventos e invariantes para descobrir entidades, Value Objects, agregados e seus limites de consistência.
+
+[Voltar ao resumo do DDD](00-overview.md).

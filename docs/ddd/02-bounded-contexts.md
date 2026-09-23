@@ -1,6 +1,9 @@
 # Bounded Contexts do Maikeise MotoHub
 
-Este documento registra os limites iniciais de modelo e linguagem do Maikeise MotoHub, consolidados na `BKL-003`. As relações formais entre os contextos serão definidas no Context Map da `BKL-004`.
+Este documento registra os limites iniciais de modelo e linguagem do Maikeise MotoHub, consolidados na `BKL-003`. As relações formais entre os contextos estão documentadas no Context Map da `BKL-004`.
+
+> [!TIP]
+> A tabela de visão geral apresenta a divisão em poucos minutos. Abra o detalhamento somente quando precisar conferir propriedade de dados, responsabilidades ou exclusões de um contexto.
 
 ## Objetivo
 
@@ -93,6 +96,9 @@ Essa organização ainda é uma hipótese. Nomes, regras de dependência e teste
 | Identidade e Acesso | Identity and Access |
 
 O subdomínio Supporting **Catálogo e Estoque** participa de dois contextos porque o modelo de apresentação pública é diferente do modelo operacional da unidade física. O contexto **Inventory and Reservation** também contém capacidades provenientes de dois subdomínios, pois a unidade e sua reserva precisam compartilhar uma invariante forte.
+
+<details>
+<summary><strong>Aprofundar os seis Bounded Contexts</strong></summary>
 
 ## Identity and Access
 
@@ -343,6 +349,8 @@ Preservar evidências estruturadas de ações e decisões relevantes para o neg�
 
 O histórico essencial continua no contexto que executou a ação. A auditoria recebe uma representação adicional do acontecimento e não se torna a única fonte da verdade comercial.
 
+</details>
+
 ## Matriz de propriedade dos conceitos
 
 | Conceito | Contexto proprietário |
@@ -366,3 +374,5 @@ As relações, direções e formas iniciais de integração foram definidas no [
 ## Próximo passo
 
 Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md), e as raízes, entidades internas e invariantes foram definidas na [BKL-006](05-aggregates-and-invariants.md). A `BKL-007` formalizará a arquitetura que preservará esses limites.
+
+[Voltar ao resumo do DDD](00-overview.md).

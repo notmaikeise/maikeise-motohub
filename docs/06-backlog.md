@@ -2,6 +2,12 @@
 
 Este backlog organiza o trabalho conhecido antes do início da implementação. Os itens podem mudar depois do DDD estratégico e tático.
 
+> [!TIP]
+> A visão rápida mostra a sequência de entrega. Abra um épico para consultar IDs, prioridade e resultado esperado de cada item.
+
+<details>
+<summary><strong>Convenções de prioridade e tipo</strong></summary>
+
 ## Convenções
 
 ### Prioridade
@@ -19,7 +25,23 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 - **Feature:** valor perceptível a um ator do sistema.
 - **Technical:** infraestrutura ou qualidade interna.
 
-## Épico 0 - Descoberta e DDD
+</details>
+
+## Visão rápida
+
+| Épico | Foco |
+| --- | --- |
+| 0 | Descobrir e modelar o domínio antes do código. |
+| 1 | Preparar a fundação técnica reproduzível. |
+| 2 | Implementar identidade, acesso e clientes. |
+| 3 | Disponibilizar catálogo e estoque. |
+| 4 | Conduzir propostas, versões e descontos. |
+| 5 | Proteger reservas e concorrência. |
+| 6 | Concluir e consultar vendas. |
+| 7 | Reforçar auditoria, qualidade e experiência. |
+
+<details>
+<summary><strong>Épico 0 — Descoberta e DDD</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -31,7 +53,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-006 | Modelar agregados e invariantes | Discovery | Must | Modelo tático inicial por contexto |
 | BKL-007 | Registrar decisão arquitetural inicial | Architecture | Must | ADR sobre monólito modular e evolução |
 
-## Épico 1 - Fundação técnica
+</details>
+
+<details>
+<summary><strong>Épico 1 — Fundação técnica</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -43,7 +68,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-015 | Configurar testes e Testcontainers | Technical | Must | Base de testes unitários e de integração |
 | BKL-016 | Configurar integração contínua | Technical | Should | Build e testes executados em cada mudança |
 
-## Épico 2 - Identidade e acesso
+</details>
+
+<details>
+<summary><strong>Épico 2 — Identidade e acesso</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -55,7 +83,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-025 | Recuperar senha | Feature | Should | Titular recupera acesso à conta |
 | BKL-026 | Confirmar e alterar e-mail de acesso | Feature | Must | Operações comerciais usam uma conta com e-mail verificado |
 
-## Épico 3 - Catálogo e estoque
+</details>
+
+<details>
+<summary><strong>Épico 3 — Catálogo e estoque</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -67,7 +98,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-035 | Gerenciar fotos da unidade | Feature | Should | Detalhes visuais no catálogo |
 | BKL-036 | Gerenciar anúncios | Feature | Must | Rascunho, publicação, preço e arquivamento controlados |
 
-## Épico 4 - Propostas e descontos
+</details>
+
+<details>
+<summary><strong>Épico 4 — Propostas e descontos</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -79,7 +113,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-045 | Aceitar ou recusar proposta | Feature | Must | Cliente registra sua decisão |
 | BKL-046 | Gerar proposta em PDF | Feature | Should | Documento comercial para download |
 
-## Épico 5 - Reservas
+</details>
+
+<details>
+<summary><strong>Épico 5 — Reservas</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -90,7 +127,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-054 | Prorrogar reserva uma vez | Feature | Must | Gerente acrescenta 24 horas com justificativa |
 | BKL-055 | Avisar vencimento da reserva | Feature | Must | Cliente recebe e-mail 24 horas antes do prazo |
 
-## Épico 6 - Vendas
+</details>
+
+<details>
+<summary><strong>Épico 6 — Vendas</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -101,7 +141,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-064 | Pesquisar vendas | Feature | Must | Funcionário consulta operações concluídas |
 | BKL-065 | Cancelar venda e revisar unidades | Feature | Must | Gerente compensa a venda sem apagar o histórico |
 
-## Épico 7 - Auditoria, qualidade e experiência
+</details>
+
+<details>
+<summary><strong>Épico 7 — Auditoria, qualidade e experiência</strong></summary>
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
@@ -112,7 +155,10 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-074 | Documentar execução local | Documentation | Must | Projeto executável por outra pessoa |
 | BKL-075 | Enviar e repetir notificações | Technical | Must | E-mails assíncronos não comprometem a operação comercial |
 
-## Épico futuro - Fora do MVP
+</details>
+
+<details>
+<summary><strong>Épico futuro — Fora do MVP</strong></summary>
 
 - Pagamento online.
 - Multi-tenancy.
@@ -122,6 +168,8 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 - Integrações fiscais e bancárias reais.
 - OBD-II e telemetria.
 
+</details>
+
 ## Ordem recomendada
 
 1. Concluir os itens BKL-001 a BKL-007.
@@ -130,3 +178,5 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 4. Acrescentar identidade e clientes.
 5. Implementar proposta, reserva e venda nesta ordem.
 6. Reforçar auditoria, acessibilidade e documentação continuamente.
+
+[Voltar ao Hub da documentação](README.md).

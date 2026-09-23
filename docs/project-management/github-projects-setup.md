@@ -1,5 +1,8 @@
 # Configuração do GitHub Projects
 
+> [!TIP]
+> Este é um guia operacional. Execute uma seção por vez e volte ao Hub quando terminar.
+
 ## Por que usar
 
 GitHub Projects mantém backlog, issues, pull requests e progresso próximos do código. O mesmo conjunto de itens pode ser visualizado como tabela, quadro ou roadmap.
@@ -150,3 +153,5 @@ Outras automações devem ser adicionadas apenas quando o fluxo estiver estável
 - [Sobre o GitHub Projects](https://docs.github.com/pt/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects)
 - [Personalizar visualizações](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project)
 - [Adicionar itens ao projeto](https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-project/adding-items-to-your-project)
+
+[Voltar ao Hub da documentação](../README.md).

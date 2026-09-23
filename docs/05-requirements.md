@@ -1,9 +1,17 @@
 # Requisitos
 
+Este documento traduz as regras e jornadas do MVP em capacidades verificáveis. Os requisitos detalhados ficam disponíveis para implementação e testes, enquanto a priorização mostra rapidamente o compromisso da primeira versão.
+
+> [!TIP]
+> Para uma avaliação inicial, leia a priorização MoSCoW. Abra os requisitos numerados quando precisar rastrear uma funcionalidade ou qualidade específica.
+
 ## Convenções
 
 - `RF`: requisito funcional, descreve o que o sistema faz.
 - `RNF`: requisito não funcional, descreve qualidades ou restrições.
+
+<details>
+<summary><strong>Requisitos funcionais detalhados</strong></summary>
 
 ## Requisitos funcionais
 
@@ -139,6 +147,11 @@
 | RF-AUD-004 | Auditar as ações obrigatórias enumeradas no mapa de eventos da `BKL-005`. |
 | RF-AUD-005 | Identificar processos automáticos por um ator de sistema. |
 
+</details>
+
+<details>
+<summary><strong>Requisitos não funcionais detalhados</strong></summary>
+
 ## Requisitos não funcionais
 
 | Código | Requisito |
@@ -162,6 +175,8 @@
 | RNF-OPS-002 | Aplicação e dependências devem poder iniciar com Docker Compose. |
 | RNF-REL-001 | Falhas no envio de e-mail não podem reverter a operação de negócio que originou a mensagem. |
 | RNF-REL-002 | Eventos obrigatórios de integração e auditoria devem possuir estratégia de entrega confiável definida antes da implementação. |
+
+</details>
 
 ## Priorização MoSCoW
 
@@ -211,3 +226,5 @@
 - Seguros e garantias.
 - OBD-II e telemetria.
 - Aplicativo móvel nativo.
+
+[Voltar ao Hub da documentação](README.md).

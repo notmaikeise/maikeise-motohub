@@ -1,5 +1,10 @@
 # Escopo e atores
 
+Este documento estabelece a fronteira do MVP e deixa claro quem interage diretamente com o sistema.
+
+> [!NOTE]
+> Escopo é uma escolha de entrega, não uma afirmação de que as capacidades futuras sejam pouco importantes.
+
 ## Escopo do MVP
 
 O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
@@ -93,3 +98,5 @@ Funcionário responsável por convidar funcionários e gerenciar contas, papéis
 | Gerenciar funcionários | Não | Não | Não | Não | Não | Sim |
 
 Na matriz, **Cliente** representa o cliente PF ou o representante que age por um cliente PJ. Esta matriz é inicial e será revisada durante o DDD e a modelagem de autorização.
+
+[Voltar ao Hub da documentação](README.md).

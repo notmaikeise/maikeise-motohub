@@ -1,106 +1,80 @@
 # Modelagem DDD
 
-## Estado atual
+Esta pasta registra como o domínio do Maikeise MotoHub foi descoberto e transformado em um modelo pronto para orientar a arquitetura.
 
-A linguagem ubíqua foi consolidada na `BKL-001`, os subdomínios foram identificados na `BKL-002`, os Bounded Contexts foram definidos na `BKL-003`, suas relações foram registradas no Context Map da `BKL-004`, os eventos foram mapeados na `BKL-005` e o modelo tático inicial foi consolidado na `BKL-006`. A modelagem continuará com a decisão arquitetural.
+> [!TIP]
+> Para uma primeira leitura, comece por [DDD em uma visão](00-overview.md). Os demais arquivos funcionam como memória das decisões e material de estudo.
 
-O projeto não adotará limites de microsserviços antes de identificar os limites reais do negócio.
+## Progresso
 
-| Atividade | Situação |
-| --- | --- |
-| BKL-001 - Consolidar a linguagem ubíqua | Concluída |
-| BKL-002 - Identificar subdomínios | Concluída |
-| BKL-003 - Definir Bounded Contexts | Concluída |
-| BKL-004 - Criar o Context Map | Concluída |
-| BKL-005 - Mapear eventos de domínio | Concluída |
-| BKL-006 - Modelar agregados e invariantes | Concluída |
-| BKL-007 - Registrar decisão arquitetural inicial | Próxima |
+| Atividade | Resultado | Situação |
+| --- | --- | --- |
+| `BKL-001` | Linguagem ubíqua | ✅ Concluída |
+| `BKL-002` | Subdomínios | ✅ Concluída |
+| `BKL-003` | Bounded Contexts | ✅ Concluída |
+| `BKL-004` | Context Map | ✅ Concluída |
+| `BKL-005` | Eventos de domínio | ✅ Concluída |
+| `BKL-006` | Agregados e invariantes | ✅ Concluída |
+| `BKL-007` | Decisão arquitetural inicial | ⏭️ Próxima |
 
-## DDD estratégico
+## Documentos
 
-O DDD estratégico analisa o domínio em uma visão ampla.
+| Ordem | Documento | Pergunta respondida | Profundidade |
+| ---: | --- | --- | --- |
+| 0 | [DDD em uma visão](00-overview.md) | Como todo o modelo se conecta? | Resumo |
+| 1 | [Subdomínios](01-subdomains.md) | Quais capacidades são Core, Supporting ou Generic? | Estratégica |
+| 2 | [Bounded Contexts](02-bounded-contexts.md) | Onde cada modelo começa e termina? | Estratégica |
+| 3 | [Context Map](03-context-map.md) | Como os contextos dependem e conversam entre si? | Estratégica |
+| 4 | [Eventos de domínio](04-domain-events.md) | O que acontece ao longo do fluxo comercial? | Estratégica e comportamental |
+| 5 | [Agregados e invariantes](05-aggregates-and-invariants.md) | Quem protege cada regra dentro do código? | Tática |
 
-### Entregáveis
+## Estratégico e tático
 
-1. [Linguagem ubíqua revisada](../glossary.md).
-2. [Subdomínios Core, Supporting e Generic](01-subdomains.md).
-3. [Bounded Contexts](02-bounded-contexts.md).
-4. [Context Map](03-context-map.md).
-5. [Eventos de domínio e Event Storming textual](04-domain-events.md).
+O **DDD estratégico** organiza o espaço do problema: subdomínios, contextos e relações. O **DDD tático** modela o interior de cada contexto: entidades, Value Objects, agregados, repositórios e serviços.
 
-## DDD tático
+```mermaid
+flowchart LR
+    PROB["Problema"] --> STR["DDD estratégico"]
+    STR --> TAC["DDD tático"]
+    TAC --> ARQ["Arquitetura"]
+    ARQ --> COD["Código"]
+```
 
-O DDD tático modela os elementos internos de cada contexto.
+Essa ordem é intencional. Arquitetura e framework devem servir ao modelo, e não definir o negócio antes de ele ser compreendido.
 
-### Entregável inicial
+## Resultado atual
 
-[Agregados e invariantes](05-aggregates-and-invariants.md) reúne entidades, Value Objects, Aggregate Roots, regras, repositórios e serviços iniciais por contexto.
+O modelo possui seis Bounded Contexts e onze Aggregate Roots. As decisões mais importantes são:
 
-## Subdomínios identificados
+- `Commercial` e `Inventory and Reservation` concentram o fluxo Core.
+- Catálogo não decide disponibilidade; ele apresenta uma projeção pública.
+- Estoque e reservas compartilham um contexto para preservar exclusividade e atomicidade.
+- Propostas preservam versões; vendas preservam snapshots.
+- Agregados se referenciam por IDs tipados.
+- Somente Aggregate Roots possuem repositórios.
+- Auditoria e atualização do catálogo aceitam consistência eventual.
+- Os contextos não compartilham entidades, associações JPA ou tabelas como contrato.
 
-O levantamento atual identificou:
+## Direção de arquitetura
 
-- **Core:** Negociação e Vendas; Disponibilidade e Reservas.
-- **Supporting:** Catálogo e Estoque; Gestão de Clientes; Rastreabilidade e Auditoria.
-- **Generic:** Identidade e Acesso.
+A hipótese inicial é um **monólito modular**, com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo. Essa hipótese será formalizada, testada e justificada na `BKL-007`.
 
-Esses subdomínios representam o espaço do problema e não correspondem automaticamente a Bounded Contexts ou microsserviços.
+Microsserviços continuam sendo uma possibilidade de evolução, não um objetivo antecipado. Uma extração só fará sentido quando existir necessidade concreta de escala, autonomia ou implantação independente.
 
-## Bounded Contexts definidos
+<details>
+<summary><strong>Critérios usados para considerar o modelo pronto</strong></summary>
 
-O modelo inicial foi dividido em seis limites de solução:
+- Cada contexto possui responsabilidade e vocabulário claros.
+- As principais invariantes estão ligadas a agregados.
+- Integrações síncronas e assíncronas estão explícitas.
+- Decisões ainda abertas permanecem registradas.
+- O modelo não depende de JPA, HTTP ou uma interface específica.
+- A próxima decisão arquitetural pode partir de evidências do domínio.
 
-- **Identity and Access:** contas, autenticação, papéis e permissões.
-- **Customer Management:** clientes PF, clientes PJ e representantes.
-- **Catalog:** apresentação pública dos modelos e anúncios das unidades.
-- **Inventory and Reservation:** unidades físicas, disponibilidade e reservas.
-- **Commercial:** solicitações, propostas, descontos, aceite, pagamento confirmado e vendas.
-- **Audit:** rastreabilidade estruturada das ações relevantes.
-
-Catálogo foi separado do controle operacional do estoque porque possuem modelos e ritmos de mudança diferentes. Estoque e Reservas permanecem juntos para garantir a invariante de que uma unidade não pode participar de duas reservas ativas simultaneamente.
-
-A descrição completa está em [Bounded Contexts do Maikeise MotoHub](02-bounded-contexts.md).
-
-## Context Map
-
-As relações iniciais foram definidas com os seguintes padrões:
-
-- **Partnership:** Commercial e Inventory and Reservation.
-- **Customer/Supplier:** Customer Management fornece dados comerciais para Commercial.
-- **Anti-Corruption Layer:** Commercial traduz anúncio e preço recebidos de Catalog.
-- **Open Host Service:** Identity and Access fornece identidade e permissões aos contextos protegidos.
-- **Published Language:** contratos e eventos conectam Catalog, Inventory and Reservation e Audit.
-
-Consultas necessárias à decisão atual são inicialmente síncronas. Disponibilidade pública e auditoria aceitam consistência eventual por eventos assíncronos.
-
-O mapa completo está em [Context Map do Maikeise MotoHub](03-context-map.md).
-
-## Eventos de domínio
-
-A linha do tempo principal foi detalhada desde a habilitação do cliente até a conclusão ou o cancelamento da venda. O mapeamento separa comandos, fatos ocorridos, políticas automáticas e modelos de leitura.
-
-As principais decisões incluem reserva integral de múltiplas unidades, prazo inicial de 48 horas, uma única prorrogação de 24 horas, tentativa automática de reserva após o aceite e cancelamento de venda por ação compensatória.
-
-O resultado completo está em [Eventos de domínio e Event Storming textual](04-domain-events.md).
-
-## Agregados e invariantes
-
-O modelo tático inicial identifica onze Aggregate Roots. `UnidadeEstoque` e `Reserva` permanecem separadas, mas a criação integral da reserva ocorre em uma transação local do mesmo contexto. `Proposta` controla suas versões internamente, enquanto `Venda` preserva o registro comercial definitivo.
-
-Entidades internas e Value Objects não possuem repositórios próprios. Referências entre agregados utilizam IDs tipados, e regras globais recebem proteção adicional por restrições no banco.
-
-O resultado completo está em [Agregados e invariantes](05-aggregates-and-invariants.md).
+</details>
 
 ## Próximo passo
 
-A `BKL-007` formalizará o monólito modular, a Arquitetura Hexagonal, as regras de dependência, as transações e a entrega confiável de eventos.
+A `BKL-007` definirá estrutura de módulos, regras de dependência, transações, persistência, eventos confiáveis e critérios para uma futura extração de microsserviços.
 
-## Critério para concluir esta fase
-
-O modelo inicial é considerado pronto para orientar a arquitetura porque:
-
-- Cada contexto tem responsabilidade clara.
-- Os termos ambíguos possuem significado acordado.
-- As principais invariantes estão associadas a agregados.
-- As integrações entre contextos estão explícitas.
-- As decisões e dúvidas relevantes estão documentadas.
+[Voltar ao Hub da documentação](../README.md).
