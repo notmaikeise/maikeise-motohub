@@ -35,23 +35,38 @@ Upstream e downstream descrevem a direção da dependência sobre um contrato. E
 ## Visão operacional
 
 ```mermaid
-flowchart TD
+---
+config:
+  flowchart:
+    nodeSpacing: 90
+    rankSpacing: 110
+    curve: basis
+---
+flowchart TB
     IDENTITY["Identity and Access"]
-    CUSTOMER["Customer Management"]
-    CATALOG["Catalog"]
-    COMMERCIAL["Commercial"]
-    INVENTORY["Inventory and Reservation"]
+
+    subgraph SUPPORTING["Contextos Supporting"]
+        direction LR
+        CUSTOMER["Customer Management"]
+        CATALOG["Catalog"]
+    end
+
+    subgraph CORE["Contextos Core"]
+        direction LR
+        COMMERCIAL["Commercial"]
+        INVENTORY["Inventory and Reservation"]
+    end
 
     IDENTITY -->|"conta e permissões"| CUSTOMER
     IDENTITY -->|"ator autorizado"| CATALOG
-    IDENTITY -->|"ator autorizado"| INVENTORY
     IDENTITY -->|"ator autorizado"| COMMERCIAL
+    IDENTITY -->|"ator autorizado"| INVENTORY
+
     CUSTOMER -->|"cliente apto e dados mínimos"| COMMERCIAL
     CATALOG -->|"anúncio e preço"| COMMERCIAL
-    CATALOG -->|"modelo válido"| INVENTORY
-    INVENTORY -. "mudanças de disponibilidade" .-> CATALOG
-    COMMERCIAL -->|"solicita reserva e uso"| INVENTORY
-    INVENTORY -->|"confirma ou recusa"| COMMERCIAL
+
+    CATALOG <-->|"modelo e disponibilidade"| INVENTORY
+    COMMERCIAL <-->|"reserva e confirmação"| INVENTORY
 ```
 
 As setas contínuas representam necessidades inicialmente síncronas. A seta tracejada representa uma atualização assíncrona.
