@@ -1,0 +1,64 @@
+name: User story
+description: Registre uma necessidade que entrega valor a um usuário.
+title: "[STORY] "
+labels:
+  - "type: feature"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Descreva o valor para o usuário antes de propor detalhes técnicos.
+
+  - type: input
+    id: actor
+    attributes:
+      label: Ator
+      description: Quem precisa desta funcionalidade?
+      placeholder: "Exemplo: comprador PF, vendedor ou gerente"
+    validations:
+      required: true
+
+  - type: textarea
+    id: story
+    attributes:
+      label: História
+      description: Use a estrutura abaixo.
+      placeholder: Como [ator], quero [objetivo], para [benefício].
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto
+      description: Explique o problema e as regras relacionadas.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceite
+      description: Liste condições observáveis que comprovem a conclusão.
+      placeholder: |
+        - [ ] Dado que..., quando..., então...
+        - [ ] Dado que..., quando..., então...
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Referências
+      description: Informe requisitos, regras de negócio ou documentos relacionados.
+      placeholder: "Exemplo: RF-RES-001, RN-RES-002"
+
+  - type: checkboxes
+    id: ready
+    attributes:
+      label: Verificação
+      options:
+        - label: A história possui valor claro para um ator.
+          required: true
+        - label: Os critérios de aceite podem ser testados.
+          required: true

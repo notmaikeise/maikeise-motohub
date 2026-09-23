@@ -1,0 +1,52 @@
+name: Technical task
+description: Registre uma tarefa técnica, arquitetural ou de documentação.
+title: "[TECH] "
+labels:
+  - "type: technical"
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      options:
+        - Discovery
+        - Documentation
+        - Architecture
+        - Infrastructure
+        - Testing
+        - Refactoring
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objetivo
+      description: O que precisa ser alcançado e por quê?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo
+      description: Liste o trabalho incluído e os limites da tarefa.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: Definição de pronto
+      placeholder: |
+        - [ ] Resultado documentado
+        - [ ] Validações executadas
+        - [ ] Referências atualizadas
+    validations:
+      required: true
+
+  - type: textarea
+    id: decisions
+    attributes:
+      label: Decisões ou riscos
+      description: Registre alternativas, dependências e riscos conhecidos.

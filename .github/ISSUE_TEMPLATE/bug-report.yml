@@ -1,0 +1,51 @@
+name: Bug report
+description: Registre um comportamento incorreto e reproduzível.
+title: "[BUG] "
+labels:
+  - "type: bug"
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema observado
+      description: Explique o que aconteceu.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. Acesse...
+        2. Informe...
+        3. Clique...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidências
+      description: Adicione mensagens, logs ou imagens sem dados sensíveis.
+
+  - type: input
+    id: environment
+    attributes:
+      label: Ambiente
+      placeholder: "Exemplo: local, navegador e versão da aplicação"
+
+  - type: checkboxes
+    id: security
+    attributes:
+      label: Segurança
+      options:
+        - label: Revisei as evidências e removi senhas, tokens e dados pessoais.
+          required: true
