@@ -16,7 +16,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 - **Discovery:** investigação e modelagem.
 - **Documentation:** documentação do produto.
 - **Architecture:** decisão técnica relevante.
-- **Feature:** valor perceptível ao usuário.
+- **Feature:** valor perceptível a um ator do sistema.
 - **Technical:** infraestrutura ou qualidade interna.
 
 ## Épico 0 - Descoberta e DDD
@@ -47,54 +47,54 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| BKL-020 | Cadastrar comprador PF | Feature | Must | Conta PF criada com validações |
-| BKL-021 | Cadastrar comprador PJ | Feature | Must | Conta PJ e representante criados |
-| BKL-022 | Autenticar usuário | Feature | Must | Entrada e saída seguras |
-| BKL-023 | Autorizar ações por perfil | Feature | Must | Permissões aplicadas no servidor |
+| BKL-020 | Cadastrar cliente PF | Feature | Must | Cliente e conta de acesso criados com validações |
+| BKL-021 | Cadastrar cliente PJ | Feature | Must | Cliente PJ, representante e conta de acesso criados |
+| BKL-022 | Autenticar conta de acesso | Feature | Must | Entrada e saída seguras |
+| BKL-023 | Autorizar ações por papel | Feature | Must | Permissões aplicadas no servidor |
 | BKL-024 | Gerenciar contas de funcionários | Feature | Must | Administrador controla acessos internos |
-| BKL-025 | Recuperar senha | Feature | Should | Usuário recupera acesso à conta |
+| BKL-025 | Recuperar senha | Feature | Should | Titular recupera acesso à conta |
 
 ## Épico 3 - Catálogo e estoque
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| BKL-030 | Cadastrar modelo de motocicleta | Feature | Must | Catálogo de modelos disponível |
+| BKL-030 | Cadastrar modelo de motocicleta | Feature | Must | Base de modelos disponível para vincular unidades |
 | BKL-031 | Cadastrar unidade de estoque | Feature | Must | Unidade identificada por chassi |
 | BKL-032 | Controlar status da unidade | Feature | Must | Transições válidas e auditadas |
-| BKL-033 | Consultar catálogo público | Feature | Must | Visitante encontra unidades disponíveis |
+| BKL-033 | Consultar catálogo público | Feature | Must | Visitante encontra unidades específicas e seus preços anunciados |
 | BKL-034 | Pesquisar e filtrar catálogo | Feature | Should | Busca por atributos comerciais |
-| BKL-035 | Gerenciar fotos da motocicleta | Feature | Should | Detalhes visuais no catálogo |
+| BKL-035 | Gerenciar fotos da unidade | Feature | Should | Detalhes visuais no catálogo |
 
 ## Épico 4 - Propostas e descontos
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| BKL-040 | Solicitar proposta | Feature | Must | Comprador envia interesse comercial |
-| BKL-041 | Preparar e calcular proposta | Feature | Must | Vendedor define itens e condições |
+| BKL-040 | Solicitar proposta | Feature | Must | Cliente envia interesse por unidades específicas |
+| BKL-041 | Preparar e calcular proposta | Feature | Must | Vendedor calcula valor bruto, desconto global e valor final |
 | BKL-042 | Controlar validade da proposta | Feature | Must | Expiração automática em sete dias |
 | BKL-043 | Versionar proposta | Feature | Must | Histórico preservado após mudanças |
 | BKL-044 | Aprovar desconto especial | Feature | Must | Gerente decide descontos acima de 10% |
-| BKL-045 | Aceitar ou recusar proposta | Feature | Must | Comprador registra sua decisão |
+| BKL-045 | Aceitar ou recusar proposta | Feature | Must | Cliente registra sua decisão |
 | BKL-046 | Gerar proposta em PDF | Feature | Should | Documento comercial para download |
 
 ## Épico 5 - Reservas
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| BKL-050 | Criar reserva de proposta aceita | Feature | Must | Unidades reservadas para o comprador |
+| BKL-050 | Criar reserva de proposta aceita | Feature | Must | Unidades reservadas para o cliente |
 | BKL-051 | Impedir reserva simultânea | Technical | Must | Apenas uma reserva ativa por unidade |
 | BKL-052 | Expirar reserva em 72 horas | Feature | Must | Estoque liberado automaticamente |
-| BKL-053 | Cancelar reserva | Feature | Must | Comprador ou funcionário libera unidades |
+| BKL-053 | Cancelar reserva | Feature | Must | Cliente ou funcionário libera unidades |
 | BKL-054 | Prorrogar reserva | Feature | Should | Gerente estende o prazo com justificativa |
 
 ## Épico 6 - Vendas
 
 | ID | Item | Tipo | Prioridade | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| BKL-060 | Registrar pagamento externo | Feature | Must | Confirmação vinculada à negociação |
+| BKL-060 | Registrar confirmação de pagamento externo | Feature | Must | Confirmação vinculada à negociação |
 | BKL-061 | Concluir venda | Feature | Must | Venda, proposta, reserva e estoque atualizados |
 | BKL-062 | Preservar snapshot comercial | Technical | Must | Valores históricos não mudam |
-| BKL-063 | Consultar histórico de compras | Feature | Must | Comprador visualiza suas aquisições |
+| BKL-063 | Consultar histórico de compras | Feature | Must | Cliente visualiza suas vendas concluídas sob a perspectiva de compra |
 | BKL-064 | Pesquisar vendas | Feature | Must | Funcionário consulta operações concluídas |
 
 ## Épico 7 - Auditoria, qualidade e experiência

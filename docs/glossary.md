@@ -1,39 +1,81 @@
-# Glossário inicial
+# Linguagem ubíqua
 
-Este documento é a primeira versão da linguagem do produto. Ele será revisado durante a construção da linguagem ubíqua do DDD.
+Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, consolidado na `BKL-001`. Ele é um documento vivo e será refinado quando novos conhecimentos surgirem durante a modelagem e a implementação.
 
-| Termo | Significado no Maikeise MotoHub |
+| Termo | Definição oficial no Maikeise MotoHub |
 | --- | --- |
-| Administrador | Funcionário que gerencia contas, perfis e permissões internas. |
-| Alçada de desconto | Percentual que um usuário pode conceder sem aprovação superior. |
+| Administrador | Funcionário que gerencia contas, papéis de acesso e permissões internas. |
+| Aceite da proposta | Confirmação registrada de que o cliente concorda com uma proposta enviada e válida. O aceite não bloqueia automaticamente as unidades. |
+| Alçada de desconto | Percentual máximo que um funcionário pode conceder sem aprovação superior. No MVP, a alçada do vendedor é de 10% sobre o valor bruto total da proposta. |
+| Análise de desconto | Decisão registrada do gerente sobre um desconto que ultrapassa a alçada do vendedor. |
 | Auditoria | Registro de uma ação com responsável, data e horário. |
-| Backlog | Lista priorizada de trabalho conhecido. |
-| Comprador | Pessoa física ou jurídica que negocia a aquisição de motocicletas. |
+| Cancelamento da reserva | Encerramento intencional de uma reserva por um cliente ou funcionário autorizado. |
+| Catálogo | Apresentação das unidades de estoque disponíveis para consulta. Unidades do mesmo modelo aparecem separadamente quando possuem registros físicos distintos. |
+| Cliente | Pessoa física ou jurídica cadastrada que participa de propostas, reservas e vendas. É o termo oficial do domínio para quem negocia a aquisição de motocicletas. |
 | Cliente ativo | Cliente autorizado a iniciar novas propostas e reservas. |
+| Compra | Perspectiva pela qual o cliente visualiza uma venda concluída. Não representa um registro comercial diferente da venda. |
 | Concessionária | Organização que utiliza o sistema e comercializa motocicletas. |
-| Funcionário autorizado | Usuário interno que possui permissão para executar determinada ação. |
+| Confirmação de pagamento | Registro feito por um funcionário autorizado após verificar que um pagamento externo foi realizado. Não significa que o MotoHub processou a transação. |
+| Conclusão da venda | Operação que valida a proposta aceita, a reserva ativa e a confirmação de pagamento antes de criar a venda definitiva. |
+| Conta de acesso | Credenciais e estado de acesso utilizados por uma pessoa para entrar no sistema. Não representa, por si só, um cliente ou funcionário. |
+| Desconto comercial | Redução aplicada ao valor bruto total de uma proposta. |
+| Expiração da reserva | Encerramento automático de uma reserva quando seu prazo termina sem a conclusão da venda. |
+| Funcionário | Pessoa interna da concessionária que utiliza uma conta de acesso para realizar atividades autorizadas. |
+| Funcionário autorizado | Funcionário cuja conta possui permissão para executar determinada ação. |
 | Gerente | Funcionário que analisa descontos especiais e exceções permitidas. |
-| Modelo de motocicleta | Definição genérica de marca, modelo, versão e especificações. |
-| Motocicleta disponível | Unidade de estoque apta a participar de uma nova negociação. |
+| Modelo de motocicleta | Definição compartilhada de marca, modelo, versão e especificações. Não representa uma motocicleta física que possa ser reservada ou vendida. |
 | Pagamento externo | Pagamento realizado fora do Maikeise MotoHub e confirmado por um funcionário. |
-| Pessoa física | Comprador individual identificado pelo CPF. |
-| Pessoa jurídica | Empresa compradora identificada pelo CNPJ. |
+| Pagamento online | Processamento de pagamento dentro do MotoHub. É uma capacidade futura e não pertence ao MVP. |
+| Papel de acesso | Conjunto nomeado de permissões atribuído a uma conta, como responsável pelo estoque, vendedor, gerente ou administrador. |
+| Pessoa física | Cliente individual identificado pelo CPF. |
+| Pessoa jurídica | Cliente empresarial identificado pelo CNPJ. |
 | Preparação | Etapa anterior à disponibilidade comercial de uma unidade. |
-| Proposta | Oferta comercial versionada, com itens, valores, descontos, condições e validade. |
-| Representante | Pessoa que atua em nome de uma pessoa jurídica. |
-| Reserva | Bloqueio temporário de uma ou mais unidades para o comprador de uma proposta aceita. |
+| Preço anunciado | Valor atual exibido para uma unidade no catálogo e usado como base na criação de uma versão de proposta. |
+| Proposta | Oferta comercial preparada pelo vendedor em resposta a uma solicitação, contendo unidades, valores, descontos, condições e validade. Somente uma proposta enviada e válida pode ser aceita ou recusada pelo cliente. |
+| Prorrogação da reserva | Extensão do prazo de uma reserva ativa, autorizada pelo gerente antes da expiração e acompanhada de justificativa. |
+| Representante | Pessoa física vinculada a um cliente pessoa jurídica que utiliza uma conta de acesso para agir em nome da empresa. |
+| Reserva | Bloqueio temporário confirmado de uma ou mais unidades para o cliente de uma proposta aceita. Possui prazo inicial de 72 horas. |
+| Reserva ativa | Reserva confirmada que ainda não expirou, não foi cancelada e não foi utilizada para concluir uma venda. |
 | Responsável pelo estoque | Funcionário que gerencia modelos, unidades e disponibilidade. |
-| Snapshot comercial | Cópia das condições da proposta preservada na venda. |
-| Unidade de estoque | Motocicleta física específica, identificada principalmente pelo chassi. |
-| Venda | Resultado comercial concluído após proposta aceita, reserva ativa e confirmação do pagamento externo. |
+| Snapshot comercial | Cópia imutável das unidades, preços, desconto e condições da proposta aceita, preservada na venda. |
+| Solicitação de proposta | Pedido inicial enviado por um cliente ativo após a escolha de uma ou mais unidades. Demonstra interesse comercial, mas ainda não constitui uma oferta e não reserva as unidades. |
+| Solicitação de reserva | Pedido feito após o aceite de uma proposta válida para que o sistema verifique novamente a disponibilidade e tente bloquear suas unidades. |
+| Unidade de estoque | Motocicleta física específica, identificada principalmente pelo chassi e com informações próprias, como cor, ano, preço e situação no estoque. É a unidade escolhida pelo cliente, incluída na proposta, reservada e vendida. |
+| Unidade disponível | Unidade de estoque apta a aparecer no catálogo e participar de uma nova negociação. |
+| Usuário autenticado | Pessoa que entrou no sistema por meio de uma conta de acesso válida. É uma condição de acesso, não um sinônimo de cliente. |
+| Valor bruto da proposta | Soma dos preços das unidades incluídas em uma versão da proposta antes do desconto comercial. |
+| Valor final da proposta | Valor bruto da proposta menos o desconto comercial concedido. |
+| Venda | Registro comercial definitivo criado após proposta aceita, reserva ativa e confirmação do pagamento externo. Preserva as condições comerciais utilizadas na conclusão. |
 | Vendedor | Funcionário que prepara propostas, acompanha negociações e conclui vendas. |
-| Versionamento de proposta | Preservação das versões anteriores quando uma proposta é modificada. |
+| Versão de proposta | Edição identificada e preservada de uma proposta. Quando condições comerciais são alteradas, uma nova versão substitui a anterior para fins de aceite. |
+| Visitante | Pessoa que consulta o catálogo público sem precisar estar autenticada ou cadastrada como cliente. |
+
+## Convenções de linguagem
+
+- **Cliente** é o termo oficial utilizado no domínio, na documentação e futuramente no código.
+- **Comprador** pode aparecer em conversas informais, mas não representa um conceito separado do domínio.
+- Um cliente pessoa jurídica realiza ações no sistema por meio de um **representante**.
+- **Moto** e **motocicleta** podem aparecer como palavras genéricas na interface e nas conversas. Quando a distinção importar, devem ser usados **modelo de motocicleta** e **unidade de estoque**.
+- O cliente escolhe uma **unidade de estoque específica** no catálogo; o sistema não escolhe automaticamente uma unidade apenas com base no modelo.
+- **Solicitação de proposta** é o pedido inicial do cliente; **proposta** é a oferta comercial produzida pelo vendedor.
+- O envio de uma solicitação ou proposta não reserva unidades. A reserva somente pode ser solicitada depois do aceite de uma proposta válida.
+- **Conta de acesso** pertence à identidade e à segurança; **cliente** pertence ao negócio comercial.
+- Clientes, representantes e funcionários descrevem quem participa do negócio. Papéis de acesso descrevem o que uma conta está autorizada a fazer.
+- **Aceite da proposta** registra concordância comercial; **reserva** registra o bloqueio temporário efetivo das unidades.
+- **Expiração** é um encerramento automático causado pelo fim do prazo. **Cancelamento** é um encerramento intencional realizado por um ator autorizado.
+- **Venda** é o termo oficial do domínio. **Compra** é a forma de apresentar a mesma operação sob a perspectiva do cliente.
+- No MVP, o MotoHub registra a **confirmação de pagamento**, mas não processa o pagamento.
+- No MVP, o **desconto comercial** é aplicado ao valor bruto total da proposta. Descontos diferentes por unidade ficam como evolução futura.
+- O desconto global é uma escolha de escopo do MVP, não uma regra universal do mercado.
+- O **preço anunciado** é copiado para a versão da proposta. Alterações posteriores no catálogo não mudam versões já criadas.
 
 ## Termos técnicos usados no planejamento
 
 | Termo | Definição simples |
 | --- | --- |
 | DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
+| Domínio | Área de negócio e conjunto de problemas que o software pretende compreender e resolver. |
+| Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
 | MVP | Menor versão do produto que entrega valor e permite validar o fluxo principal. |
 | Single-tenant | Sistema que atende uma organização. |
 | Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |

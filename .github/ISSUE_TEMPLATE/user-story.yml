@@ -14,7 +14,7 @@ body:
     attributes:
       label: Ator
       description: Quem precisa desta funcionalidade?
-      placeholder: "Exemplo: comprador PF, vendedor ou gerente"
+      placeholder: "Exemplo: cliente PF, representante, vendedor ou gerente"
     validations:
       required: true
 

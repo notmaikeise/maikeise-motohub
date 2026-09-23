@@ -36,7 +36,7 @@ Could
 Won't
 ```
 
-### Type
+### Category
 
 Campo de seleção única:
 
@@ -137,7 +137,13 @@ Não duplique `Status` e `Priority` como labels se eles já existirem como campo
 
 ## Automação inicial
 
-Depois de criar o projeto, revise os workflows internos disponíveis. Uma configuração inicial útil é mover itens fechados para `Done`. Outras automações devem ser adicionadas apenas quando o fluxo estiver estável.
+Configuração inicial adotada:
+
+- Item adicionado ao projeto recebe `Status: Backlog`.
+- Issue fechada recebe `Status: Done`.
+- Pull request integrado recebe `Status: Done`.
+
+Outras automações devem ser adicionadas apenas quando o fluxo estiver estável.
 
 ## Referências oficiais
 

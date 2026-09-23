@@ -11,23 +11,24 @@
 
 | Código | Requisito |
 | --- | --- |
-| RF-AUT-001 | Permitir o cadastro de compradores. |
-| RF-AUT-002 | Permitir que o comprador escolha entre cadastro PF e PJ. |
-| RF-AUT-003 | Permitir entrada e saída por conta autenticada. |
-| RF-AUT-004 | Permitir que o administrador cadastre, ative e desative funcionários. |
-| RF-AUT-005 | Permitir que o administrador atribua perfis de acesso. |
-| RF-AUT-006 | Restringir funcionalidades conforme as permissões do usuário. |
+| RF-AUT-001 | Autenticar pessoas por meio de uma conta de acesso individual. |
+| RF-AUT-002 | Permitir a saída segura de uma conta autenticada. |
+| RF-AUT-003 | Permitir que o administrador cadastre, ative e desative contas de funcionários. |
+| RF-AUT-004 | Permitir que o administrador atribua papéis de acesso. |
+| RF-AUT-005 | Restringir funcionalidades conforme as permissões da conta autenticada. |
+| RF-AUT-006 | Impedir que uma conta altere as próprias permissões. |
 
 ### Clientes
 
 | Código | Requisito |
 | --- | --- |
-| RF-CLI-001 | Cadastrar clientes pessoa física. |
-| RF-CLI-002 | Cadastrar clientes pessoa jurídica e seu representante. |
+| RF-CLI-001 | Cadastrar clientes pessoa física e vinculá-los a uma conta de acesso. |
+| RF-CLI-002 | Cadastrar clientes pessoa jurídica e seu representante com conta de acesso. |
 | RF-CLI-003 | Validar formato e dígitos de CPF e CNPJ. |
-| RF-CLI-004 | Permitir que o comprador consulte e edite os próprios dados. |
-| RF-CLI-005 | Permitir que funcionários autorizados pesquisem clientes. |
-| RF-CLI-006 | Inativar clientes sem apagar o histórico. |
+| RF-CLI-004 | Permitir que o cliente PF consulte e edite os próprios dados. |
+| RF-CLI-005 | Permitir que o representante consulte e edite os dados do cliente PJ vinculado. |
+| RF-CLI-006 | Permitir que funcionários autorizados pesquisem clientes. |
+| RF-CLI-007 | Inativar clientes sem apagar o histórico. |
 
 ### Motocicletas e estoque
 
@@ -39,27 +40,29 @@
 | RF-MOT-004 | Editar e inativar unidades. |
 | RF-MOT-005 | Alterar status conforme as transições permitidas. |
 | RF-MOT-006 | Preservar o histórico das alterações de status. |
-| RF-MOT-007 | Pesquisar motocicletas por marca, modelo, ano, preço e disponibilidade. |
-| RF-MOT-008 | Exibir detalhes e fotos de uma motocicleta. |
+| RF-MOT-007 | Pesquisar unidades por marca, modelo, ano, preço anunciado e disponibilidade. |
+| RF-MOT-008 | Exibir detalhes, fotos e preço anunciado de uma unidade. |
 | RF-MOT-009 | Ocultar unidades inativas e vendidas no catálogo público. |
+| RF-MOT-010 | Exibir separadamente cada unidade física disponível, mesmo quando pertencem ao mesmo modelo. |
 
 ### Propostas
 
 | Código | Requisito |
 | --- | --- |
-| RF-PRO-001 | Permitir a solicitação de proposta para uma ou mais unidades. |
-| RF-PRO-002 | Permitir que o vendedor consulte solicitações. |
+| RF-PRO-001 | Permitir que o cliente envie uma solicitação de proposta para uma ou mais unidades específicas. |
+| RF-PRO-002 | Permitir que o vendedor consulte solicitações de proposta. |
 | RF-PRO-003 | Preparar propostas com valores, descontos, condições e validade. |
-| RF-PRO-004 | Calcular subtotal, desconto e total. |
-| RF-PRO-005 | Encaminhar descontos superiores a 10% para aprovação. |
-| RF-PRO-006 | Permitir que o gerente aprove ou rejeite o desconto. |
-| RF-PRO-007 | Permitir o envio da proposta ao comprador. |
-| RF-PRO-008 | Permitir que o comprador aceite ou recuse a proposta. |
-| RF-PRO-009 | Controlar a validade de sete dias. |
-| RF-PRO-010 | Expirar automaticamente propostas vencidas. |
-| RF-PRO-011 | Criar nova versão quando uma proposta enviada for alterada. |
-| RF-PRO-012 | Preservar versões anteriores para histórico. |
-| RF-PRO-013 | Exibir a situação atual da proposta. |
+| RF-PRO-004 | Calcular valor bruto, desconto global e valor final. |
+| RF-PRO-005 | Capturar os preços anunciados utilizados em cada versão da proposta. |
+| RF-PRO-006 | Encaminhar descontos superiores a 10% para aprovação. |
+| RF-PRO-007 | Permitir que o gerente aprove ou rejeite o desconto. |
+| RF-PRO-008 | Permitir o envio da proposta ao cliente. |
+| RF-PRO-009 | Permitir que o cliente aceite ou recuse a proposta. |
+| RF-PRO-010 | Controlar a validade de sete dias. |
+| RF-PRO-011 | Expirar automaticamente propostas vencidas. |
+| RF-PRO-012 | Criar nova versão quando uma proposta enviada for alterada. |
+| RF-PRO-013 | Preservar versões anteriores para histórico. |
+| RF-PRO-014 | Exibir separadamente a situação da solicitação e da proposta. |
 
 ### Reservas
 
@@ -71,7 +74,7 @@
 | RF-RES-004 | Alterar unidades confirmadas para `RESERVADA`. |
 | RF-RES-005 | Controlar o prazo de 72 horas. |
 | RF-RES-006 | Expirar automaticamente reservas vencidas. |
-| RF-RES-007 | Permitir o cancelamento por usuário autorizado. |
+| RF-RES-007 | Permitir o cancelamento por cliente ou funcionário autorizado. |
 | RF-RES-008 | Liberar unidades após cancelamento ou expiração. |
 | RF-RES-009 | Permitir prorrogação gerencial com justificativa. |
 | RF-RES-010 | Exibir situação e prazo restante. |
@@ -85,16 +88,16 @@
 | RF-VEN-003 | Preservar snapshot das condições comerciais. |
 | RF-VEN-004 | Alterar as unidades vendidas para `VENDIDA`. |
 | RF-VEN-005 | Vincular venda, cliente, proposta, reserva e responsável. |
-| RF-VEN-006 | Exibir ao comprador o próprio histórico de compras. |
+| RF-VEN-006 | Exibir ao cliente o próprio histórico de compras. |
 | RF-VEN-007 | Permitir que funcionários autorizados pesquisem vendas. |
 
 ### Auditoria
 
 | Código | Requisito |
 | --- | --- |
-| RF-AUD-001 | Registrar ações importantes realizadas pelos usuários. |
-| RF-AUD-002 | Registrar ação, usuário, data e horário. |
-| RF-AUD-003 | Restringir a consulta da auditoria a usuários autorizados. |
+| RF-AUD-001 | Registrar ações importantes realizadas por contas autenticadas. |
+| RF-AUD-002 | Registrar ação, conta responsável, data e horário. |
+| RF-AUD-003 | Restringir a consulta da auditoria a contas autorizadas. |
 
 ## Requisitos não funcionais
 
@@ -102,7 +105,7 @@
 | --- | --- |
 | RNF-SEG-001 | Senhas nunca podem ser armazenadas como texto legível. |
 | RNF-SEG-002 | Permissões devem ser verificadas pelo servidor. |
-| RNF-SEG-003 | Um comprador não pode acessar dados de outro comprador. |
+| RNF-SEG-003 | Um cliente ou representante não pode acessar dados de clientes sem vínculo autorizado. |
 | RNF-SEG-004 | Credenciais e segredos não podem ser incluídos no código ou no GitHub. |
 | RNF-CON-001 | A reserva deve ser atômica e segura contra solicitações simultâneas. |
 | RNF-CON-002 | Repetir acidentalmente a confirmação de venda não pode criar vendas duplicadas. |
@@ -124,8 +127,8 @@
 - Login e controle de permissões.
 - Cadastro PF e PJ.
 - Catálogo e estoque.
-- Propostas e versionamento.
-- Aprovação de descontos.
+- Solicitações, propostas e versionamento.
+- Desconto global e aprovação por alçada.
 - Reservas com expiração.
 - Registro de pagamento externo.
 - Conclusão da venda.
@@ -137,7 +140,7 @@
 ### Should have
 
 - Recuperação de senha.
-- Fotos das motocicletas.
+- Fotos das unidades.
 - Filtros avançados.
 - Prorrogação de reservas.
 - Proposta em PDF.
@@ -149,7 +152,7 @@
 - Exportação CSV.
 - Integração simulada com FIPE.
 - Favoritos.
-- Comparação entre motocicletas.
+- Comparação entre modelos de motocicleta.
 - Relatórios e gráficos básicos.
 
 ### Won't have now

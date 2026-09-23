@@ -1,12 +1,12 @@
 # Maikeise MotoHub
 
-Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende compradores pessoa física e pessoa jurídica.
+Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende clientes pessoa física e pessoa jurídica.
 
 > Status atual: ideação concluída e documentação inicial em construção. O código da aplicação ainda não foi iniciado.
 
 ## Visão geral
 
-O Maikeise MotoHub centraliza catálogo, estoque, clientes, propostas, reservas e vendas. Compradores podem consultar motocicletas e acompanhar negociações. Funcionários controlam a operação comercial com regras de acesso, histórico e rastreabilidade.
+O Maikeise MotoHub centraliza catálogo, estoque, clientes, propostas, reservas e vendas. Clientes podem consultar unidades de estoque e acompanhar negociações. Funcionários controlam a operação comercial com regras de acesso, histórico e rastreabilidade.
 
 O MVP será desenvolvido para uma única concessionária. A possibilidade de atender várias concessionárias como uma plataforma multi-tenant ficará para uma evolução futura.
 
@@ -32,10 +32,10 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 
 ## Escopo do MVP
 
-- Cadastro e autenticação de compradores PF e PJ.
-- Controle de acesso para comprador, estoque, vendedor, gerente e administrador.
-- Catálogo e estoque de motocicletas.
-- Solicitação, análise, versionamento e aceite de propostas.
+- Cadastro de clientes PF e PJ, representantes e contas de acesso.
+- Controle de acesso por papéis para clientes e funcionários.
+- Catálogo de unidades de estoque com preço anunciado.
+- Solicitação, preparação, versionamento e aceite de propostas.
 - Aprovação gerencial de descontos superiores a 10%.
 - Reservas com duração de 72 horas.
 - Registro de pagamento realizado fora da plataforma.
@@ -48,13 +48,13 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 | --- | --- |
 | [Origem e propósito](docs/00-project-context.md) | Relação com o projeto acadêmico e objetivo do estudo individual |
 | [Visão do produto](docs/01-product-vision.md) | Problema, objetivos, proposta de valor e modelo de negócio |
-| [Escopo e atores](docs/02-scope-and-actors.md) | Limites do MVP, usuários e responsabilidades |
-| [Jornada principal](docs/03-user-journey.md) | Fluxo do comprador e caminhos alternativos |
+| [Escopo e atores](docs/02-scope-and-actors.md) | Limites do MVP, atores e responsabilidades |
+| [Jornada principal](docs/03-user-journey.md) | Fluxo do cliente e caminhos alternativos |
 | [Regras de negócio](docs/04-business-rules.md) | Regras de clientes, estoque, propostas, reservas e vendas |
 | [Requisitos](docs/05-requirements.md) | Requisitos funcionais, não funcionais e prioridades |
 | [Backlog inicial](docs/06-backlog.md) | Épicos e itens planejados |
 | [Decisões em aberto](docs/07-open-decisions.md) | Questões que ainda precisam de análise |
-| [Glossário](docs/glossary.md) | Linguagem inicial do produto |
+| [Linguagem ubíqua](docs/glossary.md) | Vocabulário oficial do domínio |
 | [DDD](docs/ddd/README.md) | Estado e roteiro da modelagem de domínio |
 | [GitHub Projects](docs/project-management/github-projects-setup.md) | Configuração recomendada para os cards |
 

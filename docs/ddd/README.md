@@ -2,9 +2,15 @@
 
 ## Estado atual
 
-A modelagem DDD ainda não está concluída. A documentação disponível representa a ideação e o levantamento inicial do domínio.
+A linguagem ubíqua inicial foi consolidada na `BKL-001`. A modelagem DDD ainda não está concluída e continuará com a identificação dos subdomínios.
 
 O projeto não adotará limites de microsserviços antes de identificar os limites reais do negócio.
+
+| Atividade | Situação |
+| --- | --- |
+| BKL-001 - Consolidar a linguagem ubíqua | Concluída |
+| BKL-002 - Identificar subdomínios | Próxima |
+| BKL-003 a BKL-006 | Backlog |
 
 ## Próxima fase: DDD estratégico
 
@@ -12,7 +18,7 @@ O DDD estratégico analisa o domínio em uma visão ampla.
 
 ### Entregáveis planejados
 
-1. Linguagem ubíqua revisada.
+1. [Linguagem ubíqua revisada](../glossary.md).
 2. Subdomínios central, de apoio e genéricos.
 3. Bounded Contexts.
 4. Context Map.

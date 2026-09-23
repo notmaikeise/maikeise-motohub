@@ -4,9 +4,9 @@
 
 O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
 
-### Área do comprador
+### Área do cliente
 
-- Consultar motocicletas disponíveis sem autenticação.
+- Consultar unidades disponíveis e seus preços anunciados sem autenticação.
 - Criar uma conta como pessoa física ou jurídica.
 - Editar o próprio cadastro.
 - Solicitar e acompanhar propostas.
@@ -24,7 +24,7 @@ O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
 - Controlar versões e validade das propostas.
 - Aprovar descontos acima da alçada do vendedor.
 - Gerenciar reservas.
-- Registrar pagamentos externos.
+- Registrar confirmações de pagamentos externos.
 - Concluir e consultar vendas.
 - Gerenciar contas de funcionários.
 - Consultar registros básicos de auditoria.
@@ -43,7 +43,11 @@ O MVP cobre o fluxo comercial principal de uma concessionária de motocicletas.
 
 ## Atores
 
-### Comprador PF
+### Visitante
+
+Pessoa que consulta o catálogo público sem utilizar uma conta de acesso.
+
+### Cliente PF
 
 Pessoa física interessada em adquirir uma ou mais motocicletas.
 
@@ -53,7 +57,7 @@ Pessoa responsável por negociar em nome de uma empresa ou frota.
 
 ### Responsável pelo estoque
 
-Funcionário que cadastra modelos e unidades, registra a preparação e controla a disponibilidade das motocicletas.
+Funcionário que cadastra modelos e unidades, registra a preparação e controla a disponibilidade das unidades.
 
 ### Vendedor
 
@@ -65,20 +69,20 @@ Funcionário que acompanha a operação, aprova descontos especiais e autoriza e
 
 ### Administrador
 
-Funcionário responsável por contas, perfis e permissões dos demais funcionários.
+Funcionário responsável por contas, papéis de acesso e permissões dos demais funcionários.
 
 ## Matriz inicial de responsabilidades
 
-| Ação | Comprador | Estoque | Vendedor | Gerente | Administrador |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Consultar catálogo | Sim | Sim | Sim | Sim | Sim |
-| Alterar o próprio cadastro | Sim | Sim | Sim | Sim | Sim |
-| Gerenciar motocicletas | Não | Sim | Consulta | Consulta | Não |
-| Solicitar proposta | Sim | Não | Não | Não | Não |
-| Preparar proposta | Não | Não | Sim | Sim | Não |
-| Aprovar desconto acima de 10% | Não | Não | Não | Sim | Não |
-| Solicitar reserva | Sim | Não | Sim | Sim | Não |
-| Confirmar venda | Não | Não | Sim | Sim | Não |
-| Gerenciar funcionários | Não | Não | Não | Não | Sim |
+| Ação | Visitante | Cliente | Estoque | Vendedor | Gerente | Administrador |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Consultar catálogo | Sim | Sim | Sim | Sim | Sim | Sim |
+| Alterar o próprio cadastro | Não | Sim | Sim | Sim | Sim | Sim |
+| Gerenciar modelos e unidades | Não | Não | Sim | Consulta | Consulta | Não |
+| Solicitar proposta | Não | Sim | Não | Não | Não | Não |
+| Preparar proposta | Não | Não | Não | Sim | Sim | Não |
+| Aprovar desconto acima de 10% | Não | Não | Não | Não | Sim | Não |
+| Solicitar reserva | Não | Sim | Não | Não | Não | Não |
+| Concluir venda | Não | Não | Não | Sim | Sim | Não |
+| Gerenciar funcionários | Não | Não | Não | Não | Não | Sim |
 
-Esta matriz é inicial e será revisada durante o DDD e a modelagem de autorização.
+Na matriz, **Cliente** representa o cliente PF ou o representante que age por um cliente PJ. Esta matriz é inicial e será revisada durante o DDD e a modelagem de autorização.
