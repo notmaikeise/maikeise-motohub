@@ -349,18 +349,15 @@ O histórico essencial continua no contexto que executou a ação. A auditoria r
 | Solicitação, proposta, desconto, pagamento confirmado e venda | Commercial |
 | Registro estruturado de auditoria | Audit |
 
-## Decisões que permanecem para as próximas atividades
+## Continuidade da modelagem
 
-- Quais contextos fornecem ou consomem informações de cada relacionamento.
-- Quais integrações serão síncronas e quais usarão eventos.
 - Como tratar falhas durante a conclusão da venda entre `commercial` e `inventory`.
-- Como o `catalog` será atualizado após reserva, expiração ou venda.
 - Quais ações exigem auditoria obrigatória.
 - Como as tabelas serão separadas dentro do PostgreSQL.
 - Quais regras arquiteturais serão verificadas automaticamente com testes.
 
-Essas decisões pertencem principalmente ao Context Map, ao mapeamento de eventos e à ADR arquitetural.
+As relações, direções e formas iniciais de integração foram definidas no [Context Map](03-context-map.md). As questões restantes pertencem principalmente ao mapeamento de eventos e à ADR arquitetural.
 
 ## Próximo passo
 
-A `BKL-004` criará o Context Map, definindo as relações, direções de dependência e contratos conceituais entre esses seis contextos.
+A `BKL-005` mapeará os eventos de domínio e a linha do tempo do fluxo comercial.

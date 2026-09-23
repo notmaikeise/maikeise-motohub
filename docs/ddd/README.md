@@ -2,7 +2,7 @@
 
 ## Estado atual
 
-A linguagem ubíqua foi consolidada na `BKL-001`, os subdomínios foram identificados na `BKL-002` e os Bounded Contexts foram definidos na `BKL-003`. A modelagem DDD ainda não está concluída e continuará com a criação do Context Map.
+A linguagem ubíqua foi consolidada na `BKL-001`, os subdomínios foram identificados na `BKL-002`, os Bounded Contexts foram definidos na `BKL-003` e suas relações foram registradas no Context Map da `BKL-004`. A modelagem continuará com os eventos de domínio.
 
 O projeto não adotará limites de microsserviços antes de identificar os limites reais do negócio.
 
@@ -11,8 +11,9 @@ O projeto não adotará limites de microsserviços antes de identificar os limit
 | BKL-001 - Consolidar a linguagem ubíqua | Concluída |
 | BKL-002 - Identificar subdomínios | Concluída |
 | BKL-003 - Definir Bounded Contexts | Concluída |
-| BKL-004 - Criar o Context Map | Próxima |
-| BKL-005 a BKL-006 | Backlog |
+| BKL-004 - Criar o Context Map | Concluída |
+| BKL-005 - Mapear eventos de domínio | Próxima |
+| BKL-006 - Modelar agregados e invariantes | Backlog |
 
 ## DDD estratégico
 
@@ -23,7 +24,7 @@ O DDD estratégico analisa o domínio em uma visão ampla.
 1. [Linguagem ubíqua revisada](../glossary.md).
 2. [Subdomínios Core, Supporting e Generic](01-subdomains.md).
 3. [Bounded Contexts](02-bounded-contexts.md).
-4. Context Map.
+4. [Context Map](03-context-map.md).
 5. Eventos de domínio e Event Storming textual.
 
 ## Fase seguinte: DDD tático
@@ -66,9 +67,23 @@ Catálogo foi separado do controle operacional do estoque porque possuem modelos
 
 A descrição completa está em [Bounded Contexts do Maikeise MotoHub](02-bounded-contexts.md).
 
+## Context Map
+
+As relações iniciais foram definidas com os seguintes padrões:
+
+- **Partnership:** Commercial e Inventory and Reservation.
+- **Customer/Supplier:** Customer Management fornece dados comerciais para Commercial.
+- **Anti-Corruption Layer:** Commercial traduz anúncio e preço recebidos de Catalog.
+- **Open Host Service:** Identity and Access fornece identidade e permissões aos contextos protegidos.
+- **Published Language:** contratos e eventos conectam Catalog, Inventory and Reservation e Audit.
+
+Consultas necessárias à decisão atual são inicialmente síncronas. Disponibilidade pública e auditoria aceitam consistência eventual por eventos assíncronos.
+
+O mapa completo está em [Context Map do Maikeise MotoHub](03-context-map.md).
+
 ## Próximo passo
 
-A `BKL-004` criará o Context Map para registrar as relações, direções de dependência e formas de integração entre os seis contextos.
+A `BKL-005` mapeará eventos, comandos, decisões e reações ao longo do fluxo comercial.
 
 ## Critério para concluir esta fase
 

@@ -73,22 +73,36 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 
 | Termo | Definição simples |
 | --- | --- |
-| DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
 | Adaptador | Componente que conecta uma porta da aplicação a uma tecnologia ou interface externa, como REST, banco de dados ou mensageria. |
+| Anti-Corruption Layer (ACL) | Camada que traduz contratos externos para o modelo interno, impedindo que um contexto seja contaminado pelo modelo de outro. |
 | Arquitetura Hexagonal | Organização que mantém as regras de negócio no centro e isola tecnologias externas por meio de portas e adaptadores. |
+| Assíncrono | Modo de comunicação em que o publicador não espera que todos os consumidores concluam o processamento. |
 | Bounded Context | Limite dentro do qual um modelo e sua linguagem possuem significados consistentes. Os contextos iniciais foram definidos na `BKL-003`. |
+| Consistência eventual | Situação em que uma representação pode ficar temporariamente desatualizada, mas converge posteriormente para o estado correto. |
+| Context Map | Mapa que registra relações, direções de dependência e padrões de integração entre Bounded Contexts. |
 | Core | Classificação de um subdomínio estratégico que concentra diferenciação e complexidade central. |
+| Customer/Supplier | Relação em que o contexto consumidor apresenta suas necessidades e o contexto fornecedor oferece um contrato apropriado. Customer, nesse padrão, não significa o cliente da concessionária. |
+| DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
 | Domínio | Área de negócio e conjunto de problemas que o software pretende compreender e resolver. |
+| Downstream | Contexto que consome uma informação, capacidade ou contrato fornecido por outro contexto. |
+| Evento de domínio | Representação de algo relevante que já aconteceu no negócio, normalmente nomeada no passado. |
 | Generic | Classificação de um subdomínio que resolve um problema comum a muitos sistemas. |
+| Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Invariante | Regra que deve permanecer verdadeira durante toda mudança válida do modelo, como impedir duas reservas ativas para a mesma unidade. |
 | Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
-| Monólito modular | Aplicação implantada como uma unidade, mas dividida internamente em módulos com limites e dependências controlados. |
-| MVP | Menor versão do produto que entrega valor e permite validar o fluxo principal. |
-| Single-tenant | Sistema que atende uma organização. |
-| Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |
-| Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Migração de banco | Alteração versionada da estrutura do banco de dados. |
+| Monólito modular | Aplicação implantada como uma unidade, mas dividida internamente em módulos com limites e dependências controlados. |
+| Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |
+| MVP | Menor versão do produto que entrega valor e permite validar o fluxo principal. |
+| Open Host Service | Serviço com contrato estável oferecido por um contexto para uso de vários consumidores. |
+| Partnership | Relação em que dois contextos coordenam sua evolução porque o sucesso de um fluxo depende de ambos. |
 | Porta | Contrato pelo qual o núcleo da aplicação recebe uma ação ou solicita uma capacidade externa sem depender da tecnologia concreta. |
+| Published Language | Formato de comunicação explicitamente definido e compreendido pelos contextos envolvidos. |
+| Shared Kernel | Parte de modelo ou código deliberadamente compartilhada por contextos e alterada mediante coordenação. Não será adotada entre os contextos de negócio do MotoHub. |
+| Single-tenant | Sistema que atende uma organização. |
+| Síncrono | Modo de comunicação em que quem solicita aguarda uma resposta para continuar. |
 | Snapshot | Cópia imutável dos dados relevantes de um momento, usada para preservar o histórico mesmo que a fonte original mude depois. |
 | Subdomínio | Parte coerente do problema de negócio, com responsabilidades e regras relacionadas. |
 | Supporting | Classificação de um subdomínio necessário ao Core, mas que não representa o principal diferencial do produto. |
+| Transactional Outbox | Padrão que registra uma alteração e o evento correspondente de forma atômica para permitir entrega posterior confiável. Sua adoção ainda será avaliada. |
+| Upstream | Contexto que fornece uma informação, capacidade ou contrato para outro contexto. |

@@ -16,6 +16,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Templates para issues.
 - Documento de identificação e classificação dos subdomínios.
 - Documento de definição dos Bounded Contexts e da propriedade dos dados.
+- Context Map com relações, padrões e modos de integração entre os contextos.
 
 ### Changed
 
@@ -30,3 +31,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Definição dos seis contextos iniciais: Identity and Access, Customer Management, Catalog, Inventory and Reservation, Commercial e Audit.
 - Separação entre Catálogo e Estoque e união entre Estoque e Reservas para preservar a exclusividade de cada unidade.
 - Registro da hipótese de monólito modular com Arquitetura Hexagonal, a ser formalizada por ADR.
+- Definição de Partnership entre Commercial e Inventory and Reservation.
+- Definição de Customer/Supplier, Open Host Service, Published Language e Anti-Corruption Layer nas demais relações.
+- Separação entre operações síncronas e atualizações assíncronas com consistência eventual.
+- Proibição de Shared Kernel, entidades, repositórios, associações JPA e consultas de tabelas entre contextos.

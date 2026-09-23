@@ -14,6 +14,9 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-009 | Qual licença será aplicada ao repositório público? | Antes da primeira versão pública de código |
 | DEC-010 | Qual estratégia de interface será usada: Thymeleaf ou frontend separado? | ADR de arquitetura |
 | DEC-011 | Quais regras de dependência, organização e testes formalizarão o monólito modular com Arquitetura Hexagonal? | ADR da BKL-007 |
+| DEC-012 | Como coordenar a criação da conta e do cadastro de cliente sem uma transação entre contextos? | Eventos e ADR de arquitetura |
+| DEC-013 | Como tratar falhas, repetição e compensação entre a conclusão da venda e a utilização da reserva? | Eventos e ADR de arquitetura |
+| DEC-014 | Qual mecanismo garantirá a entrega de eventos obrigatórios e de auditoria? | ADR da BKL-007 |
 
 ## Decisões já tomadas
 
@@ -40,3 +43,10 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-019 | Os seis Bounded Contexts iniciais são Identity and Access, Customer Management, Catalog, Inventory and Reservation, Commercial e Audit. |
 | DEC-C-020 | Catálogo permanece separado do controle operacional do estoque; Estoque e Reservas ficam no mesmo contexto para proteger a exclusividade da unidade. |
 | DEC-C-021 | A hipótese arquitetural inicial é um monólito modular com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo; a ADR da `BKL-007` formalizará a decisão. |
+| DEC-C-022 | Commercial e Inventory and Reservation mantêm uma Partnership, com respostas síncronas para reservar unidades e confirmar o uso da reserva. |
+| DEC-C-023 | Customer Management é upstream de Commercial em uma relação Customer/Supplier; Commercial guarda apenas referências e snapshots necessários. |
+| DEC-C-024 | Catalog fornece anúncio e preço para Commercial, que protege seu modelo com uma Anti-Corruption Layer e preserva um snapshot. |
+| DEC-C-025 | Catalog valida a referência do modelo de forma síncrona; Inventory and Reservation atualiza a disponibilidade pública por eventos assíncronos. |
+| DEC-C-026 | Identity and Access fornece um Open Host Service mínimo de autenticação e autorização; as regras de negócio permanecem nos contextos correspondentes. |
+| DEC-C-027 | Audit é downstream assíncrono dos demais contextos e não substitui suas fontes oficiais de estado. |
+| DEC-C-028 | Os contextos não compartilham entidades, repositórios, associações JPA, tabelas ou Shared Kernel; a integração usa identificadores, contratos, snapshots e eventos. |
