@@ -204,6 +204,6 @@ Não existe obrigação de mapear cada subdomínio diretamente para um Bounded C
 
 ## Continuidade da modelagem
 
-A `BKL-003` definiu os Bounded Contexts, a `BKL-004` registrou suas relações, a `BKL-005` mapeou os eventos e a `BKL-006` consolidou o modelo tático inicial. A continuidade está na decisão arquitetural da `BKL-007`.
+A `BKL-003` definiu os Bounded Contexts, a `BKL-004` registrou suas relações, a `BKL-005` mapeou os eventos e a `BKL-006` consolidou o modelo tático inicial. A `BKL-007` formalizou a [arquitetura inicial](../architecture/00-overview.md); a continuidade está na fundação técnica do projeto.
 
 [Voltar ao resumo do DDD](00-overview.md).

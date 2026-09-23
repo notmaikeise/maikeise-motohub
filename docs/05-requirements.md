@@ -160,6 +160,7 @@ Este documento traduz as regras e jornadas do MVP em capacidades verificáveis. 
 | RNF-SEG-002 | Permissões devem ser verificadas pelo servidor. |
 | RNF-SEG-003 | Um cliente ou representante não pode acessar dados de clientes sem vínculo autorizado. |
 | RNF-SEG-004 | Credenciais e segredos não podem ser incluídos no código ou no GitHub. |
+| RNF-SEG-005 | Requisições web que alteram estado devem possuir proteção contra CSRF e validar o acesso ao recurso solicitado. |
 | RNF-CON-001 | A criação da reserva deve ser segura contra solicitações simultâneas para a mesma unidade. |
 | RNF-CON-002 | Repetir acidentalmente a conclusão de venda não pode criar vendas duplicadas. |
 | RNF-CON-003 | A reserva de várias unidades deve ocorrer de forma atômica: todas ou nenhuma. |
@@ -170,11 +171,15 @@ Este documento traduz as regras e jornadas do MVP em capacidades verificáveis. 
 | RNF-MAN-001 | As regras de domínio devem ficar separadas da interface e da persistência. |
 | RNF-MAN-002 | As principais regras de negócio devem possuir testes automatizados. |
 | RNF-MAN-003 | O código deve usar nomes claros e documentação atualizada. |
+| RNF-MAN-004 | Os limites e ciclos entre módulos devem ser verificados automaticamente. |
 | RNF-DAD-001 | Alterações do banco devem usar migrações versionadas. |
+| RNF-DAD-002 | Cada Bounded Context deve controlar seu próprio schema e não consultar diretamente tabelas de outro contexto. |
 | RNF-OPS-001 | A execução local deve possuir instruções documentadas. |
 | RNF-OPS-002 | Aplicação e dependências devem poder iniciar com Docker Compose. |
+| RNF-OPS-003 | O ambiente essencial de estudo, execução local e integração contínua do repositório público não deve exigir serviço pago nem cartão. |
+| RNF-OBS-001 | A aplicação deve expor informações de saúde e métricas técnicas sem revelar dados sensíveis. |
 | RNF-REL-001 | Falhas no envio de e-mail não podem reverter a operação de negócio que originou a mensagem. |
-| RNF-REL-002 | Eventos obrigatórios de integração e auditoria devem possuir estratégia de entrega confiável definida antes da implementação. |
+| RNF-REL-002 | Eventos obrigatórios de integração e auditoria devem ser persistidos e permanecer recuperáveis quando um consumidor falhar. |
 
 </details>
 

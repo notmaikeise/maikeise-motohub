@@ -1,7 +1,7 @@
 # Maikeise MotoHub
 
-![Status](https://img.shields.io/badge/status-modelagem%20DDD%20conclu%C3%ADda-2ea44f)
-![Próxima etapa](https://img.shields.io/badge/pr%C3%B3xima%20etapa-arquitetura-8250df)
+![Status](https://img.shields.io/badge/status-arquitetura%20inicial%20definida-2ea44f)
+![Próxima etapa](https://img.shields.io/badge/pr%C3%B3xima%20etapa-funda%C3%A7%C3%A3o%20Spring%20Boot-8250df)
 ![Código](https://img.shields.io/badge/c%C3%B3digo-ainda%20n%C3%A3o%20iniciado-6e7781)
 
 Plataforma web para organizar o fluxo comercial de uma concessionária de motocicletas, do catálogo à venda, atendendo clientes pessoa física e jurídica.
@@ -18,7 +18,7 @@ Plataforma web para organizar o fluxo comercial de uma concessionária de motoci
 | Qual é o diferencial estudado? | Propostas versionadas, aprovação de descontos, reserva atômica de unidades e rastreabilidade das decisões. |
 | Qual é o escopo inicial? | Uma concessionária, pagamento externo e aplicação web responsiva. |
 | Qual é a abordagem? | DDD estratégico e tático, seguido de monólito modular com Arquitetura Hexagonal. |
-| Em que fase está? | Modelagem de domínio concluída; decisão arquitetural é o próximo passo. |
+| Em que fase está? | DDD e arquitetura inicial concluídos; a fundação Spring Boot é o próximo passo. |
 
 ## Fluxo principal
 
@@ -59,18 +59,20 @@ Aqui, a proposta é continuar além da ideação acadêmica: documentar o racioc
 - Repositórios somente para Aggregate Roots.
 - Catálogo separado do estoque operacional.
 - Estoque e reservas no mesmo contexto para proteger a exclusividade das unidades.
-- Hipótese de monólito modular, com Arquitetura Hexagonal dentro de cada módulo.
+- Monólito modular aceito, com Arquitetura Hexagonal dentro de cada módulo.
 - Microsserviços somente quando houver uma necessidade demonstrável de implantação ou escala independente.
 
 > [!NOTE]
 > Evento de domínio não significa Event Sourcing, e Bounded Context não significa microsserviço. Essas separações são intencionais e estão explicadas na documentação.
 
+[Conheça a arquitetura](docs/architecture/00-overview.md) ou consulte a decisão formal na [ADR-001](docs/architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
+
 ## Escolha uma trilha de leitura
 
 | Se você é... | Comece por... | Tempo aproximado |
 | --- | --- | ---: |
-| Recrutador(a) | Este README e o [resumo do DDD](docs/ddd/00-overview.md) | 8 min |
-| Professor(a) | [Contexto acadêmico](docs/00-project-context.md), [visão do produto](docs/01-product-vision.md) e [resumo do DDD](docs/ddd/00-overview.md) | 15 min |
+| Recrutador(a) | Este README, o [resumo do DDD](docs/ddd/00-overview.md) e a [visão arquitetural](docs/architecture/00-overview.md) | 12 min |
+| Professor(a) | [Contexto acadêmico](docs/00-project-context.md), [visão do produto](docs/01-product-vision.md), [resumo do DDD](docs/ddd/00-overview.md) e [ADR-001](docs/architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md) | 20 min |
 | Pessoa desenvolvedora | [Hub da documentação](docs/README.md), seguido dos documentos técnicos numerados | 30+ min |
 | Autora estudando o projeto | [Hub da documentação](docs/README.md) e as seções “O que registrar no caderno” | Conforme a etapa |
 
@@ -86,7 +88,8 @@ Toda a navegação está organizada no [Hub da documentação](docs/README.md).
 | Context Map | ✅ Concluída |
 | Eventos de domínio | ✅ Concluída |
 | Agregados e invariantes | ✅ Concluída |
-| Decisão arquitetural inicial | ⏭️ Próxima |
+| Decisão arquitetural inicial | ✅ Concluída |
+| Fundação Spring Boot | ⏭️ Próxima |
 | Implementação Spring Boot | ⬜ Planejada |
 | Interface e deploy local | ⬜ Planejados |
 
@@ -95,13 +98,13 @@ Toda a navegação está organizada no [Hub da documentação](docs/README.md).
 <details>
 <summary><strong>Ver stack técnica</strong></summary>
 
-- Java e Spring Boot.
-- Spring Security.
+- Java 21 e Spring Boot 4.1.
+- Spring Modulith e Spring Security.
 - PostgreSQL e Flyway.
 - JUnit, Mockito e Testcontainers.
 - Docker e Docker Compose.
-- OpenAPI.
-- Interface web a ser decidida na ADR de frontend.
+- REST com OpenAPI.
+- Interface web com Thymeleaf e HTMX.
 
 </details>
 

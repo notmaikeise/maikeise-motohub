@@ -271,7 +271,7 @@ O fluxo coordenado produz:
 1. `Reserva utilizada na venda` e `Unidades marcadas como vendidas` em `Inventory and Reservation`.
 2. `Venda concluída` e `Proposta convertida em venda` em `Commercial`.
 
-A venda preserva o snapshot comercial da versão aceita. A coordenação técnica, a repetição segura e a compensação para uma falha entre os dois contextos serão formalizadas na `BKL-007`.
+A venda preserva o snapshot comercial da versão aceita. A [arquitetura inicial](../architecture/00-overview.md) definiu a coordenação síncrona com `Inventory and Reservation`, o registro persistido do evento, a idempotência e a recuperação de falhas.
 
 ### Cancelamento como ação compensatória
 
@@ -317,7 +317,7 @@ O envio ocorre de forma assíncrona. `Notificação enviada` e `Envio de notific
 - permite nova tentativa;
 - não torna o e-mail a fonte oficial do estado.
 
-Não será criado um novo Bounded Context de notificações nesta fase. A forma técnica de envio e repetição será definida na arquitetura.
+Não será criado um novo Bounded Context de notificações nesta fase. O envio assíncrono utilizará eventos persistidos, repetição idempotente e Mailpit no ambiente local; os prazos serão acionados por scheduler e `Clock` controlável.
 
 </details>
 
@@ -386,15 +386,11 @@ Essas regras orientaram os Aggregate Roots documentados em [Agregados e invarian
 
 </details>
 
-## 12. Hot spots preservados
+## 12. Hot spot de domínio preservado
 
 - Qual é o maior desconto que nem mesmo o gerente pode aprovar?
-- Como coordenar conta e cadastro de cliente sem transação distribuída entre contextos?
-- Como recuperar uma falha entre a utilização da reserva e a conclusão da venda?
-- Como garantir entrega confiável de eventos de disponibilidade, auditoria e notificação?
-- Qual mecanismo executará prazos e repetições de notificações?
 
-Os três últimos pontos serão tratados principalmente na ADR da `BKL-007`; os limites internos do modelo foram aprofundados na `BKL-006`.
+Esse limite comercial continua aberto porque exige uma decisão de negócio, não uma escolha técnica. A coordenação entre contextos, a recuperação de falhas, a entrega confiável de eventos e os processos temporais foram resolvidos pela [ADR-001](../architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
 
 ## 13. Resultado da BKL-005
 

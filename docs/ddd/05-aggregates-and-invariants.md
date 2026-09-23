@@ -2,7 +2,7 @@
 
 Este documento consolida a `BKL-006` do Maikeise MotoHub. Ele transforma os eventos descobertos na `BKL-005` em um modelo tático inicial, identificando Aggregate Roots, entidades internas, Value Objects, invariantes e fronteiras de persistência.
 
-O modelo ainda é independente de JPA, banco de dados e interface web. Anotações, tabelas, relacionamentos de persistência e pacotes Java serão definidos depois da decisão arquitetural da `BKL-007`.
+O modelo continua independente de JPA, banco de dados e interface web. A [arquitetura inicial](../architecture/00-overview.md) definiu que entidades de persistência e Data Mappers ficarão nos adaptadores, preservando essa separação.
 
 > [!TIP]
 > A visão geral das raízes e o diagrama são suficientes para a primeira leitura. Os detalhes de cada contexto estão recolhidos e continuam disponíveis como referência para implementação e estudo.
@@ -471,7 +471,7 @@ O snapshot contém unidades, descrições, valores, desconto, condições e conf
 | INV-COM-018 | Somente gerente cancela uma venda concluída e informa motivo. |
 | INV-COM-019 | Venda cancelada não é reaberta nem apagada. |
 
-Concluir a venda exige coordenação entre `Commercial` e `Inventory and Reservation`. O modelo define as pré-condições; idempotência, ordem de persistência, falha intermediária e compensação técnica pertencem à `BKL-007`.
+Concluir a venda exige coordenação entre `Commercial` e `Inventory and Reservation`. O modelo define as pré-condições; a arquitetura acrescenta chamada síncrona, idempotência, evento persistido, repetição segura e restrição única por `reservaId`.
 
 </details>
 
@@ -542,7 +542,7 @@ Value Objects previstos incluem:
 
 Cada contexto controla seus próprios tipos e significados. A existência de valores monetários em `Catalog` e `Commercial` não autoriza um Shared Kernel automático entre os contextos.
 
-Quando um ID atravessar um limite, ele será publicado em um contrato estável. O contexto consumidor poderá convertê-lo para um tipo de referência local; ele não importará a entidade nem o pacote de domínio do contexto proprietário. A forma exata desse contrato será decidida na `BKL-007`.
+Quando um ID atravessar um limite, ele será publicado como valor escalar em um DTO estável da API do módulo. O contexto consumidor poderá convertê-lo para um tipo de referência local; ele não importará a entidade nem o pacote de domínio do contexto proprietário.
 
 ## Serviços de aplicação e serviços de domínio
 
@@ -578,7 +578,7 @@ A consulta prévia melhora a mensagem apresentada ao usuário, mas não substitu
 - Alterar uma única Aggregate Root ocorre em uma transação local do contexto proprietário.
 - Criar uma reserva de várias unidades atualiza `Reserva` e várias `UnidadeEstoque` na mesma transação local.
 - Criar uma nova versão atualiza somente a raiz `Proposta`, pois as versões são internas.
-- Concluir uma venda toca raízes de dois contextos e não utilizará transação distribuída; a coordenação confiável será decidida na `BKL-007`.
+- Concluir uma venda toca raízes de dois contextos e não utiliza transação distribuída; APIs síncronas, idempotência, restrições únicas e eventos persistidos tornam a coordenação recuperável.
 - Atualizar catálogo e auditoria a partir de eventos aceita consistência eventual.
 
 </details>
@@ -595,17 +595,17 @@ A consulta prévia melhora a mensagem apresentada ao usuário, mas não substitu
 - Um Shared Kernel de entidades ou Value Objects entre os contextos.
 - Transformar entrega de e-mail em agregado de negócio antes da decisão arquitetural.
 
-## Pontos encaminhados para a BKL-007
+## Decisões arquiteturais resultantes
 
-- Estrutura de módulos e pacotes da Arquitetura Hexagonal.
-- Mapeamento entre objetos de domínio e entidades de persistência.
-- Estratégia de lock ou versionamento para unidades concorrentes.
-- Coordenação entre criação de conta e cadastro de cliente.
-- Coordenação, idempotência e compensação entre utilização da reserva e venda.
-- Transactional Outbox e entrega confiável de eventos.
-- Scheduler para expirações e repetição de notificações.
-- Serialização de IDs tipados nas APIs e no banco.
-- Limites das transações Spring.
+- Cada Bounded Context é um módulo Spring Modulith organizado em `api` e `internal`, com Arquitetura Hexagonal.
+- Objetos de domínio e entidades JPA são separados por Data Mappers nos adaptadores de persistência.
+- Reservas concorrentes usam `PESSIMISTIC_WRITE` e bloqueiam IDs de unidades em ordem estável.
+- Conta e cadastro de cliente são criados em etapas locais e idempotentes, sem uma transação entre contextos.
+- Concluir a venda utiliza a reserva por API síncrona e registra evento persistido; `operationId`, repetição e unicidade por `reservaId` evitam duplicidade.
+- O Event Publication Registry registra eventos confiáveis na mesma transação da origem.
+- `@Scheduled` e uma abstração de `Clock` controlam expirações e novas tentativas.
+- IDs tipados são traduzidos para valores escalares nos DTOs e adaptadores de banco.
+- Transações Spring começam nos casos de uso e não atravessam a propriedade de dados dos contextos.
 
 O desconto máximo que nem o gerente pode aprovar continua sendo uma decisão de domínio aberta e não será inventado pela arquitetura.
 
@@ -633,7 +633,7 @@ A atividade é considerada concluída porque:
 - repositórios existem somente para raízes;
 - regras globais e concorrentes possuem uma estratégia de proteção em camadas;
 - a reserva integral possui fronteira transacional explícita;
-- dúvidas técnicas foram preservadas para a ADR em vez de contaminarem o modelo de domínio.
+- dúvidas técnicas foram resolvidas pela ADR sem contaminar o modelo de domínio.
 
 ## O que registrar no caderno
 
@@ -647,6 +647,6 @@ A atividade é considerada concluída porque:
 
 ## Próximo passo
 
-A `BKL-007` registrará a decisão arquitetural inicial: monólito modular, Arquitetura Hexagonal, regras de dependência, transações, eventos confiáveis e critérios para uma futura extração de microsserviços.
+A `BKL-007` formalizou o monólito modular, a Arquitetura Hexagonal, as regras de dependência, as transações e os eventos confiáveis. O próximo passo é a `BKL-010`: criar a fundação Spring Boot executável.
 
 [Voltar ao resumo do DDD](00-overview.md).

@@ -53,6 +53,9 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-006 | Modelar agregados e invariantes | Discovery | Must | Modelo tático inicial por contexto |
 | BKL-007 | Registrar decisão arquitetural inicial | Architecture | Must | ADR sobre monólito modular e evolução |
 
+> [!NOTE]
+> Os itens `BKL-001` a `BKL-007` estão concluídos. O próximo item recomendado é `BKL-010`.
+
 </details>
 
 <details>
@@ -172,8 +175,8 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 
 ## Ordem recomendada
 
-1. Concluir os itens BKL-001 a BKL-007.
-2. Criar a fundação técnica.
+1. **Concluído:** consolidar os itens `BKL-001` a `BKL-007`.
+2. **Próximo:** criar a fundação técnica, começando pela `BKL-010`.
 3. Implementar um fluxo vertical simples de catálogo.
 4. Acrescentar identidade e clientes.
 5. Implementar proposta, reserva e venda nesta ordem.

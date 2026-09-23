@@ -112,7 +112,7 @@ Preço, descrição e dados do cliente podem mudar. Uma proposta ou venda histó
 
 ## Direção arquitetural
 
-A hipótese a ser formalizada na `BKL-007` é:
+A `BKL-007` formalizou a seguinte direção:
 
 ```text
 Monólito modular
@@ -125,13 +125,13 @@ Monólito modular
 
 Cada módulo controlará seu modelo e suas tabelas lógicas. Integrações usarão contratos explícitos, IDs, snapshots e eventos; não haverá compartilhamento de entidades ou repositórios.
 
+A estrutura, as transações, a segurança e a estratégia de testes estão detalhadas em [Arquitetura em uma visão](../architecture/00-overview.md) e registradas formalmente na [ADR-001](../architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
+
 ## O que ainda está aberto
 
 - Limite máximo de desconto que nem o gerente pode aprovar.
 - Existência de uma ou mais filiais na primeira concessionária.
 - Matriz exata para gerenciar representantes de clientes PJ.
-- Escolha entre Thymeleaf e frontend separado.
-- Estratégia de lock, outbox, scheduler e compensação entre contextos.
 - Licença do repositório.
 
 Manter essas perguntas visíveis evita transformar suposições em requisitos.
@@ -146,6 +146,7 @@ Manter essas perguntas visíveis evita transformar suposições em requisitos.
 3. [Context Map](03-context-map.md): explica dependências e formas de integração.
 4. [Eventos de domínio](04-domain-events.md): acompanha comandos, fatos e políticas do fluxo.
 5. [Agregados e invariantes](05-aggregates-and-invariants.md): detalha o modelo tático e as fronteiras de consistência.
+6. [Arquitetura](../architecture/00-overview.md): transforma os limites em módulos, persistência, integrações e testes.
 
 </details>
 

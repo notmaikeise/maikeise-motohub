@@ -10,12 +10,6 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-002 | Existe um desconto máximo que nem o gerente poderá aprovar? | Modelagem de Propostas |
 | DEC-006 | A primeira concessionária terá uma ou várias filiais? | DDD estratégico |
 | DEC-009 | Qual licença será aplicada ao repositório público? | Antes da primeira versão pública de código |
-| DEC-010 | Qual estratégia de interface será usada: Thymeleaf ou frontend separado? | ADR de arquitetura |
-| DEC-011 | Quais regras de dependência, organização e testes formalizarão o monólito modular com Arquitetura Hexagonal? | ADR da BKL-007 |
-| DEC-012 | Como coordenar a criação da conta e do cadastro de cliente sem uma transação entre contextos? | Eventos e ADR de arquitetura |
-| DEC-013 | Como tratar falhas, repetição e compensação entre a conclusão da venda e a utilização da reserva? | Eventos e ADR de arquitetura |
-| DEC-014 | Qual mecanismo garantirá a entrega de eventos obrigatórios e de auditoria? | ADR da BKL-007 |
-| DEC-015 | Qual mecanismo executará expirações e novas tentativas de notificação? | ADR da BKL-007 |
 | DEC-016 | Quem poderá vincular ou encerrar representantes de um cliente PJ? | Autorização e casos de uso antes da implementação |
 
 <details>
@@ -45,7 +39,7 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-018 | Catálogo e Estoque, Gestão de Clientes e Rastreabilidade e Auditoria são Supporting; Identidade e Acesso é Generic. |
 | DEC-C-019 | Os seis Bounded Contexts iniciais são Identity and Access, Customer Management, Catalog, Inventory and Reservation, Commercial e Audit. |
 | DEC-C-020 | Catálogo permanece separado do controle operacional do estoque; Estoque e Reservas ficam no mesmo contexto para proteger a exclusividade da unidade. |
-| DEC-C-021 | A hipótese arquitetural inicial é um monólito modular com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo; a ADR da `BKL-007` formalizará a decisão. |
+| DEC-C-021 | A arquitetura inicial é um monólito modular com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo, formalizada pela `ADR-001`. |
 | DEC-C-022 | Commercial e Inventory and Reservation mantêm uma Partnership, com respostas síncronas para reservar unidades e confirmar o uso da reserva. |
 | DEC-C-023 | Customer Management é upstream de Commercial em uma relação Customer/Supplier; Commercial guarda apenas referências e snapshots necessários. |
 | DEC-C-024 | Catalog fornece anúncio e preço para Commercial, que protege seu modelo com uma Anti-Corruption Layer e preserva um snapshot. |
@@ -77,6 +71,16 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-050 | Agregados usam IDs tipados e apenas Aggregate Roots possuem repositórios. |
 | DEC-C-051 | Unicidades globais usam consulta para erro amigável e restrição no banco para proteção concorrente. |
 | DEC-C-052 | Entrega e repetição de e-mail permanecem uma preocupação técnica e não formam um agregado de negócio nesta fase. |
+| DEC-C-053 | O MVP será implantado como um monólito modular; uma futura extração de microsserviços exigirá evidências operacionais e uma nova ADR. |
+| DEC-C-054 | O repositório terá um único projeto Maven, com módulos lógicos Spring Modulith organizados em `api` e `internal` e Arquitetura Hexagonal. |
+| DEC-C-055 | Uma instância PostgreSQL terá um schema por contexto, sem consultas, associações JPA ou chaves estrangeiras atravessando schemas; domínio e entidades JPA serão separados por Data Mappers. |
+| DEC-C-056 | Decisões que exigem resposta imediata usam APIs Java dos módulos; reações assíncronas usam eventos persistidos pelo Event Publication Registry. |
+| DEC-C-057 | A reserva integral usa transação local e lock pessimista das unidades em ordem estável para impedir bloqueios concorrentes e reduzir deadlocks. |
+| DEC-C-058 | Conta e cadastro de cliente são criados em etapas locais, idempotentes e recuperáveis, sem transação distribuída. |
+| DEC-C-059 | A venda utiliza a reserva por uma operação síncrona idempotente e registra evento persistido; `operationId`, repetição segura e unicidade por `reservaId` evitam duplicidade. |
+| DEC-C-060 | Expirações e novas tentativas usam `@Scheduled`, uma abstração de `Clock` e operações idempotentes. |
+| DEC-C-061 | A interface combina REST, OpenAPI e Thymeleaf/HTMX na mesma aplicação; a autenticação web usa sessão, Spring Security, CSRF e permissões explícitas. |
+| DEC-C-062 | A base técnica usa Java 21, Spring Boot 4.1, Spring Modulith 2.1, Maven, PostgreSQL, Testcontainers, Docker Compose e GitHub Actions, sem serviço pago obrigatório. |
 
 </details>
 

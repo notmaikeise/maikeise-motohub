@@ -14,8 +14,9 @@ Indicada para recrutadores, apresentação de portfólio ou primeira avaliação
 1. [README principal](../README.md).
 2. [Visão do produto](01-product-vision.md).
 3. [DDD em uma visão](ddd/00-overview.md).
+4. [Arquitetura em uma visão](architecture/00-overview.md).
 
-Tempo estimado: **8 a 12 minutos**.
+Tempo estimado: **12 a 15 minutos**.
 
 ### Leitura acadêmica — problema e modelagem
 
@@ -27,7 +28,9 @@ Indicada para entender o processo de descoberta e justificar as decisões.
 4. [Jornada principal](03-user-journey.md).
 5. [Regras de negócio](04-business-rules.md).
 6. [DDD em uma visão](ddd/00-overview.md).
-7. [Decisões em aberto e concluídas](07-open-decisions.md).
+7. [Arquitetura em uma visão](architecture/00-overview.md).
+8. [ADR-001](architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
+9. [Decisões em aberto e concluídas](07-open-decisions.md).
 
 Tempo estimado: **20 a 30 minutos**.
 
@@ -41,7 +44,8 @@ Indicada para implementação, revisão de arquitetura ou estudo aprofundado.
 4. [Context Map](ddd/03-context-map.md).
 5. [Eventos de domínio](ddd/04-domain-events.md).
 6. [Agregados e invariantes](ddd/05-aggregates-and-invariants.md).
-7. [Requisitos](05-requirements.md) e [backlog](06-backlog.md).
+7. [Arquitetura](architecture/README.md) e [ADR-001](architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
+8. [Requisitos](05-requirements.md) e [backlog](06-backlog.md).
 
 Tempo estimado: **45 minutos ou mais**, conforme o aprofundamento.
 
@@ -60,6 +64,8 @@ Tempo estimado: **45 minutos ou mais**, conforme o aprofundamento.
 | [Glossário](glossary.md) | O que cada termo significa neste domínio? | Consulta |
 | [DDD em uma visão](ddd/00-overview.md) | Como todo o modelo se conecta? | Todos |
 | [Documentos detalhados de DDD](ddd/README.md) | Como cada decisão foi modelada tecnicamente? | Desenvolvimento e estudo |
+| [Arquitetura](architecture/README.md) | Como o modelo será implementado e protegido? | Desenvolvimento e estudo |
+| [ADR-001](architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md) | Por que foi escolhido um monólito modular? | Avaliação técnica |
 | [Configuração do GitHub Projects](project-management/github-projects-setup.md) | Como o trabalho está organizado em cards? | Gestão do projeto |
 
 ## Como a documentação foi escrita
@@ -86,5 +92,6 @@ flowchart LR
 
 - `Ideação`: concluída para o MVP.
 - `DDD`: modelo inicial concluído.
-- `Arquitetura`: próxima etapa.
-- `Implementação` e `Deploy local`: planejados.
+- `Arquitetura`: decisão inicial concluída.
+- `Implementação`: próxima etapa, começando pela fundação Spring Boot.
+- `Deploy local`: planejado.

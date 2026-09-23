@@ -88,31 +88,42 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | --- | --- |
 | Ação compensatória | Nova operação que corrige ou neutraliza os efeitos de algo já concluído sem apagar o fato original. |
 | Adaptador | Componente que conecta uma porta da aplicação a uma tecnologia ou interface externa, como REST, banco de dados ou mensageria. |
+| ADR | Registro curto de uma decisão arquitetural, seu contexto, alternativas e consequências. A sigla significa *Architecture Decision Record*. |
 | Aggregate Root (Raiz do Agregado) | Entidade que funciona como única porta autorizada para alterar os objetos de um agregado e proteger suas invariantes. |
 | Agregado | Conjunto de entidades e Value Objects tratado como uma unidade de consistência. |
 | Anti-Corruption Layer (ACL) | Camada que traduz contratos externos para o modelo interno, impedindo que um contexto seja contaminado pelo modelo de outro. |
+| API de módulo | Pequeno conjunto de contratos que um módulo publica para que outros módulos usem suas capacidades sem acessar sua implementação interna. |
 | Arquitetura Hexagonal | Organização que mantém as regras de negócio no centro e isola tecnologias externas por meio de portas e adaptadores. |
 | Assíncrono | Modo de comunicação em que o publicador não espera que todos os consumidores concluam o processamento. |
 | Bounded Context | Limite dentro do qual um modelo e sua linguagem possuem significados consistentes. Os contextos iniciais foram definidos na `BKL-003`. |
+| CI | Automação que compila e testa cada mudança integrada ao repositório. A sigla significa *Continuous Integration*. |
 | Consistência eventual | Situação em que uma representação pode ficar temporariamente desatualizada, mas converge posteriormente para o estado correto. |
 | Context Map | Mapa que registra relações, direções de dependência e padrões de integração entre Bounded Contexts. |
 | Core | Classificação de um subdomínio estratégico que concentra diferenciação e complexidade central. |
+| CSRF | Ataque que tenta fazer um navegador autenticado executar uma ação sem a intenção do usuário; tokens e validações do servidor ajudam a bloqueá-lo. |
 | Customer/Supplier | Relação em que o contexto consumidor apresenta suas necessidades e o contexto fornecedor oferece um contrato apropriado. Customer, nesse padrão, não significa o cliente da concessionária. |
+| Data Mapper | Componente que traduz objetos do domínio para objetos de persistência e vice-versa, sem colocar detalhes de banco no domínio. |
 | DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
 | Domínio | Área de negócio e conjunto de problemas que o software pretende compreender e resolver. |
 | Downstream | Contexto que consome uma informação, capacidade ou contrato fornecido por outro contexto. |
+| DTO | Objeto simples usado para transportar dados em um contrato sem expor diretamente o modelo interno. A sigla significa *Data Transfer Object*. |
 | Entidade | Objeto de domínio reconhecido por uma identidade que permanece ao longo das mudanças. |
 | Evento de domínio | Representação de algo relevante que já aconteceu no negócio, normalmente nomeada no passado. |
+| Event Publication Registry | Registro persistente do Spring Modulith que acompanha eventos publicados e quais consumidores ainda precisam processá-los. |
 | Generic | Classificação de um subdomínio que resolve um problema comum a muitos sistemas. |
+| Healthcheck | Verificação técnica que informa se a aplicação está ativa e apta a atender. |
 | ID tipado | Value Object que identifica um conceito específico, evitando trocar acidentalmente IDs de tipos diferentes. |
+| IDOR | Falha de autorização em que alguém acessa um objeto apenas alterando seu identificador; a prevenção exige validar o vínculo e a permissão em cada operação. |
 | Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Invariante | Regra que deve permanecer verdadeira durante toda mudança válida do modelo, como impedir duas reservas ativas para a mesma unidade. |
 | Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
+| Lock pessimista | Bloqueio de banco que impede outra transação de alterar o mesmo registro enquanto a operação atual o valida e modifica. |
 | Máquina de estados | Modelo que define os estados válidos de um objeto e quais transições podem ocorrer entre eles. |
 | Migração de banco | Alteração versionada da estrutura do banco de dados. |
 | Monólito modular | Aplicação implantada como uma unidade, mas dividida internamente em módulos com limites e dependências controlados. |
 | Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |
 | MVP | Menor versão do produto que entrega valor e permite validar o fluxo principal. |
+| Observabilidade | Capacidade de entender a saúde e o comportamento da aplicação por logs, métricas e outros sinais técnicos. |
 | Open Host Service | Serviço com contrato estável oferecido por um contexto para uso de vários consumidores. |
 | Partnership | Relação em que dois contextos coordenam sua evolução porque o sucesso de um fluxo depende de ambos. |
 | Porta | Contrato pelo qual o núcleo da aplicação recebe uma ação ou solicita uma capacidade externa sem depender da tecnologia concreta. |
@@ -120,6 +131,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Published Language | Formato de comunicação explicitamente definido e compreendido pelos contextos envolvidos. |
 | RBAC | Controle de acesso baseado em papéis, no qual permissões são agrupadas em perfis atribuídos às contas. |
 | Repositório | Porta usada para recuperar e persistir Aggregate Roots sem expor a tecnologia de armazenamento ao domínio. |
+| Schema | Espaço de nomes dentro do banco que agrupa e separa tabelas e outros objetos pertencentes a um contexto. |
 | Serviço de aplicação | Componente que coordena um caso de uso, transações, repositórios e portas externas sem substituir as regras das Aggregate Roots. |
 | Serviço de domínio | Componente que representa uma regra de negócio que não pertence naturalmente a uma única entidade ou Value Object. |
 | Shared Kernel | Parte de modelo ou código deliberadamente compartilhada por contextos e alterada mediante coordenação. Não será adotada entre os contextos de negócio do MotoHub. |
@@ -128,7 +140,7 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Snapshot | Cópia imutável dos dados relevantes de um momento, usada para preservar o histórico mesmo que a fonte original mude depois. |
 | Subdomínio | Parte coerente do problema de negócio, com responsabilidades e regras relacionadas. |
 | Supporting | Classificação de um subdomínio necessário ao Core, mas que não representa o principal diferencial do produto. |
-| Transactional Outbox | Padrão que registra uma alteração e o evento correspondente de forma atômica para permitir entrega posterior confiável. Sua adoção ainda será avaliada. |
+| Transactional Outbox | Padrão que registra uma alteração e o evento correspondente de forma atômica para permitir entrega posterior confiável. No monólito, o Event Publication Registry do Spring Modulith fornecerá essa garantia; uma outbox externa será reavaliada se houver extração de serviços. |
 | Transação local | Conjunto de alterações confirmado por inteiro ou totalmente desfeito dentro do mesmo banco e limite operacional. |
 | Upstream | Contexto que fornece uma informação, capacidade ou contrato para outro contexto. |
 | Value Object | Objeto imutável, sem identidade própria, definido e comparado pelos seus valores. |

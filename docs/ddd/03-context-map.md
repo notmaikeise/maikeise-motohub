@@ -1,6 +1,6 @@
 # Context Map do Maikeise MotoHub
 
-Este documento registra as relações iniciais entre os Bounded Contexts do Maikeise MotoHub, consolidadas na `BKL-004`. Os eventos foram refinados na `BKL-005` e os mecanismos técnicos de integração serão formalizados na `BKL-007`.
+Este documento registra as relações iniciais entre os Bounded Contexts do Maikeise MotoHub, consolidadas na `BKL-004`. Os eventos foram refinados na `BKL-005`, e os mecanismos técnicos de integração foram formalizados na [arquitetura inicial](../architecture/00-overview.md).
 
 > [!TIP]
 > Para uma leitura rápida, observe os dois diagramas e a matriz de relacionamentos. A explicação de cada padrão está disponível na seção recolhível.
@@ -146,7 +146,7 @@ Esses são os dois contextos Core do fluxo principal e precisam coordenar:
 
 A Partnership exige coordenação conceitual, não dependência circular no código. Cada módulo acessará contratos explícitos por portas e adaptadores e manterá sua própria transação.
 
-Não haverá uma transação de banco distribuída entre os contextos. Falhas, repetição segura e possíveis compensações serão detalhadas durante o mapeamento de eventos e a decisão arquitetural.
+Não haverá uma transação de banco distribuída entre os contextos. A arquitetura combina APIs síncronas, idempotência, restrições únicas e eventos persistidos para recuperar falhas sem duplicar a venda.
 
 ## Audit como downstream assíncrono
 
@@ -154,7 +154,7 @@ Os contextos publicam eventos sobre ações selecionadas. `Audit` consome esses 
 
 Entre os eventos auditáveis estão conta bloqueada, cliente bloqueado comercialmente, preço alterado, reserva prorrogada, desconto aprovado, pagamento externo confirmado, venda concluída e venda cancelada. A lista completa está na `BKL-005`.
 
-A indisponibilidade temporária da auditoria não deve transformar seu banco na autoridade sobre a operação original. Entretanto, eventos obrigatórios não podem ser perdidos. A `BKL-007` avaliará entrega confiável e o padrão Transactional Outbox.
+A indisponibilidade temporária da auditoria não deve transformar seu banco na autoridade sobre a operação original. Eventos obrigatórios serão registrados pelo Event Publication Registry do Spring Modulith na mesma transação da mudança de origem e reenviados aos consumidores que falharem.
 
 </details>
 
@@ -191,16 +191,16 @@ A indisponibilidade temporária da auditoria não deve transformar seu banco na 
 - `Identity and Access` não contém regras de proposta, desconto, reserva ou venda.
 - Nenhum contexto utiliza o banco de outro como contrato de integração.
 
-## Pontos ainda em aberto
+## Encaminhamentos arquiteturais
 
-- Coordenação entre criação de conta e cadastro de cliente sem transação distribuída.
-- Tratamento de falhas, repetição e compensação entre venda e utilização da reserva.
-- Mecanismo de entrega confiável dos eventos, incluindo a avaliação de Transactional Outbox.
-- Forma técnica de validar identidade e permissão dentro do monólito modular.
-- Mecanismo para expiração de prazos e repetição de notificações.
+- Conta e cadastro de cliente são criados em etapas locais, idempotentes e recuperáveis, sem transação distribuída.
+- A conclusão da venda utiliza a reserva por API síncrona e registra um evento persistido; `operationId` e restrição única por `reservaId` tornam a repetição segura.
+- O Event Publication Registry fornece entrega confiável aos consumidores assíncronos dentro do monólito.
+- Spring Security valida a sessão e as permissões na entrada; cada caso de uso ainda protege sua autorização de negócio.
+- Processos temporais usam `@Scheduled` e uma abstração de `Clock`, com operações idempotentes.
 
 ## Continuidade
 
-Os acontecimentos, comandos, decisões e reações destas relações estão detalhados em [Eventos de domínio e Event Storming textual](04-domain-events.md). As fronteiras internas estão em [Agregados e invariantes](05-aggregates-and-invariants.md), e a `BKL-007` formalizará os mecanismos técnicos de integração.
+Os acontecimentos, comandos, decisões e reações destas relações estão detalhados em [Eventos de domínio e Event Storming textual](04-domain-events.md). As fronteiras internas estão em [Agregados e invariantes](05-aggregates-and-invariants.md), e os mecanismos técnicos estão na [arquitetura inicial](../architecture/00-overview.md).
 
 [Voltar ao resumo do DDD](00-overview.md).

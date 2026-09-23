@@ -25,15 +25,15 @@ Definir limites claros para que cada parte do sistema possua:
 
 Não existe obrigação de mapear cada subdomínio diretamente para um Bounded Context ou microsserviço.
 
-## Hipótese arquitetural
+## Decisão arquitetural
 
-Antes do primeiro código Java, a `BKL-007` registrará uma ADR para avaliar e formalizar a seguinte hipótese:
+A `BKL-007` formalizou a seguinte decisão na [ADR-001](../architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md):
 
 > Uma aplicação Spring Boot em monólito modular, com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo.
 
 Os contextos descritos aqui são limites de modelo. Eles não representam seis aplicações independentes.
 
-### Estrutura de módulos pretendida
+### Estrutura inicial de módulos
 
 ```text
 com.maikeise.motohub
@@ -45,22 +45,24 @@ com.maikeise.motohub
 └── audit
 ```
 
-### Estrutura interna pretendida
+### Estrutura interna de cada módulo
 
 ```text
 <contexto>
-├── domain
-├── application
-│   ├── port
-│   │   ├── in
-│   │   └── out
-│   └── service
-└── adapter
-    ├── in
-    └── out
+├── api
+└── internal
+    ├── domain
+    ├── application
+    │   ├── port
+    │   │   ├── in
+    │   │   └── out
+    │   └── usecase
+    └── adapter
+        ├── in
+        └── out
 ```
 
-Essa organização ainda é uma hipótese. Nomes, regras de dependência e testes arquiteturais serão formalizados na ADR.
+Somente `api` forma o contrato publicado para outros módulos. O código em `internal` pertence ao contexto, e seus limites serão verificados com Spring Modulith e testes arquiteturais. A estrutura completa está na [visão da arquitetura](../architecture/00-overview.md).
 
 ## Regras gerais dos limites
 
@@ -362,17 +364,17 @@ O histórico essencial continua no contexto que executou a ação. A auditoria r
 | Solicitação, proposta, desconto, pagamento confirmado e venda | Commercial |
 | Registro estruturado de auditoria | Audit |
 
-## Continuidade da modelagem
+## Encaminhamentos arquiteturais
 
-- Como tratar falhas durante a conclusão da venda entre `commercial` e `inventory`.
-- Quais ações exigem auditoria obrigatória.
-- Como as tabelas serão separadas dentro do PostgreSQL.
-- Quais regras arquiteturais serão verificadas automaticamente com testes.
+- A conclusão da venda combina uma decisão síncrona de `inventory` com evento persistido, idempotência e repetição segura.
+- As ações de auditoria obrigatória estão enumeradas no mapa de eventos.
+- Cada contexto controla seu próprio schema dentro de uma instância PostgreSQL.
+- Spring Modulith e testes arquiteturais verificam acesso somente por APIs públicas e ausência de ciclos.
 
-As relações, direções e formas iniciais de integração foram definidas no [Context Map](03-context-map.md). As questões restantes pertencem principalmente ao mapeamento de eventos e à ADR arquitetural.
+As relações, direções e formas iniciais de integração estão no [Context Map](03-context-map.md), e os mecanismos técnicos estão na [arquitetura inicial](../architecture/00-overview.md).
 
 ## Próximo passo
 
-Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md), e as raízes, entidades internas e invariantes foram definidas na [BKL-006](05-aggregates-and-invariants.md). A `BKL-007` formalizará a arquitetura que preservará esses limites.
+Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md), as raízes, entidades internas e invariantes foram definidas na [BKL-006](05-aggregates-and-invariants.md), e a `BKL-007` formalizou a arquitetura que preserva esses limites. O próximo passo é criar a fundação técnica na `BKL-010`.
 
 [Voltar ao resumo do DDD](00-overview.md).

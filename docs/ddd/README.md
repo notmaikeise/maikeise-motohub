@@ -15,7 +15,7 @@ Esta pasta registra como o domínio do Maikeise MotoHub foi descoberto e transfo
 | `BKL-004` | Context Map | ✅ Concluída |
 | `BKL-005` | Eventos de domínio | ✅ Concluída |
 | `BKL-006` | Agregados e invariantes | ✅ Concluída |
-| `BKL-007` | Decisão arquitetural inicial | ⏭️ Próxima |
+| `BKL-007` | Decisão arquitetural inicial | ✅ Concluída |
 
 ## Documentos
 
@@ -27,6 +27,7 @@ Esta pasta registra como o domínio do Maikeise MotoHub foi descoberto e transfo
 | 3 | [Context Map](03-context-map.md) | Como os contextos dependem e conversam entre si? | Estratégica |
 | 4 | [Eventos de domínio](04-domain-events.md) | O que acontece ao longo do fluxo comercial? | Estratégica e comportamental |
 | 5 | [Agregados e invariantes](05-aggregates-and-invariants.md) | Quem protege cada regra dentro do código? | Tática |
+| 6 | [Arquitetura](../architecture/00-overview.md) | Como o modelo será transformado em uma aplicação? | Solução |
 
 ## Estratégico e tático
 
@@ -57,7 +58,7 @@ O modelo possui seis Bounded Contexts e onze Aggregate Roots. As decisões mais 
 
 ## Direção de arquitetura
 
-A hipótese inicial é um **monólito modular**, com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo. Essa hipótese será formalizada, testada e justificada na `BKL-007`.
+A decisão aceita é um **monólito modular**, com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo. Sua justificativa, seus trade-offs e seus mecanismos estão na [ADR-001](../architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
 
 Microsserviços continuam sendo uma possibilidade de evolução, não um objetivo antecipado. Uma extração só fará sentido quando existir necessidade concreta de escala, autonomia ou implantação independente.
 
@@ -69,12 +70,12 @@ Microsserviços continuam sendo uma possibilidade de evolução, não um objetiv
 - Integrações síncronas e assíncronas estão explícitas.
 - Decisões ainda abertas permanecem registradas.
 - O modelo não depende de JPA, HTTP ou uma interface específica.
-- A próxima decisão arquitetural pode partir de evidências do domínio.
+- A arquitetura foi derivada de evidências do domínio, e não da preferência por um framework.
 
 </details>
 
 ## Próximo passo
 
-A `BKL-007` definirá estrutura de módulos, regras de dependência, transações, persistência, eventos confiáveis e critérios para uma futura extração de microsserviços.
+A fundação técnica começará pela `BKL-010`: gerar o projeto Spring Boot, configurar o build reproduzível e criar o esqueleto dos módulos aprovados.
 
 [Voltar ao Hub da documentação](../README.md).
