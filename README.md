@@ -2,7 +2,7 @@
 
 Plataforma de gestão e comercialização de motocicletas para uma concessionária que atende clientes pessoa física e pessoa jurídica.
 
-> Status atual: DDD estratégico em andamento, com linguagem ubíqua e subdomínios iniciais consolidados. O código da aplicação ainda não foi iniciado.
+> Status atual: DDD estratégico em andamento, com linguagem ubíqua, subdomínios e Bounded Contexts consolidados. O Context Map será a próxima atividade. O código da aplicação ainda não foi iniciado.
 
 ## Visão geral
 
@@ -57,6 +57,7 @@ Concessionárias que atendem pessoas físicas, empresas e frotistas podem manter
 | [Linguagem ubíqua](docs/glossary.md) | Vocabulário oficial do domínio |
 | [DDD](docs/ddd/README.md) | Estado e roteiro da modelagem de domínio |
 | [Subdomínios](docs/ddd/01-subdomains.md) | Capacidades Core, Supporting e Generic |
+| [Bounded Contexts](docs/ddd/02-bounded-contexts.md) | Limites, responsabilidades e propriedade dos dados |
 | [GitHub Projects](docs/project-management/github-projects-setup.md) | Configuração recomendada para os cards |
 
 ## Tecnologias planejadas
@@ -72,7 +73,7 @@ As decisões técnicas serão registradas por ADRs depois da modelagem DDD. A di
 - Docker e Docker Compose
 - OpenAPI
 
-A escolha entre monólito modular e microsserviços ainda não foi concluída. Ela dependerá dos limites de domínio identificados no DDD estratégico.
+A hipótese adotada para orientar o planejamento é iniciar com um monólito modular, mantendo um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo. A decisão e suas regras serão formalizadas por ADR antes do primeiro código Java. A extração de microsserviços somente será avaliada quando houver uma necessidade técnica ou de negócio demonstrável.
 
 ## Roadmap de aprendizado
 

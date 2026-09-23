@@ -74,15 +74,21 @@ Este documento registra o vocabulário oficial inicial do Maikeise MotoHub, cons
 | Termo | Definição simples |
 | --- | --- |
 | DDD | Abordagem de desenvolvimento que organiza o software a partir do domínio do negócio. |
-| Bounded Context | Limite dentro do qual um modelo e sua linguagem possuem significados consistentes. Será definido na `BKL-003`. |
+| Adaptador | Componente que conecta uma porta da aplicação a uma tecnologia ou interface externa, como REST, banco de dados ou mensageria. |
+| Arquitetura Hexagonal | Organização que mantém as regras de negócio no centro e isola tecnologias externas por meio de portas e adaptadores. |
+| Bounded Context | Limite dentro do qual um modelo e sua linguagem possuem significados consistentes. Os contextos iniciais foram definidos na `BKL-003`. |
 | Core | Classificação de um subdomínio estratégico que concentra diferenciação e complexidade central. |
 | Domínio | Área de negócio e conjunto de problemas que o software pretende compreender e resolver. |
 | Generic | Classificação de um subdomínio que resolve um problema comum a muitos sistemas. |
+| Invariante | Regra que deve permanecer verdadeira durante toda mudança válida do modelo, como impedir duas reservas ativas para a mesma unidade. |
 | Linguagem ubíqua | Vocabulário compartilhado e consistente usado nas conversas, na documentação e no código. |
+| Monólito modular | Aplicação implantada como uma unidade, mas dividida internamente em módulos com limites e dependências controlados. |
 | MVP | Menor versão do produto que entrega valor e permite validar o fluxo principal. |
 | Single-tenant | Sistema que atende uma organização. |
 | Multi-tenant | Sistema que atende várias organizações com isolamento de dados. |
 | Idempotência | Repetir uma solicitação não cria resultados duplicados. |
 | Migração de banco | Alteração versionada da estrutura do banco de dados. |
+| Porta | Contrato pelo qual o núcleo da aplicação recebe uma ação ou solicita uma capacidade externa sem depender da tecnologia concreta. |
+| Snapshot | Cópia imutável dos dados relevantes de um momento, usada para preservar o histórico mesmo que a fonte original mude depois. |
 | Subdomínio | Parte coerente do problema de negócio, com responsabilidades e regras relacionadas. |
 | Supporting | Classificação de um subdomínio necessário ao Core, mas que não representa o principal diferencial do produto. |

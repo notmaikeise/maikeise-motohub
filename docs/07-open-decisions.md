@@ -13,6 +13,7 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-007 | Quais ações exigirão auditoria detalhada? | Arquitetura e segurança |
 | DEC-009 | Qual licença será aplicada ao repositório público? | Antes da primeira versão pública de código |
 | DEC-010 | Qual estratégia de interface será usada: Thymeleaf ou frontend separado? | ADR de arquitetura |
+| DEC-011 | Quais regras de dependência, organização e testes formalizarão o monólito modular com Arquitetura Hexagonal? | ADR da BKL-007 |
 
 ## Decisões já tomadas
 
@@ -36,3 +37,6 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 | DEC-C-016 | `Venda` é o registro oficial do domínio; `compra` é a perspectiva apresentada ao cliente. |
 | DEC-C-017 | Negociação e Vendas e Disponibilidade e Reservas são os subdomínios Core iniciais. |
 | DEC-C-018 | Catálogo e Estoque, Gestão de Clientes e Rastreabilidade e Auditoria são Supporting; Identidade e Acesso é Generic. |
+| DEC-C-019 | Os seis Bounded Contexts iniciais são Identity and Access, Customer Management, Catalog, Inventory and Reservation, Commercial e Audit. |
+| DEC-C-020 | Catálogo permanece separado do controle operacional do estoque; Estoque e Reservas ficam no mesmo contexto para proteger a exclusividade da unidade. |
+| DEC-C-021 | A hipótese arquitetural inicial é um monólito modular com um módulo por Bounded Context e Arquitetura Hexagonal dentro de cada módulo; a ADR da `BKL-007` formalizará a decisão. |

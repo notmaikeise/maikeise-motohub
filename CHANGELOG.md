@@ -15,6 +15,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Backlog inicial e guia do GitHub Projects.
 - Templates para issues.
 - Documento de identificação e classificação dos subdomínios.
+- Documento de definição dos Bounded Contexts e da propriedade dos dados.
 
 ### Changed
 
@@ -26,3 +27,6 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Definição de preço anunciado, desconto global da proposta e snapshot comercial.
 - Padronização de `venda` como registro do domínio e `compra` como perspectiva do cliente.
 - Classificação inicial das capacidades Core, Supporting e Generic do domínio.
+- Definição dos seis contextos iniciais: Identity and Access, Customer Management, Catalog, Inventory and Reservation, Commercial e Audit.
+- Separação entre Catálogo e Estoque e união entre Estoque e Reservas para preservar a exclusividade de cada unidade.
+- Registro da hipótese de monólito modular com Arquitetura Hexagonal, a ser formalizada por ADR.

@@ -189,8 +189,8 @@ API REST, banco de dados, interface web, Docker e mensageria são escolhas ou co
 | Bounded Context | Dentro de qual limite um modelo e sua linguagem são consistentes? |
 | Microsserviço | Como uma parte da solução será implantada e operada? |
 
-Não existe obrigação de mapear cada subdomínio diretamente para um Bounded Context ou microsserviço. Esses limites serão analisados nas próximas atividades, sem antecipar uma arquitetura distribuída.
+Não existe obrigação de mapear cada subdomínio diretamente para um Bounded Context ou microsserviço. Os limites definidos posteriormente estão documentados em [Bounded Contexts do Maikeise MotoHub](02-bounded-contexts.md), sem antecipar uma arquitetura distribuída.
 
-## Próximo passo
+## Continuidade da modelagem
 
-A `BKL-003` definirá hipóteses de Bounded Contexts, incluindo responsabilidades, termos controlados e informações que não devem pertencer a cada limite.
+A `BKL-003` definiu os Bounded Contexts, incluindo responsabilidades, termos controlados, propriedade dos dados e informações que não pertencem a cada limite. A `BKL-004` continuará o trabalho com o Context Map.

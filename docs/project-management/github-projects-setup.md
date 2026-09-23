@@ -61,9 +61,8 @@ Identity
 Customer
 Catalog
 Inventory
-Proposal
-Reservation
-Sales
+Commercial
+Audit
 Platform
 ```
 
@@ -122,10 +121,10 @@ Use labels para categorias estáveis e campos do Project para planejamento.
 area: ddd
 area: identity
 area: customer
+area: catalog
 area: inventory
-area: proposal
-area: reservation
-area: sales
+area: commercial
+area: audit
 type: discovery
 type: documentation
 type: feature
