@@ -4,7 +4,7 @@
 | --- | --- |
 | Situação | **Aceita** |
 | Data | 23 de setembro de 2026 |
-| Decisora | Not Maikeise |
+| Decisora | ANNY MAIKEISE |
 | Relacionada a | `BKL-007` |
 
 ## Contexto

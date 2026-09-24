@@ -23,7 +23,7 @@ Tempo estimado: **12 a 15 minutos**.
 Indicada para entender o processo de descoberta e justificar as decisões.
 
 1. [Origem e propósito](00-project-context.md).
-2. [Uso responsável de IA](08-ai-assisted-development.md).
+2. [Como a IA é usada](08-ai-assisted-development.md).
 3. [Visão do produto](01-product-vision.md).
 4. [Escopo e atores](02-scope-and-actors.md).
 5. [Jornada principal](03-user-journey.md).
@@ -55,7 +55,7 @@ Tempo estimado: **45 minutos ou mais**, conforme o aprofundamento.
 | Documento | Responde principalmente a... | Perfil |
 | --- | --- | --- |
 | [Origem e propósito](00-project-context.md) | Qual é a relação com o trabalho da faculdade? | Todos |
-| [Uso responsável de IA](08-ai-assisted-development.md) | Como a IA apoia o estudo e como seus resultados são verificados? | Todos |
+| [Como a IA é usada](08-ai-assisted-development.md) | Onde a IA apoia o estudo e como suas sugestões são verificadas? | Todos |
 | [Visão do produto](01-product-vision.md) | Qual problema será resolvido e para quem? | Todos |
 | [Escopo e atores](02-scope-and-actors.md) | O que entra no MVP e quem pode fazer o quê? | Produto |
 | [Jornada principal](03-user-journey.md) | Como uma consulta se transforma em venda? | Produto |

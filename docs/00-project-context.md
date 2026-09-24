@@ -37,13 +37,13 @@ O estudo individual pretende aprofundar:
 | Representa a entrega acadêmica oficial da equipe. | Não substitui nem representa a entrega oficial da equipe. |
 | Tem autoria coletiva. | Tem implementação individual, preservando o reconhecimento da inspiração coletiva. |
 
-## Uso declarado de IA generativa
+## Como a IA participa deste estudo
 
-O desenvolvimento deste estudo conta com apoio de IA generativa da OpenAI, por meio do ChatGPT/Codex, para explicações, perguntas de refinamento, comparação de alternativas, revisão de consistência, estruturação documental e automação de tarefas repetitivas.
+Durante este estudo, ANNY MAIKEISE utiliza o ChatGPT/Codex, da OpenAI, para aprender conceitos, organizar a documentação, comparar alternativas e procurar pontos que ainda precisam ser esclarecidos.
 
-Esse uso também integra uma investigação prática sobre a eficácia e as limitações da IA como ferramenta de apoio à modelagem de software. As sugestões não são aceitas automaticamente: decisões de produto, domínio e arquitetura são analisadas e aprovadas pela autora e serão confrontadas com implementação, testes e referências técnicas.
+O objetivo não é transferir as decisões para a ferramenta. O uso da IA também serve para observar, na prática, quando ela ajuda na modelagem de software e quando suas sugestões precisam ser questionadas ou corrigidas. As decisões de produto, domínio e arquitetura continuam sob responsabilidade de ANNY MAIKEISE e serão verificadas durante a implementação e os testes.
 
-A declaração completa, a divisão de responsabilidades e os critérios de avaliação estão em [Uso responsável de IA no projeto](08-ai-assisted-development.md).
+A explicação completa, incluindo a divisão de responsabilidades e a forma de validação, está em [Como a IA é usada neste projeto](08-ai-assisted-development.md).
 
 ## Limites de autoria
 

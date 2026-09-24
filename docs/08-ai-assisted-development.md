@@ -1,71 +1,77 @@
-# Uso responsável de IA no projeto
+# Como a IA é usada neste projeto
 
 > [!IMPORTANT]
-> O Maikeise MotoHub utiliza inteligência artificial generativa como apoio ao aprendizado, à revisão crítica e à organização do trabalho. A IA não é tratada como autora, especialista de domínio nem fonte automática de verdade.
+> A IA é uma ferramenta de apoio neste projeto. Ela ajuda no estudo, faz perguntas e sugere caminhos, mas não substitui as decisões, a revisão ou a responsabilidade de quem está desenvolvendo o sistema.
 
-## Declaração de uso
+## Por que estou registrando isso
 
-Durante a ideação, a modelagem e a preparação do desenvolvimento, foram utilizadas ferramentas de IA generativa da OpenAI, por meio do ChatGPT/Codex.
+Durante a ideação e a modelagem do Maikeise MotoHub, usei o ChatGPT/Codex, da OpenAI, para estudar conceitos, organizar ideias e revisar o que estava sendo produzido.
 
-O uso faz parte de um estudo prático sobre até que ponto a IA pode ajudar uma pessoa desenvolvedora a:
+Além de apoiar o desenvolvimento, esse uso também faz parte do próprio estudo. Quero observar, na prática, até onde a IA consegue contribuir com a modelagem de software e em quais situações suas respostas precisam ser questionadas, corrigidas ou descartadas.
 
-- compreender e aplicar conceitos de engenharia de software;
-- transformar perguntas de negócio em artefatos de modelagem;
-- encontrar inconsistências, lacunas e ambiguidades;
-- comparar alternativas arquiteturais e seus trade-offs;
-- manter rastreabilidade entre regras, modelo, backlog, código e testes;
-- aprender durante a construção, em vez de apenas receber um resultado pronto.
+## Como a IA participa
 
-## Divisão de responsabilidades
+A ferramenta tem sido usada para:
 
-| Responsabilidade da autora | Apoio fornecido pela IA |
+- explicar termos e conceitos de engenharia de software;
+- fazer perguntas que ajudam a transformar ideias em regras mais claras;
+- apontar possíveis lacunas ou contradições entre os documentos;
+- apresentar alternativas de modelagem e arquitetura;
+- ajudar na organização do backlog, dos diagramas e da documentação;
+- automatizar tarefas repetitivas, como a preparação dos cards do GitHub Projects.
+
+Esse apoio não significa aceitar toda sugestão. Cada decisão é discutida, revisada e aprovada antes de entrar no projeto.
+
+## Quem é responsável por cada parte
+
+| Responsabilidade de ANNY MAIKEISE | Como a IA pode apoiar |
 | --- | --- |
-| Definir objetivos, escopo e prioridades. | Fazer perguntas para explicitar decisões e dúvidas. |
-| Informar, revisar e aprovar regras de negócio. | Sugerir formulações, alternativas e possíveis casos de borda. |
-| Escolher os trade-offs de DDD e arquitetura. | Explicar conceitos e confrontar opções. |
-| Revisar documentos e comandos antes de aceitá-los. | Ajudar a estruturar documentos, diagramas e automações. |
-| Implementar, executar, testar e corrigir o sistema. | Apoiar a investigação de erros e a revisão técnica. |
-| Responder pela autoria e pela qualidade do repositório. | Atuar como ferramenta de suporte, sem responsabilidade decisória. |
+| Definir o objetivo, o escopo e as prioridades. | Fazer perguntas e ajudar a organizar as respostas. |
+| Explicar, revisar e aprovar as regras de negócio. | Sugerir casos alternativos, conflitos e pontos ainda indefinidos. |
+| Escolher as decisões de DDD e arquitetura. | Explicar opções, vantagens, riscos e consequências. |
+| Entender os documentos e comandos antes de usá-los. | Ajudar a escrever, revisar e simplificar o conteúdo. |
+| Implementar, executar, testar e corrigir o sistema. | Apoiar a investigação de erros e sugerir possíveis soluções. |
+| Responder pela autoria e pela qualidade do repositório. | Servir como ferramenta de apoio, sem tomar decisões finais. |
 
-As decisões registradas neste repositório só são consideradas aceitas depois de revisão e confirmação humana. Prompts ou respostas da IA, isoladamente, não constituem requisitos, evidências ou decisões arquiteturais.
+Uma resposta da IA, sozinha, não é considerada requisito, evidência ou decisão arquitetural.
 
-## Como a modelagem será validada
+## Como vou validar a modelagem
 
-A IA pode ajudar a questionar o modelo, mas não consegue validá-lo sozinha. A validação será incremental e utilizará evidências verificáveis:
+A IA pode ajudar a encontrar problemas, mas não pode afirmar sozinha que a modelagem está correta. Por isso, o modelo será validado aos poucos:
 
-1. **Coerência interna:** glossário, regras, requisitos, eventos, agregados e arquitetura devem contar a mesma história.
-2. **Rastreabilidade:** decisões relevantes devem aparecer em issues, commits, ADRs ou documentos versionados.
-3. **Cenários e exemplos:** fluxos principais, alternativas e casos de erro devem confirmar ou desafiar as regras propostas.
-4. **Implementação:** dificuldades para expressar o domínio no código podem revelar limites incorretos ou abstrações prematuras.
-5. **Testes automatizados:** invariantes e políticas importantes devem ser demonstradas por testes reproduzíveis.
-6. **Revisão humana:** conclusões sugeridas pela IA devem ser analisadas criticamente e, quando necessário, confrontadas com documentação técnica e conhecimento de domínio.
+1. **Coerência:** glossário, regras, requisitos, eventos, agregados e arquitetura precisam representar o mesmo negócio.
+2. **Rastreabilidade:** deve ser possível entender de onde uma decisão veio e onde ela aparece na documentação, nas issues, no código e nos testes.
+3. **Cenários reais:** o fluxo principal, as exceções e os casos de erro precisam fazer sentido quando aplicados a exemplos concretos.
+4. **Implementação:** se uma regra for difícil ou impossível de representar no código, o modelo deverá ser revisto.
+5. **Testes:** as regras mais importantes deverão ser demonstradas por testes automatizados e reproduzíveis.
+6. **Revisão humana:** sugestões relevantes serão comparadas com referências técnicas e com o conhecimento disponível sobre o domínio.
 
-## O que será observado sobre a eficácia da IA
+## O que quero observar
 
-Ao longo do projeto, o uso da IA será avaliado principalmente por sua capacidade de:
+Ao longo do projeto, quero descobrir se a IA realmente ajuda a:
 
-- tornar conceitos técnicos compreensíveis sem ocultar sua complexidade;
-- revelar perguntas que ainda não haviam sido consideradas;
-- reduzir trabalho repetitivo sem retirar o aprendizado;
-- preservar consistência entre muitos artefatos relacionados;
-- explicar alternativas em vez de impor uma única solução;
-- reconhecer incertezas e permitir correções quando uma sugestão não se sustentar.
+- tornar conceitos técnicos mais compreensíveis;
+- levantar perguntas que eu ainda não havia considerado;
+- manter vários documentos coerentes entre si;
+- reduzir tarefas repetitivas sem retirar o aprendizado;
+- comparar alternativas sem esconder os seus trade-offs;
+- perceber e corrigir decisões que não funcionam quando chegam ao código.
 
-Também serão observados riscos como respostas convincentes, porém incorretas; excesso de arquitetura; decisões sem evidência; perda de contexto; e dependência da ferramenta para tarefas que a autora precisa aprender a executar.
+Também quero registrar suas limitações: respostas que parecem corretas, mas não são; sugestões genéricas; arquitetura desnecessariamente complexa; perda de contexto; e o risco de depender da ferramenta sem compreender o que está sendo feito.
 
-## Critérios de uso responsável
+## Cuidados adotados
 
-- Nenhuma saída é incorporada apenas porque foi gerada pela IA.
-- Decisões importantes devem possuir justificativa compreensível pela autora.
-- Código gerado ou sugerido deve ser lido, executado e testado antes do commit.
-- Dados pessoais, credenciais, segredos e informações confidenciais não devem ser fornecidos à ferramenta.
-- O histórico do Git deve registrar a evolução real, incluindo correções e mudanças de entendimento.
-- O uso da IA deve ser declarado quando relevante para avaliação acadêmica ou profissional.
+- Nenhuma resposta entra no projeto apenas por ter sido gerada pela IA.
+- Toda decisão importante precisa ser compreendida e justificada por mim.
+- Código sugerido deve ser lido, executado e testado antes do commit.
+- Credenciais, segredos e informações confidenciais não devem ser compartilhados com a ferramenta.
+- Erros, correções e mudanças de entendimento fazem parte do histórico real do projeto.
+- O uso da IA permanece visível para avaliações acadêmicas e profissionais.
 
 ## Autoria
 
-A IA colaborou com perguntas, explicações, sugestões, revisões e automações, mas não possui autoria ou responsabilidade sobre o projeto. A seleção, adaptação e aprovação dos artefatos, bem como a futura implementação e verificação do software, são de responsabilidade de [Not Maikeise](https://github.com/notmaikeise).
+A IA contribui com perguntas, explicações, sugestões, revisões e automações. A escolha do que será usado, a adaptação dos artefatos, as decisões do projeto e a verificação do software são responsabilidade de [ANNY MAIKEISE](https://github.com/notmaikeise).
 
-Esta declaração poderá evoluir junto com o projeto para registrar exemplos concretos de acertos, limitações e correções identificados durante o desenvolvimento.
+Esta página será atualizada durante o desenvolvimento para registrar exemplos reais do que funcionou, do que precisou ser corrigido e do que foi aprendido com esse processo.
 
 [Voltar ao Hub da documentação](README.md).

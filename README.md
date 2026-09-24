@@ -53,11 +53,11 @@ Aqui, a proposta é continuar além da ideação acadêmica: documentar o racioc
 
 ## Uso transparente de IA
 
-Este projeto utiliza IA generativa da OpenAI, por meio do ChatGPT/Codex, como apoio didático, revisão crítica e automação de tarefas repetitivas. A experiência também observa a eficácia e os limites desse apoio durante a modelagem e a implementação de software.
+Durante este projeto, uso o ChatGPT/Codex, da OpenAI, para estudar conceitos, organizar ideias, levantar perguntas e revisar possíveis inconsistências. Esse processo também faz parte de um estudo prático sobre o quanto a IA pode ajudar na modelagem de software e quais são os seus limites.
 
-A IA não é considerada autora nem fonte automática de validação. Objetivos, regras, trade-offs e artefatos são revisados e aprovados pela autora; a validade do modelo será confrontada com coerência documental, referências, código executável e testes automatizados.
+As decisões não são delegadas à ferramenta. Eu reviso e aprovo o que entra no projeto, e a modelagem será colocada à prova na documentação, no código e nos testes.
 
-[Consulte a declaração completa e os critérios de uso responsável](docs/08-ai-assisted-development.md).
+[Veja em detalhes como a IA é usada e como suas sugestões serão verificadas](docs/08-ai-assisted-development.md).
 
 ## Decisões de engenharia já consolidadas
 
@@ -131,6 +131,6 @@ Toda a navegação está organizada no [Hub da documentação](docs/README.md).
 
 ## Autoria e licença
 
-Esta evolução técnica individual é desenvolvida por [Not Maikeise](https://github.com/notmaikeise), preservando o reconhecimento da inspiração acadêmica coletiva.
+Esta evolução técnica individual é desenvolvida por [ANNY MAIKEISE](https://github.com/notmaikeise), preservando o reconhecimento da inspiração acadêmica coletiva.
 
 A licença será definida antes da primeira versão pública de código.
