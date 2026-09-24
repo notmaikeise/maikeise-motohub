@@ -25,6 +25,7 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - ADR-001 formalizando o monólito modular com Arquitetura Hexagonal.
 - Catálogo estruturado com 90 cards do planejamento, cobrindo o MVP até a release local.
 - Script idempotente para criar issues, labels e preencher os campos do GitHub Project em lote.
+- Declaração de uso responsável de IA, com divisão de responsabilidades, método de validação e critérios para avaliar sua eficácia no estudo.
 
 ### Changed
 

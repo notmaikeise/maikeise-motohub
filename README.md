@@ -51,6 +51,14 @@ Aqui, a proposta é continuar além da ideação acadêmica: documentar o racioc
 
 [Entenda a origem, a autoria e os limites entre os projetos](docs/00-project-context.md).
 
+## Uso transparente de IA
+
+Este projeto utiliza IA generativa da OpenAI, por meio do ChatGPT/Codex, como apoio didático, revisão crítica e automação de tarefas repetitivas. A experiência também observa a eficácia e os limites desse apoio durante a modelagem e a implementação de software.
+
+A IA não é considerada autora nem fonte automática de validação. Objetivos, regras, trade-offs e artefatos são revisados e aprovados pela autora; a validade do modelo será confrontada com coerência documental, referências, código executável e testes automatizados.
+
+[Consulte a declaração completa e os critérios de uso responsável](docs/08-ai-assisted-development.md).
+
 ## Decisões de engenharia já consolidadas
 
 - Seis Bounded Contexts com responsabilidades e dados próprios.

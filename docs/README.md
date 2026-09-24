@@ -23,14 +23,15 @@ Tempo estimado: **12 a 15 minutos**.
 Indicada para entender o processo de descoberta e justificar as decisões.
 
 1. [Origem e propósito](00-project-context.md).
-2. [Visão do produto](01-product-vision.md).
-3. [Escopo e atores](02-scope-and-actors.md).
-4. [Jornada principal](03-user-journey.md).
-5. [Regras de negócio](04-business-rules.md).
-6. [DDD em uma visão](ddd/00-overview.md).
-7. [Arquitetura em uma visão](architecture/00-overview.md).
-8. [ADR-001](architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
-9. [Decisões em aberto e concluídas](07-open-decisions.md).
+2. [Uso responsável de IA](08-ai-assisted-development.md).
+3. [Visão do produto](01-product-vision.md).
+4. [Escopo e atores](02-scope-and-actors.md).
+5. [Jornada principal](03-user-journey.md).
+6. [Regras de negócio](04-business-rules.md).
+7. [DDD em uma visão](ddd/00-overview.md).
+8. [Arquitetura em uma visão](architecture/00-overview.md).
+9. [ADR-001](architecture/decisions/ADR-001-monolito-modular-arquitetura-hexagonal.md).
+10. [Decisões em aberto e concluídas](07-open-decisions.md).
 
 Tempo estimado: **20 a 30 minutos**.
 
@@ -54,6 +55,7 @@ Tempo estimado: **45 minutos ou mais**, conforme o aprofundamento.
 | Documento | Responde principalmente a... | Perfil |
 | --- | --- | --- |
 | [Origem e propósito](00-project-context.md) | Qual é a relação com o trabalho da faculdade? | Todos |
+| [Uso responsável de IA](08-ai-assisted-development.md) | Como a IA apoia o estudo e como seus resultados são verificados? | Todos |
 | [Visão do produto](01-product-vision.md) | Qual problema será resolvido e para quem? | Todos |
 | [Escopo e atores](02-scope-and-actors.md) | O que entra no MVP e quem pode fazer o quê? | Produto |
 | [Jornada principal](03-user-journey.md) | Como uma consulta se transforma em venda? | Produto |

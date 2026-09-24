@@ -37,6 +37,14 @@ O estudo individual pretende aprofundar:
 | Representa a entrega acadêmica oficial da equipe. | Não substitui nem representa a entrega oficial da equipe. |
 | Tem autoria coletiva. | Tem implementação individual, preservando o reconhecimento da inspiração coletiva. |
 
+## Uso declarado de IA generativa
+
+O desenvolvimento deste estudo conta com apoio de IA generativa da OpenAI, por meio do ChatGPT/Codex, para explicações, perguntas de refinamento, comparação de alternativas, revisão de consistência, estruturação documental e automação de tarefas repetitivas.
+
+Esse uso também integra uma investigação prática sobre a eficácia e as limitações da IA como ferramenta de apoio à modelagem de software. As sugestões não são aceitas automaticamente: decisões de produto, domínio e arquitetura são analisadas e aprovadas pela autora e serão confrontadas com implementação, testes e referências técnicas.
+
+A declaração completa, a divisão de responsabilidades e os critérios de avaliação estão em [Uso responsável de IA no projeto](08-ai-assisted-development.md).
+
 ## Limites de autoria
 
 O repositório não apresenta o conceito acadêmico coletivo como criação exclusiva de sua autora individual.
