@@ -147,22 +147,78 @@ function Get-FieldOption {
     return $option
 }
 
-function Set-ProjectSingleSelect {
+function Set-ProjectSingleSelectFields {
     param(
-        [Parameter(Mandatory = $true)][int]$ProjectNumber,
-        [Parameter(Mandatory = $true)][string]$Owner,
-        [Parameter(Mandatory = $true)][string]$IssueUrl,
-        [Parameter(Mandatory = $true)]$Field,
-        [Parameter(Mandatory = $true)][string]$OptionName
+        [Parameter(Mandatory = $true)][string]$ProjectId,
+        [Parameter(Mandatory = $true)][string]$ItemId,
+        [Parameter(Mandatory = $true)]$StatusField,
+        [Parameter(Mandatory = $true)][string]$Status,
+        [Parameter(Mandatory = $true)]$PriorityField,
+        [Parameter(Mandatory = $true)][string]$Priority,
+        [Parameter(Mandatory = $true)]$CategoryField,
+        [Parameter(Mandatory = $true)][string]$Category,
+        [Parameter(Mandatory = $true)]$AreaField,
+        [Parameter(Mandatory = $true)][string]$Area
     )
 
-    Get-FieldOption -Field $Field -Name $OptionName | Out-Null
-    Invoke-GhText -Arguments @(
-        "project", "item-edit", "$ProjectNumber",
-        "--owner", $Owner,
-        "--url", $IssueUrl,
-        "--field", $Field.name,
-        "--value", $OptionName
+    $statusOption = Get-FieldOption -Field $StatusField -Name $Status
+    $priorityOption = Get-FieldOption -Field $PriorityField -Name $Priority
+    $categoryOption = Get-FieldOption -Field $CategoryField -Name $Category
+    $areaOption = Get-FieldOption -Field $AreaField -Name $Area
+
+    $mutation = @'
+mutation(
+  $projectId: ID!
+  $itemId: ID!
+  $statusFieldId: ID!
+  $statusOptionId: String!
+  $priorityFieldId: ID!
+  $priorityOptionId: String!
+  $categoryFieldId: ID!
+  $categoryOptionId: String!
+  $areaFieldId: ID!
+  $areaOptionId: String!
+) {
+  status: updateProjectV2ItemFieldValue(input: {
+    projectId: $projectId
+    itemId: $itemId
+    fieldId: $statusFieldId
+    value: { singleSelectOptionId: $statusOptionId }
+  }) { projectV2Item { id } }
+  priority: updateProjectV2ItemFieldValue(input: {
+    projectId: $projectId
+    itemId: $itemId
+    fieldId: $priorityFieldId
+    value: { singleSelectOptionId: $priorityOptionId }
+  }) { projectV2Item { id } }
+  category: updateProjectV2ItemFieldValue(input: {
+    projectId: $projectId
+    itemId: $itemId
+    fieldId: $categoryFieldId
+    value: { singleSelectOptionId: $categoryOptionId }
+  }) { projectV2Item { id } }
+  area: updateProjectV2ItemFieldValue(input: {
+    projectId: $projectId
+    itemId: $itemId
+    fieldId: $areaFieldId
+    value: { singleSelectOptionId: $areaOptionId }
+  }) { projectV2Item { id } }
+}
+'@
+
+    Invoke-GhJson -Arguments @(
+        "api", "graphql",
+        "-f", "query=$mutation",
+        "-f", "projectId=$ProjectId",
+        "-f", "itemId=$ItemId",
+        "-f", "statusFieldId=$($StatusField.id)",
+        "-f", "statusOptionId=$($statusOption.id)",
+        "-f", "priorityFieldId=$($PriorityField.id)",
+        "-f", "priorityOptionId=$($priorityOption.id)",
+        "-f", "categoryFieldId=$($CategoryField.id)",
+        "-f", "categoryOptionId=$($categoryOption.id)",
+        "-f", "areaFieldId=$($AreaField.id)",
+        "-f", "areaOptionId=$($areaOption.id)"
     ) | Out-Null
 }
 
@@ -173,6 +229,7 @@ if ($null -eq (Get-Command gh -ErrorAction SilentlyContinue)) {
 $repositoryRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
 $catalogPath = Join-Path $repositoryRoot "docs\project-management\backlog-cards.csv"
 $cards = @(Import-Csv -Path $catalogPath -Encoding UTF8)
+$utf8WithoutBom = [System.Text.UTF8Encoding]::new($false)
 
 if ($cards.Count -eq 0) {
     throw "O catálogo está vazio: $catalogPath"
@@ -185,6 +242,19 @@ if ($duplicateIds) {
 
 Invoke-GhText -Arguments @("auth", "status") | Out-Null
 
+if ($Apply) {
+    $rateResult = Invoke-GhJson -Arguments @("api", "rate_limit")
+    $graphqlRate = $rateResult.resources.graphql
+    $minimumGraphqlBudget = ($cards.Count * 2) + 25
+
+    if ([int]$graphqlRate.remaining -lt $minimumGraphqlBudget) {
+        $resetAt = [DateTimeOffset]::FromUnixTimeSeconds([long]$graphqlRate.reset).ToLocalTime()
+        throw "Cota GraphQL insuficiente para uma execução segura. Restam $($graphqlRate.remaining) de $($graphqlRate.limit) pontos. Aguarde até $($resetAt.ToString('dd/MM/yyyy HH:mm:ss')) e execute novamente. Nenhuma alteração desta execução foi realizada."
+    }
+
+    Write-Host "Cota GraphQL disponível: $($graphqlRate.remaining) de $($graphqlRate.limit) pontos."
+}
+
 $projectResult = Invoke-GhJson -Arguments @(
     "project", "list", "--owner", $ProjectOwner,
     "--limit", "100", "--format", "json"
@@ -194,6 +264,10 @@ $project = $projects | Where-Object { $_.title -eq $ProjectTitle } | Select-Obje
 
 if ($null -eq $project) {
     throw "Project '$ProjectTitle' não encontrado para o proprietário '$ProjectOwner'."
+}
+
+if ([string]::IsNullOrWhiteSpace([string]$project.id)) {
+    throw "O GitHub CLI não retornou o ID do Project. Atualize o GitHub CLI e execute novamente."
 }
 
 $fieldResult = Invoke-GhJson -Arguments @(
@@ -336,7 +410,8 @@ foreach ($card in $cards) {
 
         $temporaryBody = New-TemporaryFile
         try {
-            Get-IssueBody -Card $card | Set-Content -Path $temporaryBody.FullName -Encoding UTF8
+            $bodyText = Get-IssueBody -Card $card
+            [System.IO.File]::WriteAllText($temporaryBody.FullName, $bodyText, $utf8WithoutBom)
             $issueUrl = Invoke-GhText -Arguments @(
                 "issue", "create", "--repo", $Repository,
                 "--title", "$($card.id) - $($card.title)",
@@ -380,19 +455,40 @@ foreach ($card in $cards) {
 
     $item = $itemsByUrl[$issue.url]
     if ($null -eq $item) {
-        Invoke-GhText -Arguments @(
+        $item = Invoke-GhJson -Arguments @(
             "project", "item-add", "$($project.number)",
             "--owner", $ProjectOwner,
-            "--url", $issue.url
-        ) | Out-Null
-        $itemsByUrl[$issue.url] = $true
+            "--url", $issue.url,
+            "--format", "json"
+        )
+
+        if ($null -ne $item.PSObject.Properties["item"]) {
+            $item = $item.item
+        }
+
+        if ([string]::IsNullOrWhiteSpace([string]$item.id)) {
+            throw "O GitHub CLI adicionou '$($card.id)' ao Project, mas não retornou o ID do item. Execute o script novamente para continuar."
+        }
+
+        $itemsByUrl[$issue.url] = $item
         $addedToProject++
     }
 
-    Set-ProjectSingleSelect -ProjectNumber $project.number -Owner $ProjectOwner -IssueUrl $issue.url -Field $statusField -OptionName $card.status
-    Set-ProjectSingleSelect -ProjectNumber $project.number -Owner $ProjectOwner -IssueUrl $issue.url -Field $priorityField -OptionName $card.priority
-    Set-ProjectSingleSelect -ProjectNumber $project.number -Owner $ProjectOwner -IssueUrl $issue.url -Field $categoryField -OptionName $card.category
-    Set-ProjectSingleSelect -ProjectNumber $project.number -Owner $ProjectOwner -IssueUrl $issue.url -Field $areaField -OptionName $card.area
+    if ([string]::IsNullOrWhiteSpace([string]$item.id)) {
+        throw "O item de Project correspondente a '$($card.id)' não possui ID. Execute o script novamente para atualizar a leitura do Project."
+    }
+
+    Set-ProjectSingleSelectFields `
+        -ProjectId $project.id `
+        -ItemId $item.id `
+        -StatusField $statusField `
+        -Status $card.status `
+        -PriorityField $priorityField `
+        -Priority $card.priority `
+        -CategoryField $categoryField `
+        -Category $card.category `
+        -AreaField $areaField `
+        -Area $card.area
 
     if ($CloseCompleted -and $card.status -eq "Done" -and $issue.state -ne "CLOSED") {
         Invoke-GhText -Arguments @(

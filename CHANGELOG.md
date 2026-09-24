@@ -63,3 +63,4 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Registro da baseline Java 21, Spring Boot 4.1, testes com Testcontainers, Docker Compose e CI gratuita.
 - Expansão do backlog com interface web, API, segurança, observabilidade, empacotamento e apresentação de portfólio.
 - Compatibilidade do script de backlog com Windows PowerShell e validação conjunta das opções ausentes no GitHub Project antes de qualquer escrita.
+- Verificação preventiva da cota GraphQL e atualização agrupada dos quatro campos de cada card para reduzir chamadas e interrupções por limite da API.

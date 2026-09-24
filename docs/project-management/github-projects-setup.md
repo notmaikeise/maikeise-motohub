@@ -158,8 +158,10 @@ O script:
 3. atribui as issues à própria conta;
 4. adiciona as labels de tipo e área ausentes;
 5. adiciona cada issue ao Project;
-6. preenche os quatro campos personalizados;
+6. preenche os quatro campos personalizados em uma única requisição por card;
 7. mantém somente `BKL-010` em `Ready` e os demais trabalhos futuros em `Backlog`.
+
+Antes de escrever, o script também verifica se existe cota GraphQL suficiente para concluir o processamento com segurança. Se a cota estiver baixa, ele informa o horário de renovação e encerra antes de alterar qualquer item.
 
 Depois de confirmar que `BKL-001` a `BKL-007` estão publicados no repositório, é possível também fechá-los:
 
@@ -168,6 +170,8 @@ Depois de confirmar que `BKL-001` a `BKL-007` estão publicados no repositório,
 ```
 
 O script é idempotente: uma nova execução sincroniza os itens existentes em vez de criar outra issue com o mesmo ID.
+
+As atualizações de `Status`, `Priority`, `Category` e `Area` são agrupadas em uma única mutação GraphQL. Isso reduz o número de chamadas à API e diminui a chance de bloqueio durante a criação em lote.
 
 ## Labels recomendadas no repositório
 
