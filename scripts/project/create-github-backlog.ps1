@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$Repository = "notmaikeise/maikeise-motohub",
     [string]$ProjectOwner = "notmaikeise",
@@ -172,7 +172,7 @@ if ($null -eq (Get-Command gh -ErrorAction SilentlyContinue)) {
 
 $repositoryRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
 $catalogPath = Join-Path $repositoryRoot "docs\project-management\backlog-cards.csv"
-$cards = @(Import-Csv -Path $catalogPath)
+$cards = @(Import-Csv -Path $catalogPath -Encoding UTF8)
 
 if ($cards.Count -eq 0) {
     throw "O catálogo está vazio: $catalogPath"
@@ -206,11 +206,30 @@ $priorityField = Get-Field -Fields $fields -Name "Priority"
 $categoryField = Get-Field -Fields $fields -Name "Category"
 $areaField = Get-Field -Fields $fields -Name "Area"
 
-foreach ($card in $cards) {
-    Get-FieldOption -Field $statusField -Name $card.status | Out-Null
-    Get-FieldOption -Field $priorityField -Name $card.priority | Out-Null
-    Get-FieldOption -Field $categoryField -Name $card.category | Out-Null
-    Get-FieldOption -Field $areaField -Name $card.area | Out-Null
+$requiredFieldOptions = @{
+    "Status" = @("Backlog", "Ready", "In progress", "In review", "Done")
+    "Priority" = @("Must", "Should", "Could", "Won't")
+    "Category" = @("Discovery", "Documentation", "Architecture", "Feature", "Technical", "Bug")
+    "Area" = @("Product", "DDD", "Architecture", "Identity", "Customer", "Catalog", "Inventory", "Commercial", "Audit", "Platform")
+}
+$fieldsByName = @{
+    "Status" = $statusField
+    "Priority" = $priorityField
+    "Category" = $categoryField
+    "Area" = $areaField
+}
+$missingFieldOptions = @()
+
+foreach ($fieldName in $requiredFieldOptions.Keys) {
+    $configuredOptions = @($fieldsByName[$fieldName].options | ForEach-Object { $_.name })
+    $missingOptions = @($requiredFieldOptions[$fieldName] | Where-Object { $_ -notin $configuredOptions })
+    if ($missingOptions.Count -gt 0) {
+        $missingFieldOptions += "- ${fieldName}: $($missingOptions -join ', ')"
+    }
+}
+
+if ($missingFieldOptions.Count -gt 0) {
+    throw "Existem opções ausentes nos campos do Project:`n$($missingFieldOptions -join "`n")`nAdicione essas opções nas configurações do Project e execute novamente."
 }
 
 $issueResult = Invoke-GhJson -Arguments @(
@@ -244,6 +263,7 @@ $labelDefinitions = @{
     "type: architecture" = @{ Color = "d4c5f9"; Description = "Decisão ou estrutura arquitetural" }
     "type: feature"      = @{ Color = "0e8a16"; Description = "Funcionalidade para um ator" }
     "type: technical"    = @{ Color = "fbca04"; Description = "Infraestrutura ou qualidade interna" }
+    "type: bug"          = @{ Color = "d73a4a"; Description = "Defeito a corrigir" }
     "area: product"      = @{ Color = "cfd3d7"; Description = "Produto e escopo" }
     "area: ddd"          = @{ Color = "cfd3d7"; Description = "Modelagem DDD" }
     "area: architecture" = @{ Color = "cfd3d7"; Description = "Arquitetura" }
@@ -271,6 +291,7 @@ $typeLabels = @{
     "Architecture" = "type: architecture"
     "Feature" = "type: feature"
     "Technical" = "type: technical"
+    "Bug" = "type: bug"
 }
 
 if (-not $Apply) {

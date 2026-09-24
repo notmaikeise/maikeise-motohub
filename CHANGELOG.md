@@ -61,3 +61,4 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - Escolha de REST e Thymeleaf/HTMX como adaptadores de entrada, com autenticação por sessão.
 - Registro da baseline Java 21, Spring Boot 4.1, testes com Testcontainers, Docker Compose e CI gratuita.
 - Expansão do backlog com interface web, API, segurança, observabilidade, empacotamento e apresentação de portfólio.
+- Compatibilidade do script de backlog com Windows PowerShell e validação conjunta das opções ausentes no GitHub Project antes de qualquer escrita.

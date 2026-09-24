@@ -143,6 +143,8 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 A simulação consulta o repositório e o Project, valida todos os campos e informa o que seria criado sem fazer alterações.
 
+Se alguma opção de seleção estiver ausente, o script interrompe a simulação antes de qualquer escrita e lista, por campo, tudo o que precisa ser adicionado. No Project, abra o menu do campo indicado, escolha **Edit field** e use **Add option** para completar a lista da seção [Campos recomendados](#campos-recomendados).
+
 ### 3. Criar e sincronizar
 
 ```powershell
