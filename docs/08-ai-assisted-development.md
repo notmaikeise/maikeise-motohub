@@ -1,77 +1,75 @@
-# Como a IA é usada neste projeto
+# Uso de IA no estudo
 
 > [!IMPORTANT]
-> A IA é uma ferramenta de apoio neste projeto. Ela ajuda no estudo, faz perguntas e sugere caminhos, mas não substitui as decisões, a revisão ou a responsabilidade de quem está desenvolvendo o sistema.
+> O ChatGPT/Codex, da OpenAI, foi usado como ferramenta de apoio ao aprendizado, à revisão e à organização. A IA não é autora do projeto, não conhece o domínio por experiência própria e não substitui validação humana.
 
-## Por que estou registrando isso
+## Por que este registro existe
 
-Durante a ideação e a modelagem do Maikeise MotoHub, usei o ChatGPT/Codex, da OpenAI, para estudar conceitos, organizar ideias e revisar o que estava sendo produzido.
+O uso de IA fez parte de dois objetivos relacionados: apoiar meu estudo de modelagem de software e observar, na prática, o quanto essa tecnologia consegue contribuir para um processo de DDD.
 
-Além de apoiar o desenvolvimento, esse uso também faz parte do próprio estudo. Quero observar, na prática, até onde a IA consegue contribuir com a modelagem de software e em quais situações suas respostas precisam ser questionadas, corrigidas ou descartadas.
+Eu, **ANNY MAIKEISE**, queria compreender as decisões, não apenas receber documentos prontos. Por isso, o trabalho avançou por perguntas curtas, explicações de termos, comparação de alternativas e aprovação explícita das decisões antes de registrá-las.
 
-## Como a IA participa
+## Como o uso evoluiu
 
-A ferramenta tem sido usada para:
+| Momento | Como a IA apoiou | O que permaneceu humano |
+| --- | --- | --- |
+| Ideação | Transformou ideias gerais em perguntas sobre público, fluxo e escopo. | Escolha do produto, dos atores e do limite do MVP. |
+| Regras de negócio | Sugeriu exceções, conflitos e cenários que precisavam de resposta. | Definição, revisão e aceitação das regras. |
+| DDD estratégico | Explicou subdomínios, Bounded Contexts e relações do Context Map. | Delimitação dos contextos e confirmação da linguagem do projeto. |
+| DDD tático | Ajudou a comparar agregados, eventos, invariantes e fronteiras transacionais. | Julgamento sobre quais alternativas representavam melhor o domínio estudado. |
+| Arquitetura | Apresentou opções, padrões, custos e consequências. | Decisão pelo monólito modular com Arquitetura Hexagonal e registro da ADR. |
+| Documentação | Organizou textos, tabelas, diagramas e trilhas de leitura. | Revisão do tom, da autoria, da coerência e do conteúdo publicado. |
+| Backlog | Ajudou a decompor o planejamento e a automatizar a criação dos cards. | Execução dos comandos, acompanhamento dos resultados e decisão de interromper ou corrigir. |
 
-- explicar termos e conceitos de engenharia de software;
-- fazer perguntas que ajudam a transformar ideias em regras mais claras;
-- apontar possíveis lacunas ou contradições entre os documentos;
-- apresentar alternativas de modelagem e arquitetura;
-- ajudar na organização do backlog, dos diagramas e da documentação;
-- automatizar tarefas repetitivas, como a preparação dos cards do GitHub Projects.
+## Onde a IA foi útil
 
-Esse apoio não significa aceitar toda sugestão. Cada decisão é discutida, revisada e aprovada antes de entrar no projeto.
+O apoio foi especialmente valioso para:
 
-## Quem é responsável por cada parte
+- explicar termos técnicos em linguagem mais acessível;
+- manter uma sequência de estudo sem exigir conhecimento prévio de todas as etapas;
+- formular perguntas que revelaram decisões ainda implícitas;
+- comparar alternativas sem esconder seus custos;
+- revisar a coerência entre glossário, regras, eventos, agregados e arquitetura;
+- reduzir trabalho repetitivo na documentação e no GitHub Projects.
 
-| Responsabilidade de ANNY MAIKEISE | Como a IA pode apoiar |
-| --- | --- |
-| Definir o objetivo, o escopo e as prioridades. | Fazer perguntas e ajudar a organizar as respostas. |
-| Explicar, revisar e aprovar as regras de negócio. | Sugerir casos alternativos, conflitos e pontos ainda indefinidos. |
-| Escolher as decisões de DDD e arquitetura. | Explicar opções, vantagens, riscos e consequências. |
-| Entender os documentos e comandos antes de usá-los. | Ajudar a escrever, revisar e simplificar o conteúdo. |
-| Implementar, executar, testar e corrigir o sistema. | Apoiar a investigação de erros e sugerir possíveis soluções. |
-| Responder pela autoria e pela qualidade do repositório. | Servir como ferramenta de apoio, sem tomar decisões finais. |
+Essa ajuda tornou o processo mais organizado e permitiu aprofundar assuntos que eu provavelmente estudaria de maneira mais fragmentada sozinha.
 
-Uma resposta da IA, sozinha, não é considerada requisito, evidência ou decisão arquitetural.
+## Limites observados
 
-## Como vou validar a modelagem
+O processo também mostrou que uma resposta bem escrita pode continuar incompleta ou errada. Algumas sugestões precisaram ser simplificadas, corrigidas ou confirmadas antes de entrar no repositório.
 
-A IA pode ajudar a encontrar problemas, mas não pode afirmar sozinha que a modelagem está correta. Por isso, o modelo será validado aos poucos:
+Na automação do backlog, por exemplo, ocorreram limite de chamadas da API, ajustes de comandos no PowerShell e uma demora do GitHub Projects para exibir cards que já haviam sido aceitos pela API. A mensagem de sucesso não comprovava, sozinha, que o resultado já estava visível. Foi necessário consultar diferentes relações da API, comparar evidências e aguardar a consistência do serviço.
 
-1. **Coerência:** glossário, regras, requisitos, eventos, agregados e arquitetura precisam representar o mesmo negócio.
-2. **Rastreabilidade:** deve ser possível entender de onde uma decisão veio e onde ela aparece na documentação, nas issues, no código e nos testes.
-3. **Cenários reais:** o fluxo principal, as exceções e os casos de erro precisam fazer sentido quando aplicados a exemplos concretos.
-4. **Implementação:** se uma regra for difícil ou impossível de representar no código, o modelo deverá ser revisto.
-5. **Testes:** as regras mais importantes deverão ser demonstradas por testes automatizados e reproduzíveis.
-6. **Revisão humana:** sugestões relevantes serão comparadas com referências técnicas e com o conhecimento disponível sobre o domínio.
+Os principais cuidados aprendidos foram:
 
-## O que quero observar
+- não confundir confiança na escrita com exatidão;
+- não adotar complexidade arquitetural apenas porque ela parece sofisticada;
+- verificar comandos e resultados no ambiente real;
+- preservar dúvidas quando não existe evidência suficiente;
+- revisar o contexto, porque a IA pode esquecer, misturar ou pressupor decisões;
+- tratar código, testes e conhecimento de domínio como validações que a conversa não substitui.
 
-Ao longo do projeto, quero descobrir se a IA realmente ajuda a:
+## Como avaliei a contribuição
 
-- tornar conceitos técnicos mais compreensíveis;
-- levantar perguntas que eu ainda não havia considerado;
-- manter vários documentos coerentes entre si;
-- reduzir tarefas repetitivas sem retirar o aprendizado;
-- comparar alternativas sem esconder os seus trade-offs;
-- perceber e corrigir decisões que não funcionam quando chegam ao código.
+Até esta pausa, a eficácia da IA foi observada por quatro critérios:
 
-Também quero registrar suas limitações: respostas que parecem corretas, mas não são; sugestões genéricas; arquitetura desnecessariamente complexa; perda de contexto; e o risco de depender da ferramenta sem compreender o que está sendo feito.
+1. **Compreensão:** eu conseguia explicar a decisão depois da orientação?
+2. **Coerência:** os documentos representavam a mesma linguagem e as mesmas regras?
+3. **Rastreabilidade:** era possível identificar decisões, dúvidas e mudanças de entendimento?
+4. **Verificação:** comandos e automações produziam o estado esperado nas ferramentas reais?
 
-## Cuidados adotados
+A modelagem não foi validada por uma aplicação executável, testes automatizados ou operação real, porque o código não foi iniciado. Portanto, o resultado atual demonstra organização e coerência documental, não prova definitiva de que todas as escolhas funcionarão sem revisão.
 
-- Nenhuma resposta entra no projeto apenas por ter sido gerada pela IA.
-- Toda decisão importante precisa ser compreendida e justificada por mim.
-- Código sugerido deve ser lido, executado e testado antes do commit.
-- Credenciais, segredos e informações confidenciais não devem ser compartilhados com a ferramenta.
-- Erros, correções e mudanças de entendimento fazem parte do histórico real do projeto.
-- O uso da IA permanece visível para avaliações acadêmicas e profissionais.
+## Autoria e responsabilidade
 
-## Autoria
+As ideias iniciais, respostas sobre o negócio, escolhas de escopo, aprovações e decisões finais são responsabilidade de ANNY MAIKEISE. A IA contribuiu com perguntas, explicações, alternativas, redação assistida e automações.
 
-A IA contribui com perguntas, explicações, sugestões, revisões e automações. A escolha do que será usado, a adaptação dos artefatos, as decisões do projeto e a verificação do software são responsabilidade de [ANNY MAIKEISE](https://github.com/notmaikeise).
+Nenhuma resposta da IA é tratada isoladamente como requisito, referência técnica ou evidência de correção. O conteúdo publicado foi selecionado e revisado por mim, e o uso da ferramenta permanece explícito para que professoras, recrutadores e outras pessoas possam avaliar o processo com transparência.
 
-Esta página será atualizada durante o desenvolvimento para registrar exemplos reais do que funcionou, do que precisou ser corrigido e do que foi aprendido com esse processo.
+## Estado atual
+
+O estudo foi pausado depois da ideação, do DDD e da arquitetura inicial. Caso exista uma retomada, esta página poderá receber uma nova seção sobre o comportamento da IA durante implementação, testes e correções. Até lá, não afirmo que essas etapas aconteceram.
+
+O contexto completo da pausa e os limites do que foi entregue estão em [Estado atual do projeto](09-project-status.md).
 
 [Voltar ao Hub da documentação](README.md).

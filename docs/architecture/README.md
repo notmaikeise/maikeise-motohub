@@ -1,9 +1,9 @@
 # Arquitetura do Maikeise MotoHub
 
-Esta pasta registra como o modelo de domínio será transformado em uma aplicação executável sem perder os limites descobertos durante o DDD.
+Esta pasta registra a direção estudada para transformar o modelo de domínio em uma aplicação executável sem perder os limites descobertos durante o DDD.
 
 > [!IMPORTANT]
-> A arquitetura inicial foi aceita na `BKL-007`. O Maikeise MotoHub começará como um monólito modular e somente será distribuído quando existir uma necessidade operacional demonstrável.
+> A arquitetura inicial foi aceita na `BKL-007` como decisão de planejamento, mas não foi implementada. O projeto está em pausa; todas as versões e hipóteses deverão ser revistas antes de iniciar o código.
 
 ## Comece por aqui
 
@@ -35,8 +35,11 @@ O ambiente essencial não depende de ferramenta paga, cartão de crédito ou ser
 | --- | --- |
 | DDD estratégico e tático | ✅ Concluído |
 | Decisão arquitetural inicial | ✅ Concluída |
-| Fundação Spring Boot | ⏭️ Próxima |
-| Fluxos verticais do MVP | ⬜ Planejados |
-| Deploy local reproduzível | ⬜ Planejado |
+| Encerramento da etapa de modelagem | ✅ Concluído |
+| Fundação Spring Boot | ⏸️ Pausada antes do início |
+| Fluxos verticais do MVP | 🔮 Possibilidade futura |
+| Deploy local reproduzível | 🔮 Possibilidade futura |
+
+[Entenda o encerramento desta etapa](../09-project-status.md).
 
 [Voltar ao Hub da documentação](../README.md).

@@ -375,6 +375,6 @@ As relações, direções e formas iniciais de integração estão no [Context M
 
 ## Próximo passo
 
-Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md), as raízes, entidades internas e invariantes foram definidas na [BKL-006](05-aggregates-and-invariants.md), e a `BKL-007` formalizou a arquitetura que preserva esses limites. O próximo passo é criar a fundação técnica na `BKL-010`.
+Os eventos e a linha do tempo foram consolidados na [BKL-005](04-domain-events.md), as raízes, entidades internas e invariantes foram definidas na [BKL-006](05-aggregates-and-invariants.md), e a `BKL-007` formalizou a arquitetura que preserva esses limites. O projeto foi pausado neste marco; a `BKL-010` permanece como referência para uma possível retomada.
 
 [Voltar ao resumo do DDD](00-overview.md).

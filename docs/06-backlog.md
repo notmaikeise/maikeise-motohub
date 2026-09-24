@@ -1,6 +1,9 @@
 # Backlog inicial
 
-Este backlog organiza o trabalho conhecido antes do início da implementação. Os itens podem mudar depois do DDD estratégico e tático.
+Este backlog organiza o trabalho imaginado antes do início da implementação. O DDD estratégico e tático foi concluído, mas o desenvolvimento está pausado e os itens técnicos permanecem como uma rota de referência.
+
+> [!IMPORTANT]
+> Apenas `BKL-001` a `BKL-007` foram concluídas. Os demais cards não representam trabalho em andamento, prazo ou compromisso de entrega; deverão ser revistos se o projeto for retomado.
 
 > [!TIP]
 > A visão rápida mostra a sequência de entrega. Abra um épico para consultar IDs, prioridade e resultado esperado de cada item.
@@ -56,7 +59,7 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 | BKL-007 | Registrar decisão arquitetural inicial | Architecture | Must | ADR sobre monólito modular e evolução |
 
 > [!NOTE]
-> Os itens `BKL-001` a `BKL-007` estão concluídos. O próximo item recomendado é `BKL-010`.
+> Os itens `BKL-001` a `BKL-007` estão concluídos. Em uma possível retomada, o primeiro candidato é `BKL-010`, depois de uma revisão do planejamento.
 
 </details>
 
@@ -233,13 +236,13 @@ Este backlog organiza o trabalho conhecido antes do início da implementação. 
 
 </details>
 
-## Ordem recomendada
+## Situação e ordem de uma possível retomada
 
-1. **Concluído:** consolidar os itens `BKL-001` a `BKL-007`.
-2. **Próximo:** criar a fundação técnica, começando pela `BKL-010`.
-3. Implementar um fluxo vertical simples de catálogo.
-4. Acrescentar identidade e clientes.
-5. Implementar proposta, reserva e venda nesta ordem.
-6. Reforçar auditoria, acessibilidade e documentação continuamente.
+1. **Concluído:** itens `BKL-001` a `BKL-007`, referentes à descoberta, ao DDD e à decisão arquitetural inicial.
+2. **Estado atual:** desenvolvimento pausado para novas revisões e foco em outros projetos.
+3. **Se retomado:** revisar escopo, decisões abertas, stack e prioridades antes de mover a `BKL-010` para execução.
+4. Depois da fundação técnica, validar um fluxo vertical pequeno antes de ampliar o sistema.
+
+O [estado atual do projeto](09-project-status.md) explica por que o backlog foi preservado sem iniciar o desenvolvimento.
 
 [Voltar ao Hub da documentação](README.md).

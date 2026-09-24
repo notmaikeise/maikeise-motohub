@@ -5,6 +5,9 @@ Este documento registra perguntas ainda não respondidas. Elas não devem ser tr
 > [!NOTE]
 > Uma decisão em aberto não representa falha de planejamento. Ela mostra que o projeto reconhece a dúvida e sabe em qual etapa deverá resolvê-la.
 
+> [!IMPORTANT]
+> Como o projeto está em pausa, estas perguntas permanecem conscientemente sem resposta. Elas deverão ser revisitadas antes de qualquer implementação e não devem ser inferidas a partir dos cards planejados.
+
 | ID | Pergunta | Momento recomendado |
 | --- | --- | --- |
 | DEC-002 | Existe um desconto máximo que nem o gerente poderá aprovar? | Modelagem de Propostas |

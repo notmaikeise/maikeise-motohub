@@ -4,6 +4,11 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 
 ## [Unreleased]
 
+### Status
+
+- Projeto pausado em 24 de setembro de 2026, após a conclusão do objetivo de estudo em ideação, modelagem DDD e arquitetura inicial.
+- Implementação Java/Spring Boot, testes, interface e deploy local não foram iniciados e permanecem como possibilidades futuras, condicionadas a novas revisões de planejamento.
+
 ### Added
 
 - Hub central da documentação com trilhas de leitura para recrutadores, avaliação acadêmica e estudo técnico.
@@ -25,10 +30,14 @@ Todas as mudanças relevantes deste projeto serão registradas neste arquivo.
 - ADR-001 formalizando o monólito modular com Arquitetura Hexagonal.
 - Catálogo estruturado com 90 cards do planejamento, cobrindo o MVP até a release local.
 - Script idempotente para criar issues, labels e preencher os campos do GitHub Project em lote.
-- Documento transparente sobre como a IA apoia o estudo, quais decisões continuam humanas e como suas sugestões serão verificadas durante o desenvolvimento.
+- Documento transparente sobre como a IA apoiou o estudo, quais decisões permaneceram humanas e quais limites foram observados nesta etapa.
+- Registro de encerramento da etapa, com entregas reais, limites do material e condições para uma possível retomada.
 
 ### Changed
 
+- Atualização dos pontos de entrada da documentação para distinguir modelagem concluída, arquitetura proposta e software ainda não implementado.
+- Evolução do registro de IA para incluir o processo real de estudo, as correções, os limites observados e a validação humana dos resultados.
+- Preservação dos 90 cards como roadmap de referência, sem tratá-los como compromisso atual de desenvolvimento.
 - Reorganização do README e dos documentos extensos com resumos, navegação, callouts e detalhamento progressivo.
 - Consolidação da linguagem ubíqua do domínio.
 - Padronização de `cliente` como termo oficial no lugar de `comprador`.

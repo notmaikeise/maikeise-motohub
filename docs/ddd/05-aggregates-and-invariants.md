@@ -647,6 +647,6 @@ A atividade é considerada concluída porque:
 
 ## Próximo passo
 
-A `BKL-007` formalizou o monólito modular, a Arquitetura Hexagonal, as regras de dependência, as transações e os eventos confiáveis. O próximo passo é a `BKL-010`: criar a fundação Spring Boot executável.
+A `BKL-007` formalizou o monólito modular, a Arquitetura Hexagonal, as regras de dependência, as transações e os eventos confiáveis. O estudo foi pausado neste ponto; se retomado após revisão, a `BKL-010` será a candidata inicial para criar a fundação Spring Boot executável.
 
 [Voltar ao resumo do DDD](00-overview.md).

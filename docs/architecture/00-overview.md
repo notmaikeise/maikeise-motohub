@@ -3,13 +3,16 @@
 | Campo | Valor |
 | --- | --- |
 | Atividade | `BKL-007` |
-| Situação | Aceita |
+| Situação | Aceita para planejamento; não implementada |
 | Data | 23 de setembro de 2026 |
 | Escopo | Arquitetura inicial do MVP |
 | Restrição principal | Execução local reproduzível e sem custo obrigatório |
 
 > [!IMPORTANT]
-> O Maikeise MotoHub será uma aplicação Spring Boot implantada como uma unidade, mas internamente dividida em módulos de negócio protegidos por contratos, testes arquiteturais e propriedade explícita dos dados.
+> Esta é uma arquitetura proposta, não uma descrição de software já construído. Se o projeto for retomado, a aplicação deverá começar como uma unidade Spring Boot dividida em módulos de negócio, desde que a revisão técnica confirme esta direção.
+
+> [!NOTE]
+> O projeto foi pausado antes da fundação Spring Boot. Estrutura, dependências, transações, testes e execução local ainda não foram comprovados em código.
 
 ## Resumo executivo
 

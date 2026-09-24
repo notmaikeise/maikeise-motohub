@@ -6,6 +6,10 @@
 | Data | 23 de setembro de 2026 |
 | Decisora | ANNY MAIKEISE |
 | Relacionada a | `BKL-007` |
+| Implementação | Não iniciada; projeto em pausa |
+
+> [!NOTE]
+> A decisão permanece aceita como direção de planejamento. Ela ainda não foi validada por código ou operação e deverá ser revisada antes de uma possível implementação.
 
 ## Contexto
 
@@ -137,6 +141,6 @@ Uma revisão não implica automaticamente migrar para microsserviços. Ela apena
 
 ## Resultado
 
-A decisão aceita a complexidade necessária para proteger o domínio, mas adia a complexidade distribuída que o MVP ainda não precisa. A próxima atividade é criar a fundação técnica e comprovar essas regras em código.
+A decisão aceita a complexidade necessária para proteger o domínio, mas adia a complexidade distribuída que o MVP ainda não precisa. A comprovação dessas regras em código ficou adiada com a pausa do projeto e dependerá de uma nova revisão antes da implementação.
 
 [Voltar ao Hub da arquitetura](../README.md).

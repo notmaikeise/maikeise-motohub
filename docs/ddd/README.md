@@ -76,6 +76,6 @@ Microsserviços continuam sendo uma possibilidade de evolução, não um objetiv
 
 ## Próximo passo
 
-A fundação técnica começará pela `BKL-010`: gerar o projeto Spring Boot, configurar o build reproduzível e criar o esqueleto dos módulos aprovados.
+Se houver uma retomada depois da revisão do planejamento, a fundação técnica poderá começar pela `BKL-010`: gerar o projeto Spring Boot, configurar o build reproduzível e criar o esqueleto dos módulos aprovados.
 
 [Voltar ao Hub da documentação](../README.md).

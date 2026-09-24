@@ -1,24 +1,26 @@
 # Maikeise MotoHub
 
-![Status](https://img.shields.io/badge/status-arquitetura%20inicial%20definida-2ea44f)
-![Próxima etapa](https://img.shields.io/badge/pr%C3%B3xima%20etapa-funda%C3%A7%C3%A3o%20Spring%20Boot-8250df)
+![Status](https://img.shields.io/badge/status-em%20pausa-d29922)
+![Etapa concluída](https://img.shields.io/badge/etapa-modelagem%20e%20DDD-2ea44f)
 ![Código](https://img.shields.io/badge/c%C3%B3digo-ainda%20n%C3%A3o%20iniciado-6e7781)
 
-Plataforma web para organizar o fluxo comercial de uma concessionária de motocicletas, do catálogo à venda, atendendo clientes pessoa física e jurídica.
+Estudo de produto, DDD e arquitetura para uma possível plataforma web de gestão comercial de motocicletas, do catálogo à venda, atendendo clientes pessoa física e jurídica.
 
 > [!IMPORTANT]
-> Este repositório está propositalmente na fase de modelagem. O objetivo é mostrar como as decisões de negócio orientam o futuro código Java, em vez de começar pelo framework e adaptar o domínio depois.
+> Este projeto está **em pausa** após a conclusão do seu ciclo de ideação, DDD e arquitetura inicial. O objetivo principal desta etapa foi estudar modelagem de software; não existe aplicação implementada. Uma futura implementação continua possível, mas dependerá de novas revisões de planejamento.
+
+[Consulte o registro de encerramento desta etapa](docs/09-project-status.md).
 
 ## O projeto em um minuto
 
 | Pergunta | Resposta |
 | --- | --- |
-| Qual problema resolve? | Centraliza catálogo, clientes, propostas, reservas e vendas, reduzindo conflitos e perda de histórico. |
+| Qual problema pretende resolver? | Centralizar catálogo, clientes, propostas, reservas e vendas, reduzindo conflitos e perda de histórico. |
 | Quem utiliza? | Visitantes, clientes PF, representantes de empresas e funcionários da concessionária. |
 | Qual é o diferencial estudado? | Propostas versionadas, aprovação de descontos, reserva atômica de unidades e rastreabilidade das decisões. |
 | Qual é o escopo inicial? | Uma concessionária, pagamento externo e aplicação web responsiva. |
 | Qual é a abordagem? | DDD estratégico e tático, seguido de monólito modular com Arquitetura Hexagonal. |
-| Em que fase está? | DDD e arquitetura inicial concluídos; a fundação Spring Boot é o próximo passo. |
+| Em que fase está? | Modelagem e arquitetura inicial concluídas; projeto pausado antes do início do código. |
 
 ## Fluxo principal
 
@@ -47,19 +49,19 @@ O visitante consulta unidades físicas específicas. Depois de se cadastrar, sol
 
 O Maikeise MotoHub é um estudo individual e uma peça de portfólio inspirada pelo domínio discutido em um trabalho acadêmico coletivo. Ele não representa a entrega oficial da equipe e não reutiliza código, nome ou identidade visual daquele projeto.
 
-Aqui, a proposta é continuar além da ideação acadêmica: documentar o raciocínio, implementar o sistema em Java e Spring Boot, testar as regras e chegar a uma execução local reproduzível.
+Neste ciclo individual, a proposta foi aprofundar a ideação acadêmica e documentar o raciocínio de produto, DDD e arquitetura. A intenção inicial incluía Java, Spring Boot e deploy local, mas o estudo foi encerrado na modelagem para permitir foco em outros projetos. Essa implementação poderá ser retomada depois de uma nova revisão.
 
 [Entenda a origem, a autoria e os limites entre os projetos](docs/00-project-context.md).
 
 ## Uso transparente de IA
 
-Durante este projeto, uso o ChatGPT/Codex, da OpenAI, para estudar conceitos, organizar ideias, levantar perguntas e revisar possíveis inconsistências. Esse processo também faz parte de um estudo prático sobre o quanto a IA pode ajudar na modelagem de software e quais são os seus limites.
+Durante esta etapa, usei o ChatGPT/Codex, da OpenAI, para estudar conceitos, organizar ideias, levantar perguntas, revisar inconsistências e automatizar parte do backlog. Esse processo também serviu como um estudo prático sobre a eficácia e os limites da IA na modelagem de software.
 
-As decisões não são delegadas à ferramenta. Eu reviso e aprovo o que entra no projeto, e a modelagem será colocada à prova na documentação, no código e nos testes.
+As decisões não foram delegadas à ferramenta. Eu revisei e aprovei o que entrou no projeto. Como o código não foi iniciado, a modelagem foi avaliada por coerência e rastreabilidade documental, mas ainda não foi comprovada por implementação ou testes.
 
-[Veja em detalhes como a IA é usada e como suas sugestões serão verificadas](docs/08-ai-assisted-development.md).
+[Veja o registro completo do uso de IA, das validações e dos limites observados](docs/08-ai-assisted-development.md).
 
-## Decisões de engenharia já consolidadas
+## Decisões de modelagem e arquitetura
 
 - Seis Bounded Contexts com responsabilidades e dados próprios.
 - Onze Aggregate Roots e invariantes associadas aos objetos que as protegem.
@@ -97,11 +99,12 @@ Toda a navegação está organizada no [Hub da documentação](docs/README.md).
 | Eventos de domínio | ✅ Concluída |
 | Agregados e invariantes | ✅ Concluída |
 | Decisão arquitetural inicial | ✅ Concluída |
-| Fundação Spring Boot | ⏭️ Próxima |
-| Implementação Spring Boot | ⬜ Planejada |
-| Interface e deploy local | ⬜ Planejados |
+| Encerramento do ciclo de modelagem | ✅ Concluído |
+| Fundação Spring Boot | ⏸️ Pausada antes do início |
+| Implementação Spring Boot | 🔮 Possibilidade futura |
+| Interface e deploy local | 🔮 Possibilidade futura |
 
-## Tecnologias planejadas
+## Tecnologias consideradas para uma futura implementação
 
 <details>
 <summary><strong>Ver stack técnica</strong></summary>
@@ -115,6 +118,9 @@ Toda a navegação está organizada no [Hub da documentação](docs/README.md).
 - Interface web com Thymeleaf e HTMX.
 
 </details>
+
+> [!NOTE]
+> Esta stack registra a direção estudada em setembro de 2026. Versões e escolhas deverão ser reavaliadas antes de qualquer implementação.
 
 ## Escopo futuro
 
@@ -131,6 +137,6 @@ Toda a navegação está organizada no [Hub da documentação](docs/README.md).
 
 ## Autoria e licença
 
-Esta evolução técnica individual é desenvolvida por [ANNY MAIKEISE](https://github.com/notmaikeise), preservando o reconhecimento da inspiração acadêmica coletiva.
+Esta etapa do estudo individual foi desenvolvida por [ANNY MAIKEISE](https://github.com/notmaikeise), preservando o reconhecimento da inspiração acadêmica coletiva.
 
 A licença será definida antes da primeira versão pública de código.

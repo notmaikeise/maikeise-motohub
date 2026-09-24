@@ -5,6 +5,9 @@ Este é o ponto de entrada para a modelagem do Maikeise MotoHub. Ele resume as d
 > [!IMPORTANT]
 > O coração do domínio é transformar unidades disponíveis em vendas controladas, por meio de proposta, aceite, reserva e conclusão, sem permitir que a mesma motocicleta seja prometida a clientes diferentes.
 
+> [!NOTE]
+> Este documento preserva o modelo alcançado no encerramento da etapa de DDD. Ele foi revisado por coerência documental, mas ainda não foi confrontado com código, testes ou operação real; o projeto está em pausa antes dessas validações.
+
 ## A história do negócio
 
 Uma pessoa pode consultar o catálogo sem entrar no sistema. Para negociar, precisa de uma conta confirmada e de um cadastro comercial válido. O cliente escolhe unidades físicas específicas, solicita uma proposta e recebe uma versão preparada pelo vendedor.

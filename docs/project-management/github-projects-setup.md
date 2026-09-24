@@ -1,5 +1,8 @@
 # Configuração do GitHub Projects
 
+> [!IMPORTANT]
+> O catálogo com 90 cards já foi sincronizado e o projeto está em pausa. Este guia permanece como registro reproduzível da organização realizada; não é necessário executar novamente o script sem uma revisão ou retomada do planejamento.
+
 > [!TIP]
 > Este é um guia operacional. Execute uma seção por vez e volte ao Hub quando terminar.
 
@@ -111,11 +114,13 @@ Criar somente quando existirem datas ou iterações confiáveis. Evite inventar 
 O [backlog](../06-backlog.md) possui **90 cards** conhecidos:
 
 - `BKL-001` a `BKL-007`: descoberta, DDD e arquitetura já concluídos;
-- `BKL-010`: próximo card, marcado como `Ready`;
-- demais cards: desenvolvimento do MVP, inicialmente em `Backlog`;
+- `BKL-010`: primeiro candidato de uma possível retomada; seu planejamento original o marcou como `Ready`;
+- demais cards: desenvolvimento possível do MVP, preservado em `Backlog`;
 - `BKL-097`: estacionamento pós-MVP, com prioridade `Won't`.
 
 O arquivo [backlog-cards.csv](backlog-cards.csv) é a fonte estruturada usada para preencher `Status`, `Priority`, `Category` e `Area` sem digitação repetitiva.
+
+Os status dos cards registram a organização concebida antes da pausa. Eles não indicam que a implementação esteja em andamento.
 
 ## Criação em lote com GitHub CLI
 
